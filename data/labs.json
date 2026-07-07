@@ -1,0 +1,56 @@
+{
+  "labs": [
+
+    {
+      "name": "AI Lab",
+      "category": "Artificial Intelligence",
+      "description": "Experimentos com inteligência artificial, automações e sistemas inteligentes.",
+      "technologies": [
+        "Python",
+        "Machine Learning",
+        "LLMs"
+      ],
+      "status": "Research"
+    },
+
+
+    {
+      "name": "Data Lab",
+      "category": "Data Engineering",
+      "description": "Exploração de dados, pipelines e análise de informações.",
+      "technologies": [
+        "Python",
+        "SQL",
+        "ETL"
+      ],
+      "status": "Active"
+    },
+
+
+    {
+      "name": "Web Lab",
+      "category": "Web Development",
+      "description": "Experimentos com interfaces, arquitetura web e experiências digitais.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "status": "Active"
+    },
+
+
+    {
+      "name": "Future Tech",
+      "category": "Advanced Technology",
+      "description": "Estudos de tecnologias emergentes e sistemas do futuro.",
+      "technologies": [
+        "Quantum Computing",
+        "Cloud",
+        "Automation"
+      ],
+      "status": "Exploration"
+    }
+
+  ]
+}
