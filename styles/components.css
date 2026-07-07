@@ -154,3 +154,65 @@
     margin-bottom: 8px;
 
 }
+/* ==============================
+   ABOUT CARD
+   ============================== */
+
+
+.about-card {
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    padding: var(--space-large);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+
+.about-card h2 {
+
+    color: var(--accent-primary);
+
+    font-size: 32px;
+
+}
+
+
+
+.about-card h3 {
+
+    color: var(--accent-secondary);
+
+}
+
+
+
+.about-card p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.6;
+
+}
+
+
+
+.about-card ul {
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.about-card li {
+
+    margin-bottom: 8px;
+
+}

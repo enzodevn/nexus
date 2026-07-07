@@ -1,30 +1,39 @@
 export function createRoadmapCard(item) {
 
-    const card = document.createElement("div");
+    const card = document.createElement("article");
 
     card.classList.add("roadmap-card");
 
-    const focusItems = item.focus
-        .map(skill => `<li>${skill}</li>`)
-        .join("");
-
 
     card.innerHTML = `
+
         <div class="roadmap-year">
             ${item.year}
         </div>
+
 
         <h3>
             ${item.phase}
         </h3>
 
+
         <p>
             ${item.description}
         </p>
 
+
         <ul>
-            ${focusItems}
+
+            ${item.focus.map(skill => `
+
+                <li>
+                    ${skill}
+                </li>
+
+            `).join("")}
+
         </ul>
+
     `;
 
 

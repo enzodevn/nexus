@@ -1,10 +1,15 @@
 import { createNavbar } from "../components/navbar.js";
 
 
-const app = document.body;
+const navbarContainer = document.getElementById(
+    "navbar-container"
+);
 
 
-const navbar = createNavbar();
+if (navbarContainer) {
 
+    const navbar = createNavbar();
 
-app.prepend(navbar);
+    navbarContainer.appendChild(navbar);
+
+}
