@@ -1,0 +1,33 @@
+{
+  "projects": [
+    {
+      "id": "ngdp",
+      "name": "Nordic Green Data Platform",
+      "category": "Data Engineering",
+      "status": "Em desenvolvimento",
+      "description": "Plataforma de engenharia de dados voltada para análise de dados ambientais e energéticos.",
+      "technologies": [
+        "Python",
+        "Pandas",
+        "SQL",
+        "ETL"
+      ],
+      "year": "2026",
+      "featured": true
+    },
+    {
+      "id": "nexus-web",
+      "name": "NEXUS Web",
+      "category": "Web Development",
+      "status": "Arquitetura inicial",
+      "description": "Portfólio técnico e laboratório pessoal de projetos.",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "year": "2026",
+      "featured": true
+    }
+  ]
+}

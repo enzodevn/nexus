@@ -1,0 +1,47 @@
+body {
+
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 20px;
+
+    background: #111;
+
+    color: white;
+
+}
+
+
+header {
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+#projects-container {
+
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px,1fr)
+    );
+
+    gap: 20px;
+
+}
+
+
+.project-card {
+
+    background: #222;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+}
