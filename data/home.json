@@ -1,0 +1,41 @@
+{
+  "identity": {
+
+    "name": "Enzo",
+
+    "role": "Technology Builder",
+
+    "description": "Construindo sistemas, dados e experiências digitais.",
+
+    "focus": [
+      "Backend Engineering",
+      "Data Engineering",
+      "Cloud Computing",
+      "Artificial Intelligence"
+    ]
+
+  },
+
+
+  "stats": [
+
+    {
+      "title": "Projects",
+      "value": "04"
+    },
+
+
+    {
+      "title": "Labs",
+      "value": "04"
+    },
+
+
+    {
+      "title": "Current Focus",
+      "value": "Engineering"
+    }
+
+  ]
+
+}
