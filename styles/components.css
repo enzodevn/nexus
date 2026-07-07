@@ -1,35 +1,25 @@
+/* ==============================
+   NEXUS COMPONENTS STYLE
+   ============================== */
+
+
+/* ==============================
+   PROJECT CARDS
+   ============================== */
+
 .project-card {
 
+    background: var(--bg-card);
 
-    background:
+    border: 1px solid var(--border-color);
 
-    var(--bg-card);
+    border-radius: var(--radius);
 
+    padding: var(--space-large);
 
-    border:
+    box-shadow: var(--shadow);
 
-    1px solid var(--border-color);
-
-
-    border-radius:
-
-    var(--radius);
-
-
-    padding:
-
-    var(--space-large);
-
-
-    box-shadow:
-
-    var(--shadow);
-
-
-    transition:
-
-    transform 0.3s ease;
-
+    transition: transform 0.3s ease;
 
 }
 
@@ -37,11 +27,7 @@
 
 .project-card:hover {
 
-
-    transform:
-
-    translateY(-5px);
-
+    transform: translateY(-5px);
 
 }
 
@@ -49,43 +35,27 @@
 
 .project-card h3 {
 
-
-    color:
-
-    var(--accent-primary);
-
+    color: var(--accent-primary);
 
 }
 
 
 
+/* ==============================
+   NAVBAR
+   ============================== */
+
 .navbar {
 
+    display: flex;
 
-    display:
+    justify-content: space-between;
 
-    flex;
+    align-items: center;
 
+    padding: var(--space-medium);
 
-    justify-content:
-
-    space-between;
-
-
-    align-items:
-
-    center;
-
-
-    padding:
-
-    var(--space-medium);
-
-
-    border-bottom:
-
-    1px solid var(--border-color);
-
+    border-bottom: 1px solid var(--border-color);
 
 }
 
@@ -93,15 +63,94 @@
 
 .navbar a {
 
+    color: var(--text-secondary);
 
-    color:
+    text-decoration: none;
 
-    var(--text-secondary);
+}
 
 
-    text-decoration:
 
-    none;
+.navbar a:hover {
 
+    color: var(--accent-primary);
+
+}
+
+
+
+/* ==============================
+   ROADMAP CARDS
+   ============================== */
+
+.roadmap-card {
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius);
+
+    padding: var(--space-large);
+
+    margin-bottom: var(--space-large);
+
+    box-shadow: var(--shadow);
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+.roadmap-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+
+
+.roadmap-year {
+
+    color: var(--accent-secondary);
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+
+.roadmap-card h3 {
+
+    color: var(--accent-primary);
+
+}
+
+
+
+.roadmap-card p {
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.roadmap-card ul {
+
+    color: var(--text-secondary);
+
+    padding-left: 20px;
+
+}
+
+
+
+.roadmap-card li {
+
+    margin-bottom: 8px;
 
 }
