@@ -1,47 +1,84 @@
-body {
+@import url("./variables.css");
 
-    font-family: Arial, sans-serif;
+@import url("./components.css");
+
+
+
+body {
 
     margin: 0;
 
     padding: 20px;
 
-    background: #111;
 
-    color: white;
+    background:
+
+    var(--bg-primary);
+
+
+    color:
+
+    var(--text-primary);
+
+
+    font-family:
+
+    Arial, sans-serif;
 
 }
 
 
-header {
 
-    text-align: center;
+.hero {
 
-    margin-bottom: 40px;
+
+    text-align:
+
+    center;
+
+
+    padding:
+
+    60px 20px;
+
 
 }
+
+
+
+.hero h1 {
+
+
+    font-size:
+
+    64px;
+
+
+    color:
+
+    var(--accent-primary);
+
+
+}
+
 
 
 #projects-container {
 
-    display: grid;
 
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(280px,1fr)
-    );
+    display:
 
-    gap: 20px;
-
-}
+    grid;
 
 
-.project-card {
+    grid-template-columns:
 
-    background: #222;
+    repeat(auto-fit,minmax(280px,1fr));
 
-    padding: 20px;
 
-    border-radius: 10px;
+    gap:
+
+    var(--space-large);
+
 
 }
