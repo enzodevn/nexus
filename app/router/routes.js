@@ -1,42 +1,85 @@
 /*
 ==================================================
+
 NEXUS
-Router
+Application Router
+
+Version: 2.0.0
+
+Responsibility:
+- Control views
+- Navigate without reload
+
 ==================================================
 */
 
-export function loadRoute(route) {
 
-    const view = document.getElementById("view");
+import { renderHome } from "../views/home.js";
+
+
+
+const routes = {
+
+
+    home: renderHome
+
+
+};
+
+
+
+export async function navigate(route) {
+
+
+    const content =
+        document.getElementById(
+            "app-content"
+        );
+
+
+
+    if (!content) {
+
+        console.error(
+            "[Router] Content container not found."
+        );
+
+        return;
+
+    }
+
+
+
+    const view =
+        routes[route];
+
+
 
     if (!view) {
-        console.warn("[Router] View container not found.");
+
+        content.innerHTML = `
+
+            <section>
+
+                <h1>
+                    404
+                </h1>
+
+                <p>
+                    Page not found.
+                </p>
+
+            </section>
+
+        `;
+
         return;
-    }
-
-    switch (route) {
-
-        case "home":
-
-            view.innerHTML = `
-                <section class="loading-screen">
-
-                    <h1>NEXUS</h1>
-
-                    <p>Core initialized successfully.</p>
-
-                </section>
-            `;
-
-            break;
-
-        default:
-
-            view.innerHTML = `
-                <h2>404</h2>
-                <p>Page not found.</p>
-            `;
 
     }
+
+
+
+    await view(content);
+
 
 }

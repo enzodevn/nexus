@@ -1,8 +1,31 @@
+/*
+==================================================
+
+NEXUS
+Navigation Component
+
+Version: 2.0.0
+
+==================================================
+*/
+
+
+import { navigate } from "../app/router/routes.js";
+
+
+
 export function createNavbar() {
 
-    const nav = document.createElement("nav");
 
-    nav.classList.add("navbar");
+    const nav =
+        document.createElement("nav");
+
+
+
+    nav.classList.add(
+        "navbar"
+    );
+
 
 
     nav.innerHTML = `
@@ -15,44 +38,80 @@ export function createNavbar() {
         <ul>
 
             <li>
-                <a href="/index.html">
+                <a href="#" data-route="home">
                     Home
                 </a>
             </li>
 
 
             <li>
-                <a href="/pages/projects.html">
+                <a href="#" data-route="projects">
                     Projects
                 </a>
             </li>
 
 
             <li>
-                <a href="/pages/labs.html">
+                <a href="#" data-route="labs">
                     Labs
                 </a>
             </li>
 
 
             <li>
-                <a href="/pages/roadmap.html">
+                <a href="#" data-route="roadmap">
                     Roadmap
                 </a>
             </li>
 
 
             <li>
-                <a href="/pages/about.html">
+                <a href="#" data-route="about">
                     About
                 </a>
             </li>
+
 
         </ul>
 
     `;
 
 
+
+    const links =
+        nav.querySelectorAll(
+            "[data-route]"
+        );
+
+
+
+    links.forEach(link => {
+
+
+        link.addEventListener(
+            "click",
+            event => {
+
+
+                event.preventDefault();
+
+
+                const route =
+                    link.dataset.route;
+
+
+                navigate(route);
+
+
+            }
+        );
+
+
+    });
+
+
+
     return nav;
+
 
 }
