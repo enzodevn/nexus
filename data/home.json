@@ -1,41 +1,24 @@
 {
-  "identity": {
-
-    "name": "Enzo",
-
-    "role": "Technology Builder",
-
-    "description": "Construindo sistemas, dados e experiências digitais.",
-
-    "focus": [
-      "Backend Engineering",
-      "Data Engineering",
-      "Cloud Computing",
-      "Artificial Intelligence"
-    ]
-
-  },
-
-
-  "stats": [
-
-    {
-      "title": "Projects",
-      "value": "04"
+  "hero": {
+    "label": "CORE OPERATION CENTER",
+    "system_status": "OPERATIONAL",
+    "telemetry": {
+      "version": "v4.2.0-alpha",
+      "latency": "14ms",
+      "ai_agents": "04 ACTIVE"
     },
-
-
-    {
-      "title": "Labs",
-      "value": "04"
-    },
-
-
-    {
-      "title": "Current Focus",
-      "value": "Engineering"
+    "title": "NEXUS INTEGRATED",
+    "subtitle": "Cognitive Systems & Infrastructure Matrix",
+    "description": "Plataforma central de orquestração unificada dedicada à engenharia de sistemas complexos, malhas de infraestrutura em nuvem distribuída, inteligência artificial autônoma e pipelines avançados de dados.",
+    "tags": [
+      "Core Engine",
+      "Distributed Cloud",
+      "Neural Networks",
+      "Data Meshes"
+    ],
+    "button": {
+      "label": "Initialize Terminal",
+      "link": "/projects"
     }
-
-  ]
-
+  }
 }

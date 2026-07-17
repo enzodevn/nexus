@@ -1,93 +1,36 @@
-/*
-==================================================
+import { createHero } from "../../components/sections/hero.js";
+import { createEcosystem } from "../../components/sections/ecosystem.js";
+import { createFeatured } from "../../components/sections/featured.js";
+import { createFocus } from "../../components/sections/focus.js";
+import { createVision } from "../../components/sections/vision.js";
+import { createFooter } from "../../components/layout/footer.js";
 
-NEXUS
-Home View
+export async function renderHome(){
 
-Version: 2.0.0
+    const page=document.createElement("main");
 
-Responsibility:
-- Build Home screen
-- Compose components
+    page.className="page";
 
-==================================================
-*/
+    const home=await fetch("./data/home.json").then(r=>r.json());
 
+    const ecosystem=await fetch("./data/ecosystem.json").then(r=>r.json());
 
-import { createHero } from "../../components/hero.js";
-import { createStatsCard } from "../../components/stats-card.js";
+    const featured=await fetch("./data/featured.json").then(r=>r.json());
 
+    const focus=await fetch("./data/focus.json").then(r=>r.json());
 
-export async function renderHome(container) {
+    page.appendChild(createHero(home.hero));
 
+    page.appendChild(createEcosystem(ecosystem));
 
-    container.innerHTML = "";
+    page.appendChild(createFeatured(featured));
 
+    page.appendChild(createFocus(focus));
 
-    const page = document.createElement("section");
+    page.appendChild(createVision());
 
+    page.appendChild(createFooter());
 
-    page.classList.add("home-view");
-
-
-
-    const response = await fetch(
-        "./data/home.json"
-    );
-
-
-    const data = await response.json();
-
-
-
-    const hero = createHero(
-        data.identity
-    );
-
-
-    page.appendChild(hero);
-
-
-
-
-    if (data.stats) {
-
-
-        const statsWrapper =
-            document.createElement("div");
-
-
-        statsWrapper.classList.add(
-            "stats-grid"
-        );
-
-
-
-        data.stats.forEach(stat => {
-
-
-            const card =
-                createStatsCard(stat);
-
-
-            statsWrapper.appendChild(card);
-
-
-        });
-
-
-
-        page.appendChild(
-            statsWrapper
-        );
-
-
-    }
-
-
-
-
-    container.appendChild(page);
-
+    return page;
 
 }

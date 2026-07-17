@@ -1,33 +1,66 @@
 {
+  "hero": {
+    "title": "Building Intelligent Digital Products",
+    "description": "Projects that combine Software Engineering, Cloud Infrastructure, Artificial Intelligence, Cybersecurity and Data Engineering into a unified technology ecosystem."
+  },
+
+  "featured": {
+    "name": "Nordic Green Data Platform",
+    "subtitle": "Environmental Data Platform",
+    "status": "Active Development",
+    "description": "Building a modern data engineering platform capable of collecting, processing and analyzing environmental datasets with scalable architecture focused on cloud technologies and future AI integration.",
+    "stack": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Cloud",
+      "ETL"
+    ],
+    "button": "View Project →",
+    "github": "",
+    "image": ""
+  },
+
   "projects": [
     {
-      "id": "ngdp",
-      "name": "Nordic Green Data Platform",
-      "category": "Data Engineering",
-      "status": "Em desenvolvimento",
-      "description": "Plataforma de engenharia de dados voltada para análise de dados ambientais e energéticos.",
-      "technologies": [
-        "Python",
-        "Pandas",
-        "SQL",
-        "ETL"
-      ],
-      "year": "2026",
-      "featured": true
+      "id": "hevy",
+      "name": "HEVY Pipeline",
+      "subtitle": "Workout Analytics Platform",
+      "status": "In Development",
+      "button": "View Project →"
     },
     {
-      "id": "nexus-web",
-      "name": "NEXUS Web",
-      "category": "Web Development",
-      "status": "Arquitetura inicial",
-      "description": "Portfólio técnico e laboratório pessoal de projetos.",
-      "technologies": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ],
-      "year": "2026",
-      "featured": true
+      "id": "nexus",
+      "name": "NEXUS Website",
+      "subtitle": "Technology Ecosystem",
+      "status": "Building",
+      "button": "View Project →"
+    },
+    {
+      "id": "samuel",
+      "name": "Samuel Business",
+      "subtitle": "Business Landing Page",
+      "status": "Completed",
+      "button": "View Project →"
+    }
+  ],
+
+  "future": [
+    {
+      "name": "AI Control Center",
+      "status": "Research"
+    },
+    {
+      "name": "Cloud Platform",
+      "status": "Planning"
+    },
+    {
+      "name": "Cybersecurity Lab",
+      "status": "Research"
+    },
+    {
+      "name": "Quantum Computing",
+      "status": "Vision"
     }
   ]
 }

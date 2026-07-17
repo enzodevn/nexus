@@ -1,93 +1,23 @@
-/*
-==================================================
-
-NEXUS
-Application Layout
-
-Version: 2.0.0
-
-Responsibility:
-- Create application structure
-- Mount global components
-
-==================================================
-*/
-
-
-import { createNavbar } from "../../components/navbar.js";
-
-
+import { createNavbar } from "../../components/layout/navbar.js";
 
 export function createLayout() {
 
+    const app = document.createElement("div");
 
-    const layout = document.createElement("div");
+    app.className = "app";
 
-
-    layout.classList.add(
-        "app-layout"
-    );
-
-
-
-    const navbarContainer =
-        document.createElement("header");
-
-
-    navbarContainer.id =
-        "navbar";
-
-
-
-    navbarContainer.appendChild(
+    app.appendChild(
         createNavbar()
     );
 
+    const pageContent = document.createElement("main");
 
+    pageContent.id = "page-content";
 
-    const main =
-        document.createElement("main");
+    pageContent.className = "page-content";
 
+    app.appendChild(pageContent);
 
-    main.id =
-        "app-content";
-
-
-
-    const footer =
-        document.createElement("footer");
-
-
-    footer.id =
-        "footer";
-
-
-
-    footer.innerHTML = `
-        <p>
-            © NEXUS Technology Builder
-        </p>
-    `;
-
-
-
-    layout.appendChild(
-        navbarContainer
-    );
-
-
-    layout.appendChild(
-        main
-    );
-
-
-    layout.appendChild(
-        footer
-    );
-
-
-
-    return layout;
-
+    return app;
 
 }

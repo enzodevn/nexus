@@ -1,21 +1,15 @@
-/*
-==================================================
-NEXUS
-Render Engine
-==================================================
-*/
+export function render(view) {
 
-export function render(containerId, element) {
-
-    const container = document.getElementById(containerId);
+    const container = document.querySelector("#page-content");
 
     if (!container) {
-        console.warn(`[Render] Container "${containerId}" not found.`);
+
+        console.error("Page content container not found");
+
         return;
+
     }
 
-    container.innerHTML = "";
-
-    container.appendChild(element);
+    container.replaceChildren(view);
 
 }

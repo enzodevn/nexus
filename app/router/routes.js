@@ -1,47 +1,42 @@
-/*
-==================================================
-
-NEXUS
-Application Router
-
-Version: 2.0.0
-
-Responsibility:
-- Control views
-- Navigate without reload
-
-==================================================
-*/
-
+import { render } from "../core/render.js";
 
 import { renderHome } from "../views/home.js";
+import { renderAbout } from "../views/about.js";
+import { renderProjects } from "../views/projects.js";
+import { renderLabs } from "../views/labs.js";
+import { renderRoadmap } from "../views/roadmap.js";
 
 
 
 const routes = {
 
+    "/": renderHome,
 
-    home: renderHome
+    "/about": renderAbout,
 
+    "/projects": renderProjects,
+
+    "/labs": renderLabs,
+
+    "/roadmap": renderRoadmap
 
 };
 
 
 
-export async function navigate(route) {
 
 
-    const content =
-        document.getElementById(
-            "app-content"
-        );
+export async function navigate(path) {
 
 
+    const route = routes[path];
 
-    if (!content) {
+
+    if (!route) {
 
         console.error(
-            "[Router] Content container not found."
+            "Route not found:",
+            path
         );
 
         return;
@@ -50,36 +45,59 @@ export async function navigate(route) {
 
 
 
-    const view =
-        routes[route];
+    const page = await route();
 
 
 
-    if (!view) {
+    render(page);
 
-        content.innerHTML = `
 
-            <section>
-
-                <h1>
-                    404
-                </h1>
-
-                <p>
-                    Page not found.
-                </p>
-
-            </section>
-
-        `;
-
-        return;
-
-    }
+}
 
 
 
-    await view(content);
+
+
+export function initRouter(){
+
+
+    document.addEventListener(
+        "click",
+        event => {
+
+
+            const link =
+            event.target.closest("a");
+
+
+
+            if(!link) return;
+
+
+
+            const href =
+            link.getAttribute("href");
+
+
+
+            if(!href) return;
+
+
+
+            if(!href.startsWith("/")) return;
+
+
+
+            event.preventDefault();
+
+
+
+            navigate(href);
+
+
+
+        }
+    );
 
 
 }

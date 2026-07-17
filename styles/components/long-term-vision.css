@@ -1,0 +1,45 @@
+.long-term-vision{
+
+    max-width:1450px;
+
+    margin:0 auto;
+
+    padding:0 8% 180px;
+
+}
+
+.vision-panel{
+
+    padding:70px;
+
+    border-radius:36px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+
+    text-align:center;
+
+}
+
+.vision-panel h2{
+
+    margin:22px 0;
+
+    font-size:clamp(2.6rem,4vw,4rem);
+
+}
+
+.vision-panel p{
+
+    max-width:780px;
+
+    margin:0 auto;
+
+    line-height:1.9;
+
+    color:var(--text-secondary);
+
+}

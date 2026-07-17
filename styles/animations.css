@@ -1,0 +1,345 @@
+/*
+==================================================
+
+NEXUS
+
+Animation System
+
+Visual Layer 02
+
+==================================================
+*/
+
+
+
+
+
+/*
+========================================
+Page Entrance
+========================================
+*/
+
+
+.fade-in {
+
+
+    opacity:0;
+
+
+    animation:
+
+        fadeIn 0.8s ease forwards;
+
+
+}
+
+
+
+
+.fade-up {
+
+
+    opacity:0;
+
+
+    transform:
+
+        translateY(30px);
+
+
+
+    animation:
+
+        fadeUp 0.8s ease forwards;
+
+
+}
+
+
+
+
+.fade-down {
+
+
+    opacity:0;
+
+
+    transform:
+
+        translateY(-25px);
+
+
+
+    animation:
+
+        fadeDown 0.8s ease forwards;
+
+
+}
+
+
+
+
+
+
+/*
+========================================
+Delays
+========================================
+*/
+
+
+.delay-1 {
+
+
+    animation-delay:
+
+        0.15s;
+
+
+}
+
+
+
+.delay-2 {
+
+
+    animation-delay:
+
+        0.30s;
+
+
+}
+
+
+
+.delay-3 {
+
+
+    animation-delay:
+
+        0.45s;
+
+
+}
+
+
+
+.delay-4 {
+
+
+    animation-delay:
+
+        0.60s;
+
+
+}
+
+
+
+
+
+
+
+/*
+========================================
+Hover Motion
+========================================
+*/
+
+
+.hover-lift {
+
+
+    transition:
+
+        transform .35s ease,
+
+        box-shadow .35s ease;
+
+
+}
+
+
+
+
+.hover-lift:hover {
+
+
+    transform:
+
+        translateY(-8px);
+
+
+}
+
+
+
+
+
+
+
+/*
+========================================
+Glow Animation
+========================================
+*/
+
+
+.glow {
+
+
+    animation:
+
+        softGlow 5s ease-in-out infinite alternate;
+
+
+}
+
+
+
+
+
+
+
+/*
+========================================
+Keyframes
+========================================
+*/
+
+
+@keyframes fadeIn {
+
+
+    from {
+
+
+        opacity:0;
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+@keyframes fadeUp {
+
+
+    from {
+
+
+        opacity:0;
+
+
+        transform:
+
+            translateY(30px);
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+            translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+@keyframes fadeDown {
+
+
+    from {
+
+
+        opacity:0;
+
+
+        transform:
+
+            translateY(-25px);
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+            translateY(0);
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+@keyframes softGlow {
+
+
+    from {
+
+
+        opacity:.75;
+
+
+    }
+
+
+
+    to {
+
+
+        opacity:1;
+
+
+    }
+
+
+}

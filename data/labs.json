@@ -1,56 +1,41 @@
 {
-  "labs": [
+  "hero": {
+    "title": "Research & Innovation Lab",
+    "description": "Exploring modern technologies through experimentation, continuous learning and real-world projects."
+  },
 
+  "areas": [
     {
-      "name": "AI Lab",
-      "category": "Artificial Intelligence",
-      "description": "Experimentos com inteligência artificial, automações e sistemas inteligentes.",
-      "technologies": [
-        "Python",
-        "Machine Learning",
-        "LLMs"
-      ],
-      "status": "Research"
+      "title": "Artificial Intelligence",
+      "description": "Building intelligent systems, automation and future AI applications."
     },
-
-
     {
-      "name": "Data Lab",
-      "category": "Data Engineering",
-      "description": "Exploração de dados, pipelines e análise de informações.",
-      "technologies": [
-        "Python",
-        "SQL",
-        "ETL"
-      ],
-      "status": "Active"
+      "title": "Cloud Computing",
+      "description": "Studying scalable infrastructure, cloud architecture and deployment."
     },
-
-
     {
-      "name": "Web Lab",
-      "category": "Web Development",
-      "description": "Experimentos com interfaces, arquitetura web e experiências digitais.",
-      "technologies": [
-        "HTML",
-        "CSS",
-        "JavaScript"
-      ],
-      "status": "Active"
+      "title": "Cybersecurity",
+      "description": "Researching secure systems, networking and defensive strategies."
     },
-
-
     {
-      "name": "Future Tech",
-      "category": "Advanced Technology",
-      "description": "Estudos de tecnologias emergentes e sistemas do futuro.",
-      "technologies": [
-        "Quantum Computing",
-        "Cloud",
-        "Automation"
-      ],
-      "status": "Exploration"
+      "title": "Data Engineering",
+      "description": "Designing data pipelines, ETL processes and analytics platforms."
+    },
+    {
+      "title": "Backend Engineering",
+      "description": "Developing APIs, services and scalable software architectures."
     }
+  ],
 
-  ]
+  "experiments": [
+    "NGDP Platform",
+    "HEVY Pipeline",
+    "AI Research",
+    "Cloud Infrastructure"
+  ],
+
+  "philosophy": {
+    "title": "Research Philosophy",
+    "description": "Every project begins with curiosity. Every experiment generates knowledge. Every line of code contributes to building reliable technology."
+  }
 }

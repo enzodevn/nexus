@@ -1,75 +1,21 @@
-/*
-==================================================
-
-NEXUS
-Application Entry Point
-
-Version: 2.0.0
-
-Responsibility:
-- Initialize application
-- Load global layout
-- Start router
-
-==================================================
-*/
-
-
 import { createLayout } from "./layout/layout.js";
 
-import { navigate } from "./router/routes.js";
+import { initRouter, navigate } from "./router/routes.js";
 
 
 
-async function startApp() {
-
-
-    const app =
-        document.getElementById(
-            "app"
-        );
+const app = document.querySelector("#app");
 
 
 
-    if (!app) {
-
-
-        console.error(
-            "[NEXUS] Application container not found."
-        );
-
-
-        return;
-
-
-    }
+app.appendChild(
+    createLayout()
+);
 
 
 
-    const layout =
-        createLayout();
+initRouter();
 
 
 
-    app.appendChild(
-        layout
-    );
-
-
-
-    await navigate(
-        "home"
-    );
-
-
-
-    console.log(
-        "[NEXUS] Application started successfully."
-    );
-
-
-}
-
-
-
-startApp();
+navigate("/");

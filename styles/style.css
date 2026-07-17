@@ -1,84 +1,180 @@
+/*
+==================================================
+NEXUS - Global Architecture & Imports
+==================================================
+*/
+
+/* Core System */
 @import url("./variables.css");
+@import url("./theme.css");
+@import url("./layout.css");
+@import url("./background.css");
 
-@import url("./components.css");
+/* Component Framework Moderno (Views) */
+@import url("./components/navbar.css");
+@import url("./components/hero.css");
+@import url("./components/ecosystem.css");
+@import url("./components/featured.css");
+@import url("./components/focus.css");
+@import url("./components/vision.css");
+@import url("./components/footer.css");
 
+/* Sobre Nós & Carreira */
+@import url("./components/about.css");
+@import url("./components/about-founder.css");
+@import url("./components/about-vision.css");
+@import url("./components/about-journey.css");
+@import url("./components/about-philosophy.css");
 
+/* Portfólio de Projetos & NGDP */
+@import url("./components/projects.css");
+@import url("./components/featured-project.css");
+@import url("./components/projects-grid.css");
+@import url("./components/future-projects.css");
+
+/* Labs & Roadmaps */
+@import url("./components/labs.css");
+@import url("./components/research-areas.css");
+@import url("./components/active-experiments.css");
+@import url("./components/research-philosophy.css");
+@import url("./components/roadmap.css");
+@import url("./components/roadmap-timeline.css");
+@import url("./components/current-stage.css");
+@import url("./components/long-term-vision.css");
+
+/* Ajuste Fino das Views Internas da SPA */
+.home-view,
+.projects-view,
+.labs-view,
+.roadmap-view,
+.about-view {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* 
+==================================================
+NEXUS CORE - IRON MAN / ATLAS SPATIAL HUD SPEC
+==================================================
+*/
 
 body {
+    background-color: #02060d; /* O breu profundo do espaço */
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
 
+/* O Grande Anel de Alinhamento Óptico do Computador Central */
+body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    border: 1px dashed rgba(0, 240, 255, 0.04);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Segundo anel concêntrico de rotação inversa */
+body::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(0, 240, 255, 0.02);
+    border-left: 2px solid rgba(0, 240, 255, 0.08);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: hudRotate 40s linear infinite;
+}
+
+/* Painéis de Projeção Stark Style (VisionOS + Arc Reactor) */
+.surface {
+    background: rgba(4, 12, 24, 0.35) !important; /* Vidro ultra-translúcido, quase pura luz */
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    
+    /* Linha perimetral fina de contenção de energia */
+    border: 1px solid rgba(0, 240, 255, 0.15) !important;
+    border-radius: 16px !important;
+    
+    /* Sombra projetada limpa + brilho de plasma interno */
+    box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.5),
+        inset 0 0 15px rgba(0, 240, 255, 0.05) !important;
+    
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                border-color 0.5s ease, 
+                box-shadow 0.5s ease;
+}
+
+/* Quando o mouse intercepta o vetor (Hover) */
+.surface:hover {
+    transform: translateY(-4px) scale(1.005);
+    border-color: rgba(0, 240, 255, 0.6) !important;
+    box-shadow: 
+        0 40px 90px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(0, 240, 255, 0.2), /* Ignição Ciano reativa */
+        inset 0 0 25px rgba(0, 240, 255, 0.1) !important;
+}
+
+@keyframes hudRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* 
+==================================================
+CURRENT FOCUS - VERTICAL BLOCK STACK (REFINED)
+==================================================
+*/
+
+/* Container que segura os blocos alinhados no centro */
+.focus .compact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Cria o distanciamento perfeito entre as caixas */
+    width: 100%;
+    max-width: 750px; /* Controla para que as caixas não fiquem gigantes na largura */
+    margin: 24px auto 0 auto; /* Centraliza o bloco inteiro na tela */
+}
+
+/* O bloco empilhado com o tamanho equilibrado */
+.focus .compact-card {
+    padding: 28px 32px; /* Aumenta o respiro interno para ficar idêntico à segunda foto */
+    min-height: auto; /* Deixa o tamanho vertical se adaptar ao texto naturalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Espaçamentos dos textos internos */
+.focus .compact-card h3 {
+    font-size: 18px; /* Texto destacado e imponente */
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 10px 0; /* Margem sutil abaixo do título */
+    letter-spacing: -0.3px;
+}
+
+.focus .compact-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
     margin: 0;
-
-    padding: 20px;
-
-
-    background:
-
-    var(--bg-primary);
-
-
-    color:
-
-    var(--text-primary);
-
-
-    font-family:
-
-    Arial, sans-serif;
-
-}
-
-
-
-.hero {
-
-
-    text-align:
-
-    center;
-
-
-    padding:
-
-    60px 20px;
-
-
-}
-
-
-
-.hero h1 {
-
-
-    font-size:
-
-    64px;
-
-
-    color:
-
-    var(--accent-primary);
-
-
-}
-
-
-
-#projects-container {
-
-
-    display:
-
-    grid;
-
-
-    grid-template-columns:
-
-    repeat(auto-fit,minmax(280px,1fr));
-
-
-    gap:
-
-    var(--space-large);
-
-
 }

@@ -1,0 +1,73 @@
+/*
+==================================================
+NEXUS CORE - Clean Spatial Ecosystem Spec
+==================================================
+*/
+
+.ecosystem {
+    padding: 60px 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estrutura de Telas Assimétricas VisionOS */
+.ecosystem-asymmetric-matrix {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+.eco-modular-panel {
+    position: relative;
+    padding: 38px;
+    border-radius: 24px !important; /* Bordas bem arredondadas padrão Apple VisionOS */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hud-main-monitor {
+    grid-column: span 3;
+    min-height: 320px;
+}
+
+.hud-side-widget {
+    grid-column: span 3;
+    min-height: 260px;
+}
+
+.panel-data-stream {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 16px 0 28px 0;
+}
+
+.eco-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Tags de Especificação em Ciano Puro */
+.spec-tag {
+    background: rgba(0, 240, 255, 0.03);
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    color: #00f0ff;
+    font-size: 11px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease;
+}
+
+.eco-modular-panel:hover .spec-tag {
+    border-color: rgba(0, 240, 255, 0.3);
+    background: rgba(0, 240, 255, 0.06);
+}
+
+@media (max-width: 1024px) {
+    .ecosystem-asymmetric-matrix { grid-template-columns: 1fr; }
+    .hud-main-monitor, .hud-side-widget { grid-column: span 6; }
+}

@@ -1,0 +1,166 @@
+/*
+==================================================
+NEXUS - Featured Projects HUD Terminal
+==================================================
+*/
+
+.featured {
+    width: 100%;
+    padding: 100px 24px;
+    position: relative;
+}
+
+/* Linha de Decoração Laranja de Alerta */
+.orange-decor {
+    background: linear-gradient(90deg, #ff8700, transparent) !important;
+}
+
+.text-glow-orange {
+    text-shadow: 0 0 10px rgba(255, 135, 0, 0.5);
+    color: #ff8700 !important;
+}
+
+/* Grid de Projetos */
+.featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 32px;
+    width: 100%;
+}
+
+/* Card do Projeto - VisionOS Modded */
+.featured-card {
+    position: relative;
+    padding: 40px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 420px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s;
+    animation: fadeUpCard 0.6s ease-out both;
+    animation-delay: var(--card-delay);
+}
+
+.featured-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
+                0 0 25px rgba(255, 135, 0, 0.1);
+    border-color: rgba(255, 135, 0, 0.25);
+}
+
+/* Tag de Identificação no Canto Superior Direito */
+.hud-tag {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 1px;
+}
+
+/* Categoria do Projeto */
+.featured-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.category-indicator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.featured-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.project-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    opacity: 0.85;
+    margin-bottom: 24px;
+}
+
+/* Barra de Status do Pipeline (Simulação HUD) */
+.hud-pipeline-status {
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+.pipeline-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+.pipeline-bar-bg {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.pipeline-bar-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff8700, #ffb300);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-card:hover .pipeline-bar-fill {
+    transform: scaleX(1);
+}
+
+/* Tecnologias */
+.featured-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+/* Botão Estilo Comando */
+.btn-terminal {
+    width: 100%;
+    padding: 12px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-terminal:hover {
+    background: rgba(255, 135, 0, 0.08);
+    border-color: #ff8700;
+    color: #ff8700;
+    transform: translateY(-2px);
+}

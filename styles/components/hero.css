@@ -1,0 +1,120 @@
+/*
+==================================================
+NEXUS - Operational Hero Core
+==================================================
+*/
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 24px 80px 24px;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 840px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Telemetry Dashboard Bar */
+.system-telemetry-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 680px;
+    padding: 10px 24px;
+    border-radius: 999px;
+    margin-bottom: 48px;
+    font-size: 12px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00ffaa;
+    box-shadow: 0 0 10px #00ffaa;
+}
+
+.pulse-animation {
+    animation: telemetriaPulse 2s infinite ease-in-out;
+}
+
+.telemetry-metrics {
+    display: flex;
+    gap: 20px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.telemetry-metrics strong {
+    color: var(--accent);
+}
+
+/* Font Mono Utility local se necessário */
+.font-mono {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+/* Typography Overrides */
+.glitch-title {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 18px;
+    background: linear-gradient(180deg, var(--text-primary) 30%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-matrix {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--text-secondary);
+    font-weight: 400;
+    max-width: 640px;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.operation-desc {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 40px;
+    opacity: 0.85;
+}
+
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 48px;
+}
+
+/* Animations */
+@keyframes telemetriaPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 14px #00ffaa; }
+}

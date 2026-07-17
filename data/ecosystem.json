@@ -1,0 +1,46 @@
+{
+  "title": "Core Technologies",
+  "subtitle": "Building intelligent systems through modern software engineering and emerging technologies.",
+  "items": [
+    {
+      "title": "Software Engineering",
+      "description": "Designing scalable backend systems and modern web applications.",
+      "stack": [
+        "Python",
+        "Backend",
+        "REST APIs",
+        "Architecture"
+      ]
+    },
+    {
+      "title": "Artificial Intelligence",
+      "description": "Researching automation, LLMs and intelligent systems.",
+      "stack": [
+        "LLM",
+        "Automation",
+        "Machine Learning",
+        "Python"
+      ]
+    },
+    {
+      "title": "Cloud Infrastructure",
+      "description": "Creating reliable cloud environments and deployment pipelines.",
+      "stack": [
+        "AWS",
+        "Docker",
+        "Linux",
+        "CI/CD"
+      ]
+    },
+    {
+      "title": "Data Engineering",
+      "description": "Transforming data into valuable information through modern pipelines.",
+      "stack": [
+        "SQL",
+        "Pandas",
+        "ETL",
+        "Analytics"
+      ]
+    }
+  ]
+}

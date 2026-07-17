@@ -1,29 +1,62 @@
 {
-  "profile": {
-
-    "name": "Enzo",
-
-    "title": "Technology Builder",
-
-    "description": "Construindo uma trajetória em engenharia de software, dados e sistemas inteligentes.",
-
-
-    "mission": "Criar soluções que conectem tecnologia, dados e sustentabilidade.",
-
-
-    "focus": [
-
-      "Backend Engineering",
-
-      "Data Engineering",
-
-      "Cloud Computing",
-
+  "hero": {
+    "label": "ABOUT",
+    "title": "The Person Behind NEXUS",
+    "subtitle": "Building Intelligent Digital Systems",
+    "description": "I'm Enzo, a Software Engineering student building a long-term technology ecosystem focused on Software Engineering, Artificial Intelligence, Cloud Infrastructure, Cybersecurity and Data Engineering.",
+    "technologies": [
+      "Software Engineering",
+      "Cloud Infrastructure",
+      "Cybersecurity",
       "Artificial Intelligence",
-
-      "Sustainable Technology"
-
+      "Data Engineering"
     ]
+  },
 
+  "about": {
+    "title": "Meet Enzo",
+    "description": "Passionate about building modern digital systems and exploring the future of technology through practical projects. NEXUS is the ecosystem where software engineering, cloud, cybersecurity, artificial intelligence and data engineering come together to create long-term solutions."
+  },
+
+  "purpose": {
+    "title": "Why NEXUS Exists",
+    "description": "NEXUS wasn't created to be just another portfolio. It was designed to become a technology ecosystem that grows alongside my career, connecting projects, research, laboratories and future innovations into a single platform."
+  },
+
+  "vision": {
+    "title": "Technology Vision",
+    "items": [
+      "Software Engineering",
+      "Cloud Infrastructure",
+      "Cybersecurity",
+      "Artificial Intelligence",
+      "Data Engineering"
+    ]
+  },
+
+  "journey": {
+    "title": "Current Journey",
+    "steps": [
+      "Foundation",
+      "Software Engineering",
+      "Cloud Infrastructure",
+      "Cybersecurity",
+      "Data Engineering",
+      "Artificial Intelligence",
+      "Norway",
+      "Future Systems"
+    ]
+  },
+
+  "philosophy": {
+    "title": "Personal Philosophy",
+    "items": [
+      "Continuous Learning",
+      "Consistency",
+      "Quality",
+      "Minimalism",
+      "Innovation",
+      "Long-Term Thinking"
+    ]
   }
 }

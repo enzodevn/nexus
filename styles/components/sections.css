@@ -1,0 +1,121 @@
+/*
+==================================================
+
+NEXUS
+
+Sections System
+
+Version: 4.4.0
+
+==================================================
+*/
+
+
+.section{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:64px;
+
+}
+
+
+
+
+
+.section-header{
+
+    max-width:760px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+
+
+.section-header h2{
+
+    font-size:clamp(2rem,4vw,3rem);
+
+}
+
+
+
+
+
+.section-header p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+
+
+
+
+.section-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:var(--border-color);
+
+}
+
+
+
+
+
+.section-space{
+
+    padding-top:120px;
+
+    padding-bottom:120px;
+
+}
+
+
+
+
+
+.featured-section{
+
+    position:relative;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+    .section{
+
+        gap:40px;
+
+    }
+
+
+    .section-space{
+
+        padding-top:80px;
+
+        padding-bottom:80px;
+
+    }
+
+}

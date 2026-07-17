@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Journey to the Future",
+    "description": "A long-term roadmap focused on building expertise in Software Engineering, Artificial Intelligence, Cloud Computing, Cybersecurity and Data Engineering."
+  },
+
+  "current": {
+    "title": "Current Stage",
+    "description": "Building strong foundations through higher education, personal projects and continuous learning."
+  },
+
+  "timeline": [
+    {
+      "year": "2026",
+      "title": "Technology Degree",
+      "description": "Computer Science and Information Technology fundamentals."
+    },
+    {
+      "year": "2027",
+      "title": "Professional Experience",
+      "description": "Internships, backend development and cloud technologies."
+    },
+    {
+      "year": "2028",
+      "title": "Engineering",
+      "description": "Computer Engineering and advanced software architecture."
+    },
+    {
+      "year": "2030+",
+      "title": "Global Technology",
+      "description": "Building intelligent platforms with AI, Cloud and Data Engineering."
+    }
+  ],
+
+  "vision": {
+    "title": "Long-Term Vision",
+    "description": "Creating an ecosystem of intelligent products capable of solving complex real-world problems through technology, research and innovation."
+  }
+}
