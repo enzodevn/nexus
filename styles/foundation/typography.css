@@ -1,0 +1,71 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Typography
+==================================================
+*/
+
+.display-xl{
+    font-size:clamp(3.5rem,7vw,5.5rem);
+    font-weight:700;
+    line-height:1;
+    letter-spacing:-0.05em;
+}
+
+.display-lg{
+    font-size:clamp(2.8rem,5vw,4rem);
+    font-weight:700;
+    line-height:1.05;
+    letter-spacing:-0.04em;
+}
+
+.heading-xl{
+    font-size:2.5rem;
+    font-weight:600;
+    line-height:1.15;
+}
+
+.heading-lg{
+    font-size:2rem;
+    font-weight:600;
+    line-height:1.2;
+}
+
+.heading-md{
+    font-size:1.5rem;
+    font-weight:600;
+    line-height:1.3;
+}
+
+.body-lg{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:var(--text-secondary);
+}
+
+.body{
+    font-size:1rem;
+    line-height:1.7;
+    color:var(--text-secondary);
+}
+
+.caption{
+    font-size:.9rem;
+    color:var(--text-muted);
+}
+
+.label{
+    display:inline-block;
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    margin-bottom:14px;
+}

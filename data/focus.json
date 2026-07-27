@@ -1,27 +1,22 @@
 {
-  "title": "Current Focus",
-  "subtitle": "The technologies currently shaping the evolution of the NEXUS ecosystem.",
+    "title": "Current Focus",
+    "subtitle": "The technologies and engineering disciplines currently shaping the NEXUS ecosystem.",
 
-  "items": [
-    {
-      "title": "Software Engineering",
-      "status": "ACTIVE",
-      "description": "Building modern backend systems and strengthening programming fundamentals."
-    },
-    {
-      "title": "Artificial Intelligence",
-      "status": "RESEARCH",
-      "description": "Exploring intelligent systems, automation and future AI architectures."
-    },
-    {
-      "title": "Cloud Infrastructure",
-      "status": "LEARNING",
-      "description": "Studying scalable cloud platforms, containers and deployment strategies."
-    },
-    {
-      "title": "Data Engineering",
-      "status": "BUILDING",
-      "description": "Creating reliable pipelines for transforming and analyzing data."
-    }
-  ]
+    "items": [
+        {
+            "title": "Backend Engineering",
+            "description": "Building scalable backend applications using Python, APIs, databases and software architecture.",
+            "stage": "Foundation"
+        },
+        {
+            "title": "Data Engineering",
+            "description": "Creating ETL pipelines, processing datasets and designing modern data platforms.",
+            "stage": "Building"
+        },
+        {
+            "title": "Cloud Computing",
+            "description": "Preparing cloud-native infrastructure with AWS, Docker and future Kubernetes adoption.",
+            "stage": "Learning"
+        }
+    ]
 }

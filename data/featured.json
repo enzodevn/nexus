@@ -1,42 +1,25 @@
 {
-  "title": "Featured Projects",
-  "subtitle": "Projects that represent the evolution of the NEXUS ecosystem and my learning journey.",
-  "projects": [
-    {
-      "name": "NGDP",
-      "category": "Data Engineering",
-      "description": "Nordic Green Data Platform focused on collecting, processing and analyzing environmental datasets.",
-      "technologies": [
-        "Python",
-        "Pandas",
-        "SQL",
-        "ETL"
-      ],
-      "link": "/projects"
-    },
-    {
-      "name": "HEVY Pipeline",
-      "category": "Data Pipeline",
-      "description": "Workout analytics platform built with APIs, automation pipelines and data visualization.",
-      "technologies": [
-        "Python",
-        "REST API",
-        "SQLite",
-        "Analytics"
-      ],
-      "link": "/projects"
-    },
-    {
-      "name": "NEXUS",
-      "category": "Technology Ecosystem",
-      "description": "Personal ecosystem that brings together Software Engineering, AI, Cloud and Infrastructure into one platform.",
-      "technologies": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Architecture"
-      ],
-      "link": "/projects"
-    }
-  ]
+  "label": "FEATURED PROJECT",
+
+  "title": "Nordic Green Data Platform",
+
+  "subtitle": "Environmental Data Engineering Platform",
+
+  "description": "A personal Data Engineering project focused on collecting, transforming and analyzing environmental datasets through scalable ETL pipelines, Python automation and modern backend technologies.",
+
+  "status": "Building",
+
+  "stack": [
+    "Python",
+    "Pandas",
+    "SQLite",
+    "Git"
+  ],
+
+  "milestone": "Interactive Dashboard",
+
+  "button": {
+    "label": "Open Project",
+    "link": "#/projects"
+  }
 }

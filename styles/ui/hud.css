@@ -1,0 +1,51 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+HUD
+==================================================
+*/
+
+.hud{
+
+    position:relative;
+
+}
+
+.hud::before,
+.hud::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    border-color:rgba(89,175,255,.35);
+
+}
+
+.hud::before{
+
+    top:16px;
+
+    left:16px;
+
+    border-top:1px solid;
+
+    border-left:1px solid;
+
+}
+
+.hud::after{
+
+    bottom:16px;
+
+    right:16px;
+
+    border-bottom:1px solid;
+
+    border-right:1px solid;
+
+}

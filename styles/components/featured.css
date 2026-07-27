@@ -1,166 +1,138 @@
 /*
 ==================================================
-NEXUS - Featured Projects HUD Terminal
+NEXUS DESIGN SYSTEM
+Featured Project
 ==================================================
 */
 
 .featured {
     width: 100%;
-    padding: 100px 24px;
-    position: relative;
+    margin: 140px 0;
 }
 
-/* Linha de Decoração Laranja de Alerta */
-.orange-decor {
-    background: linear-gradient(90deg, #ff8700, transparent) !important;
-}
-
-.text-glow-orange {
-    text-shadow: 0 0 10px rgba(255, 135, 0, 0.5);
-    color: #ff8700 !important;
-}
-
-/* Grid de Projetos */
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: 32px;
+.featured-panel {
     width: 100%;
-}
-
-/* Card do Projeto - VisionOS Modded */
-.featured-card {
-    position: relative;
-    padding: 40px;
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 420px;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.3s;
-    animation: fadeUpCard 0.6s ease-out both;
-    animation-delay: var(--card-delay);
+    gap: 40px;
 }
 
-.featured-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 
-                0 0 25px rgba(255, 135, 0, 0.1);
-    border-color: rgba(255, 135, 0, 0.25);
-}
-
-/* Tag de Identificação no Canto Superior Direito */
-.hud-tag {
-    position: absolute;
-    top: 16px;
-    right: 24px;
-    font-size: 10px;
-    color: rgba(255, 255, 255, 0.25);
-    letter-spacing: 1px;
-}
-
-/* Categoria do Projeto */
-.featured-category {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-}
-
-.category-indicator {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-}
-
-.featured-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
-}
-
-.project-desc {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-secondary);
-    opacity: 0.85;
-    margin-bottom: 24px;
-}
-
-/* Barra de Status do Pipeline (Simulação HUD) */
-.hud-pipeline-status {
-    width: 100%;
-    margin-bottom: 28px;
-}
-
-.pipeline-labels {
+.featured-header {
     display: flex;
-    justify-content: space-between;
-    font-size: 9px;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.pipeline-bar-bg {
+.featured-label {
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.featured-header h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.featured-header h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.featured-header p {
+    max-width: 720px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.featured-divider {
     width: 100%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 2px;
-    overflow: hidden;
+    height: 1px;
+    background: var(--glass-border);
 }
 
-.pipeline-bar-fill {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, #ff8700, #ffb300);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+.featured-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
-.featured-card:hover .pipeline-bar-fill {
-    transform: scaleX(1);
+.info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-/* Tecnologias */
-.featured-stack {
+.info-block span {
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.info-block strong {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.stack-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
+    gap: 10px;
 }
 
-/* Botão Estilo Comando */
-.btn-terminal {
-    width: 100%;
-    padding: 12px;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--radius-sm);
+.stack-item {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--glass-border);
     color: var(--text-primary);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: .85rem;
+}
+
+.featured-button {
+    align-self: flex-start;
+
+    padding: 14px 28px;
+
+    border-radius: var(--radius-sm);
+
+    background: var(--accent);
+
+    color: #fff;
+
     text-decoration: none;
+
+    font-weight: 600;
+
     transition: var(--transition);
 }
 
-.btn-terminal:hover {
-    background: rgba(255, 135, 0, 0.08);
-    border-color: #ff8700;
-    color: #ff8700;
+.featured-button:hover {
     transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+@media (max-width: 900px) {
+
+    .featured-panel {
+
+        padding: 36px;
+
+    }
+
+    .featured-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
 }

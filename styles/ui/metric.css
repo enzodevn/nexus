@@ -1,0 +1,50 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Metric
+==================================================
+*/
+
+.metric{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.metric-label{
+
+    font-size:.75rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:.16em;
+
+    color:var(--text-muted);
+
+}
+
+.metric-value{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--text-primary);
+
+    line-height:1;
+
+}
+
+.metric-description{
+
+    font-size:.95rem;
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}

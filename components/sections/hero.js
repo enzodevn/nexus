@@ -1,48 +1,95 @@
 export function createHero(hero) {
+
     const section = document.createElement("section");
-    section.className = "hero";
+
+    section.className = "hero section";
 
     section.innerHTML = `
-        <div class="hero-background">
-            <div class="hero-glow hero-glow-left"></div>
-            <div class="hero-glow hero-glow-right"></div>
-            <div class="hero-grid"></div>
-            <div class="hero-noise"></div>
-        </div>
-        
-        <div class="hero-content fade-up">
-            <!-- Badge Minimalista VisionOS -->
-            <div class="hero-badge" style="margin-bottom: 32px;">
-                <span class="hero-dot"></span>
-                <span class="label">${hero.label}</span>
+
+        <div class="hero-panel glass-panel operation-panel hud">
+
+            <div class="hero-header">
+
+                <span class="operation-label">
+                    ${hero.label}
+                </span>
+
+                <h1>
+                    ${hero.title}
+                </h1>
+
+                <h2>
+                    ${hero.subtitle}
+                </h2>
+
+                <p>
+                    ${hero.description}
+                </p>
+
             </div>
 
-            <h1 class="glitch-title">
-                ${hero.title}
-            </h1>
-            
-            <h2 class="sub-matrix">
-                ${hero.subtitle}
-            </h2>
-            
-            <p class="operation-desc">
-                ${hero.description}
-            </p>
-            
             <div class="hero-tags">
-                ${hero.tags
-                    .map(tag => `<span class="tech-tag">${tag}</span>`)
-                    .join("")}
+
+                ${hero.tags.map(tag=>`
+
+                    <span class="badge">
+                        ${tag}
+                    </span>
+
+                `).join("")}
+
             </div>
-            
+
             <div class="hero-actions">
-                <a href="${hero.button.link}" class="button btn-primary">
-                    <span class="btn-text">${hero.button.label}</span>
-                    <span class="btn-arrow">→</span>
+
+                <a
+                    href="${hero.button.link}"
+                    class="button btn-primary">
+
+                    ${hero.button.label}
+
                 </a>
+
+                <a
+                    href="${hero.secondaryButton.link}"
+                    class="button btn-secondary">
+
+                    ${hero.secondaryButton.label}
+
+                </a>
+
             </div>
+
+            <div class="divider"></div>
+
+            <div class="hero-metrics">
+
+                ${hero.metrics.map(metric=>`
+
+                    <div class="metric-card">
+
+                        <span>
+
+                            ${metric.label}
+
+                        </span>
+
+                        <strong>
+
+                            ${metric.value}
+
+                        </strong>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
         </div>
+
     `;
 
     return section;
+
 }

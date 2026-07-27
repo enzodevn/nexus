@@ -1,0 +1,35 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Card
+==================================================
+*/
+
+.card{
+
+    background:var(--glass);
+
+    backdrop-filter:var(--glass-blur);
+    -webkit-backdrop-filter:var(--glass-blur);
+
+    border:1px solid var(--glass-border);
+
+    border-radius:var(--radius-md);
+
+    box-shadow:var(--shadow-soft);
+
+    transition:var(--transition);
+
+}
+
+.card:hover{
+
+    background:var(--glass-hover);
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        var(--shadow-soft),
+        var(--shadow-glow);
+
+}

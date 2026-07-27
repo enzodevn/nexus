@@ -1,0 +1,23 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Divider
+==================================================
+*/
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--glass-border),
+        transparent
+    );
+
+    margin:40px 0;
+
+}

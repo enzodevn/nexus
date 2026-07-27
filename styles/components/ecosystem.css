@@ -21,7 +21,7 @@ NEXUS CORE - Clean Spatial Ecosystem Spec
 .eco-modular-panel {
     position: relative;
     padding: 38px;
-    border-radius: 24px !important; /* Bordas bem arredondadas padrão Apple VisionOS */
+    border-radius: 24px ; /* Bordas bem arredondadas padrão Apple VisionOS */
     display: flex;
     flex-direction: column;
     justify-content: space-between;

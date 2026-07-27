@@ -1,0 +1,54 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Surfaces
+==================================================
+*/
+
+.surface{
+
+    background:var(--glass);
+
+    border:1px solid var(--glass-border);
+
+    backdrop-filter:var(--glass-blur);
+
+    -webkit-backdrop-filter:var(--glass-blur);
+
+    border-radius:var(--radius-md);
+
+    box-shadow:var(--shadow-soft);
+
+    transition:var(--transition);
+
+}
+
+.surface:hover{
+
+    background:var(--glass-hover);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        var(--shadow-soft),
+        var(--shadow-glow);
+
+}
+
+.surface-subtle{
+
+    background:var(--surface);
+
+}
+
+.surface-outline{
+
+    background:transparent;
+
+}
+
+.surface-elevated{
+
+    background:rgba(255,255,255,.08);
+
+}

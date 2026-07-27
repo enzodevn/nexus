@@ -1,24 +1,63 @@
 {
   "hero": {
-    "label": "CORE OPERATION CENTER",
-    "system_status": "OPERATIONAL",
-    "telemetry": {
-      "version": "v4.2.0-alpha",
-      "latency": "14ms",
-      "ai_agents": "04 ACTIVE"
-    },
-    "title": "NEXUS INTEGRATED",
-    "subtitle": "Cognitive Systems & Infrastructure Matrix",
-    "description": "Plataforma central de orquestração unificada dedicada à engenharia de sistemas complexos, malhas de infraestrutura em nuvem distribuída, inteligência artificial autônoma e pipelines avançados de dados.",
+    "label": "Operation Center",
+
+    "title": "NEXUS",
+
+    "subtitle": "Building Intelligent Software Ecosystems",
+
+    "description": "A personal engineering platform where software projects, cloud computing, backend development, artificial intelligence and long-term learning converge into one evolving ecosystem.",
+
     "tags": [
-      "Core Engine",
-      "Distributed Cloud",
-      "Neural Networks",
-      "Data Meshes"
+      "Backend",
+      "Cloud",
+      "Data Engineering",
+      "Artificial Intelligence",
+      "Python"
     ],
+
     "button": {
-      "label": "Initialize Terminal",
-      "link": "/projects"
-    }
+      "label": "Explore Projects",
+      "link": "#/projects"
+    },
+
+    "secondaryButton": {
+      "label": "View Roadmap",
+      "link": "#/roadmap"
+    },
+
+    "metrics": [
+      {
+        "label": "Projects",
+        "value": "04"
+      },
+      {
+        "label": "Focus",
+        "value": "Backend"
+      },
+      {
+        "label": "Stack",
+        "value": "Python"
+      },
+      {
+        "label": "Status",
+        "value": "Building"
+      }
+    ]
+  },
+
+  "mission": {
+    "title": "Current Mission",
+    "project": "NEXUS Platform",
+    "status": "Building",
+    "progress": 20,
+    "nextMilestone": "Developer Dashboard"
+  },
+
+  "overview": {
+    "projects": 4,
+    "labs": 2,
+    "technologies": 12,
+    "updated": "Live"
   }
 }

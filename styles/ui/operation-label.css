@@ -1,0 +1,42 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Operation Label
+==================================================
+*/
+
+.operation-label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--accent);
+
+    text-transform:uppercase;
+
+    letter-spacing:.22em;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+}
+
+.operation-label::before{
+
+    content:"";
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    box-shadow:0 0 12px var(--accent);
+
+}

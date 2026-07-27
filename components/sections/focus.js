@@ -1,28 +1,59 @@
 export function createFocus(data) {
-    const section = document.createElement("section");
-    section.className = "focus center-operations-layout";
 
-    // Garante que o componente não quebre caso os dados demorem a carregar
-    const title = data && data.title ? data.title : "Current Focus";
-    const items = data && data.items ? data.items : [];
+    const section = document.createElement("section");
+
+    section.className = "focus";
 
     section.innerHTML = `
-        <div class="section-title">
-            <h2>${title}</h2>
+
+        <div class="focus-panel glass-panel">
+
+            <div class="focus-header">
+
+                <span class="focus-label">
+                    CURRENT FOCUS
+                </span>
+
+                <h2>${data.title}</h2>
+
+                <p>${data.subtitle}</p>
+
+            </div>
+
+            <div class="focus-divider"></div>
+
+            <div class="focus-list">
+
+                ${data.items.map(item => `
+
+                    <article class="focus-item">
+
+                        <div class="focus-item-content">
+
+                            <h3>${item.title}</h3>
+
+                            <p>${item.description}</p>
+
+                        </div>
+
+                        <div class="focus-stage">
+
+                            <span>Stage</span>
+
+                            <strong>${item.stage}</strong>
+
+                        </div>
+
+                    </article>
+
+                `).join("")}
+
+            </div>
+
         </div>
 
-        <!-- Grid de cards simétricos e arredondados -->
-        <div class="compact-grid">
-            ${items.map((item) => `
-                <article class="compact-card surface">
-                    <div class="focus-card-content">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                </article>
-            `).join("")}
-        </div>
     `;
 
     return section;
+
 }

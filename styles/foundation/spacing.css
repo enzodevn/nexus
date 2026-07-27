@@ -1,0 +1,24 @@
+/*
+==================================================
+NEXUS DESIGN SYSTEM
+Spacing
+==================================================
+*/
+
+:root{
+
+    --space-xs:8px;
+
+    --space-sm:16px;
+
+    --space-md:24px;
+
+    --space-lg:40px;
+
+    --space-xl:64px;
+
+    --space-2xl:96px;
+
+    --space-3xl:140px;
+
+}
