@@ -7,6 +7,10 @@ export function statusMark(tone = "active") {
   return `<span class="status-mark status-mark--${tone}" aria-hidden="true"></span>`;
 }
 
+export function motionFrame(tone = "soft") {
+  return `<span class="neon-frame neon-frame--${tone}" aria-hidden="true"></span>`;
+}
+
 export function buttonLink(label, href, variant = "secondary", icon = "") {
   return `<a class="button button--${variant}" href="${href}">
     <span>${label}</span>${icon ? `<span aria-hidden="true">${icon}</span>` : ""}

@@ -1,4 +1,5 @@
 import {
+  motionFrame,
   operationLabel,
   sectionHeader,
   statusMark,
@@ -16,7 +17,8 @@ function renderOverview({ profile, purpose }) {
         <p class="about-purpose__support">${purpose.supporting}</p>
       </article>
 
-      <aside class="surface panel about-profile" aria-labelledby="about-profile-name">
+      <aside class="surface panel about-profile motion-surface" aria-labelledby="about-profile-name" data-motion-surface>
+        ${motionFrame("soft")}
         <div class="panel-heading">
           ${operationLabel(profile.eyebrow)}
           <span class="module-code">NX / PROFILE</span>

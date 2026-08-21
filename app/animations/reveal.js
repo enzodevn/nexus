@@ -13,8 +13,9 @@ export function initializeRevealAnimations(root = document) {
 
   activeObserver = new IntersectionObserver(
     (entries, observer) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (!entry.isIntersecting) return;
+        entry.target.style.setProperty("--reveal-delay", `${Math.min(index * 70, 210)}ms`);
         entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       });

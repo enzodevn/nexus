@@ -1,6 +1,7 @@
 import { renderEcosystem } from "../modules/ecosystem.js";
 import {
   buttonLink,
+  motionFrame,
   operationLabel,
   sectionHeader,
   statusMark,
@@ -28,7 +29,8 @@ function renderHero(home, status, focus) {
         <p class="panel-note">Priority disciplines currently shaping the laboratory.</p>
       </aside>
 
-      <div class="surface panel hero-core" data-reveal>
+      <div class="surface panel hero-core motion-surface" data-reveal data-motion-surface>
+        ${motionFrame("strong")}
         <div class="core-ambient" aria-hidden="true"></div>
         <div class="hero-core__topline">
           ${operationLabel(home.hero.category, "cyan")}
@@ -76,7 +78,8 @@ function renderHero(home, status, focus) {
 function renderFeatured(featured) {
   return `
     <section class="section" aria-labelledby="featured-title" data-reveal>
-      <article class="surface panel featured-system">
+      <article class="surface panel featured-system motion-surface" data-motion-surface>
+        ${motionFrame("soft")}
         <div class="featured-main">
           <div class="featured-heading">
             ${operationLabel(featured.eyebrow, "cyan")}
@@ -134,7 +137,8 @@ function renderLabs(home) {
         ${buttonLink("Explore labs", "#/labs", "secondary", "→")}
       </div>
       <div class="labs-grid">
-        <article class="surface panel lab-primary" data-reveal>
+        <article class="surface panel lab-primary motion-surface" data-reveal data-motion-surface>
+          ${motionFrame("soft")}
           <div class="lab-visual" aria-hidden="true">
             <span></span><span></span><span></span><span></span><i></i>
           </div>

@@ -1,4 +1,5 @@
 import {
+  motionFrame,
   operationLabel,
   sectionHeader,
   statusMark,
@@ -50,7 +51,8 @@ function renderMilestones(milestones) {
 
 function renderFeaturedProject(featured) {
   return `<section class="section projects-featured" aria-labelledby="projects-featured-title" data-reveal>
-    <article class="surface panel project-primary">
+    <article class="surface panel project-primary motion-surface" data-motion-surface>
+      ${motionFrame("strong")}
       <header class="project-primary__header">
         ${operationLabel(featured.eyebrow, "cyan")}
         <span class="module-code">${featured.code}</span>
@@ -82,7 +84,8 @@ function renderFeaturedProject(featured) {
 function renderRegistryItem(system, index) {
   const titleId = `project-system-${index + 1}`;
 
-  return `<article class="surface panel project-registry-row ${index === 0 ? "is-primary" : ""}" aria-labelledby="${titleId}" data-reveal>
+  return `<article class="surface panel project-registry-row ${index === 0 ? "is-primary motion-surface" : ""}" aria-labelledby="${titleId}" data-reveal ${index === 0 ? "data-motion-surface" : ""}>
+    ${index === 0 ? motionFrame("soft") : ""}
     <div class="project-registry-row__identity">
       <div class="project-registry-row__topline">
         <span class="module-code">${system.code}</span>

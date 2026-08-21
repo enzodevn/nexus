@@ -1,4 +1,5 @@
 import { initializeRevealAnimations } from "./animations/reveal.js";
+import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
 import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
@@ -79,6 +80,7 @@ try {
       app.innerHTML = renderShell(content, data.home, path);
       bindShellInteractions(app);
       initializeRevealAnimations(app);
+      initializeSurfaceMotion(app);
       document.title = `${path === "/" ? "NEXUS" : path.slice(1).toUpperCase()} — Building Intelligent Systems`;
 
       const inPageTarget = getInPageTarget(window.location.hash);

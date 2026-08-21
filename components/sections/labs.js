@@ -1,4 +1,5 @@
 import {
+  motionFrame,
   operationLabel,
   sectionHeader,
   statusMark,
@@ -33,7 +34,8 @@ function renderProtocol(protocol) {
 
 function renderFeaturedInquiry(featured) {
   return `<section class="section labs-featured" aria-labelledby="labs-featured-title" data-reveal>
-    <article class="surface panel labs-inquiry">
+    <article class="surface panel labs-inquiry motion-surface" data-motion-surface>
+      ${motionFrame("strong")}
       <header class="labs-inquiry__header">
         ${operationLabel(featured.eyebrow, "cyan")}
         <span class="module-code">${featured.code}</span>
@@ -73,7 +75,8 @@ function renderFeaturedInquiry(featured) {
 function renderTrack(track, index) {
   const titleId = `labs-track-${index + 1}`;
 
-  return `<article class="surface panel labs-track ${index === 0 ? "is-primary" : ""}" aria-labelledby="${titleId}" data-reveal>
+  return `<article class="surface panel labs-track ${index === 0 ? "is-primary motion-surface" : ""}" aria-labelledby="${titleId}" data-reveal ${index === 0 ? "data-motion-surface" : ""}>
+    ${index === 0 ? motionFrame("soft") : ""}
     <header class="labs-track__topline">
       <span class="module-code">${track.code}</span>
       <span class="labs-track__state">${statusMark(track.signal)} ${track.state}</span>
