@@ -7,7 +7,8 @@ Engineering Operations Center implemented as a dependency-free JavaScript SPA. T
 - Home: operational, data-driven mission-control experience
 - About: operational, with a dedicated view and structured journey data
 - Projects: operational, with a dedicated system registry and NGDP showcase
-- Labs and Roadmap: navigable compact views awaiting recomposition
+- Labs: operational, with a dedicated investigation registry and research method
+- Roadmap: navigable compact view awaiting recomposition
 
 ## Run in VS Code
 

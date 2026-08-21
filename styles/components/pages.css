@@ -80,42 +80,6 @@
   font-size: 0.8rem;
 }
 
-.labs-directory {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.lab-directory-item {
-  display: flex;
-  min-height: 18rem;
-  padding: clamp(1.5rem, 3vw, 3rem);
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.lab-directory-item.is-primary {
-  grid-column: 1 / -1;
-  min-height: 26rem;
-  background:
-    radial-gradient(circle at 75% 25%, rgba(70, 155, 221, 0.13), transparent 34%),
-    var(--color-surface);
-}
-
-.lab-directory-item .registry-index {
-  margin-left: auto;
-}
-
-.lab-directory-item h2 {
-  margin-top: auto;
-  font-size: clamp(2rem, 4vw, 4rem);
-}
-
-.lab-directory-item p {
-  max-width: 40rem;
-  margin-top: 1rem;
-}
-
 .roadmap-detail {
   padding: clamp(1.5rem, 4vw, 4rem);
 }
@@ -428,13 +392,8 @@
 }
 
 @media (max-width: 760px) {
-  .detail-grid,
-  .labs-directory {
+  .detail-grid {
     grid-template-columns: 1fr;
-  }
-
-  .lab-directory-item.is-primary {
-    grid-column: auto;
   }
 
   .about-purpose {
