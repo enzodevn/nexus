@@ -8,7 +8,7 @@ Engineering Operations Center implemented as a dependency-free JavaScript SPA. T
 - About: operational, with a dedicated view and structured journey data
 - Projects: operational, with a dedicated system registry and NGDP showcase
 - Labs: operational, with a dedicated investigation registry and research method
-- Roadmap: navigable compact view awaiting recomposition
+- Roadmap: operational, with a dedicated capability sequence and evidence gates
 
 ## Run in VS Code
 

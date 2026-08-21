@@ -5,8 +5,9 @@ import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
 import { renderHomeView } from "./views/home.js";
 import { renderLabsView } from "./views/labs.js";
+import { renderNotFoundView } from "./views/not-found.js";
 import { renderProjectsView } from "./views/projects.js";
-import { renderSecondaryView } from "./views/secondary.js";
+import { renderRoadmapView } from "./views/roadmap.js";
 import { bindShellInteractions, renderShell } from "../components/layout/shell.js";
 
 const app = document.querySelector("#app");
@@ -63,8 +64,8 @@ try {
     "/about": () => renderAboutView(),
     "/projects": () => renderProjectsView(),
     "/labs": () => renderLabsView(),
-    "/roadmap": () => renderSecondaryView("/roadmap", data),
-    "*": () => renderSecondaryView("*", data),
+    "/roadmap": () => renderRoadmapView(),
+    "*": () => renderNotFoundView(),
   };
 
   let activeNavigation = 0;
