@@ -397,7 +397,7 @@
 }
 
 .focus-index {
-  color: #506178;
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: 0.65rem;
 }
@@ -670,7 +670,7 @@
 
 .lab-number {
   margin-left: auto;
-  color: #3e5065;
+  color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: 0.65rem;
 }

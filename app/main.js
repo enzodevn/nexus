@@ -82,7 +82,9 @@ try {
       bindShellInteractions(app);
       initializeRevealAnimations(app);
       initializeSurfaceMotion(app);
-      document.title = `${path === "/" ? "NEXUS" : path.slice(1).toUpperCase()} — Building Intelligent Systems`;
+      const pageTitle =
+        path === "/" ? "NEXUS" : routes[path] ? path.slice(1).toUpperCase() : "NOT FOUND";
+      document.title = `${pageTitle} — Building Intelligent Systems`;
 
       const inPageTarget = getInPageTarget(window.location.hash);
       const mainContent = app.querySelector("#main-content");

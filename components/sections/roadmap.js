@@ -122,7 +122,7 @@ function renderLevel(level, index) {
 function renderCapabilityMap(map, levels) {
   return `<section class="section roadmap-map" aria-labelledby="roadmap-map-title">
     <header class="roadmap-map__header" data-reveal>
-      ${sectionHeader(map.eyebrow, map.title, map.description)}
+      ${sectionHeader(map.eyebrow, map.title, map.description, "h2", "roadmap-map-title")}
       <span class="module-code">OPS / SEQUENCE</span>
     </header>
     <div class="roadmap-level-list">

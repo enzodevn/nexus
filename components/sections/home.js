@@ -133,7 +133,7 @@ function renderLabs(home) {
   return `
     <section class="section labs-section" aria-labelledby="labs-title">
       <div class="labs-intro" data-reveal>
-        ${sectionHeader("Research operations", "Research & experimentation", home.labsDescription)}
+        ${sectionHeader("Research operations", "Research & experimentation", home.labsDescription, "h2", "labs-title")}
         ${buttonLink("Explore labs", "#/labs", "secondary", "→")}
       </div>
       <div class="labs-grid">
@@ -168,7 +168,7 @@ function renderLabs(home) {
 function renderVision(home) {
   return `
     <section class="section vision-section" aria-labelledby="vision-title" data-reveal>
-      ${sectionHeader("Long-term vision", "A sequence for advanced systems", home.visionDescription)}
+      ${sectionHeader("Long-term vision", "A sequence for advanced systems", home.visionDescription, "h2", "vision-title")}
       <ol class="surface panel mission-sequence">
         ${home.vision
           .map(

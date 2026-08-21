@@ -106,7 +106,7 @@ function renderTrack(track, index) {
 function renderRegistry(registry, tracks) {
   return `<section class="section labs-registry" aria-labelledby="labs-registry-title">
     <header class="labs-registry__header" data-reveal>
-      ${sectionHeader(registry.eyebrow, registry.title, registry.description)}
+      ${sectionHeader(registry.eyebrow, registry.title, registry.description, "h2", "labs-registry-title")}
       <span class="module-code">LAB / REGISTRY</span>
     </header>
     <div class="labs-track-list">

@@ -117,7 +117,7 @@ function renderSystemRegistry(featured, systems, registry) {
 
   return `<section class="section projects-registry" aria-labelledby="project-registry-title">
     <header class="projects-registry__header" data-reveal>
-      ${sectionHeader(registry.eyebrow, registry.title, registry.description)}
+      ${sectionHeader(registry.eyebrow, registry.title, registry.description, "h2", "project-registry-title")}
       <span class="module-code">SYS / REGISTRY</span>
     </header>
     <div class="project-registry-list">

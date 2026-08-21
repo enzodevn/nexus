@@ -17,10 +17,17 @@ export function buttonLink(label, href, variant = "secondary", icon = "") {
   </a>`;
 }
 
-export function sectionHeader(eyebrow, title, description = "", level = "h2") {
+export function sectionHeader(
+  eyebrow,
+  title,
+  description = "",
+  level = "h2",
+  headingId = "",
+) {
+  const idAttribute = headingId ? ` id="${headingId}"` : "";
   return `<header class="section-header">
     ${operationLabel(eyebrow)}
-    <${level}>${title}</${level}>
+    <${level}${idAttribute}>${title}</${level}>
     ${description ? `<p>${description}</p>` : ""}
   </header>`;
 }

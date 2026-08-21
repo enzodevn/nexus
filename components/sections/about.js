@@ -40,7 +40,7 @@ function renderPrinciples(principles) {
   return `
     <section class="section about-principles" aria-labelledby="about-principles-title" data-reveal>
       <div class="about-principles__intro">
-        ${sectionHeader(principles.eyebrow, principles.title, principles.description)}
+        ${sectionHeader(principles.eyebrow, principles.title, principles.description, "h2", "about-principles-title")}
       </div>
       <ol class="surface panel about-principles__list">
         ${principles.items
@@ -62,7 +62,7 @@ function renderJourney(journey) {
   return `
     <section class="section about-journey" aria-labelledby="about-journey-title" data-reveal>
       <header class="about-journey__header">
-        ${sectionHeader(journey.eyebrow, journey.title, journey.description)}
+        ${sectionHeader(journey.eyebrow, journey.title, journey.description, "h2", "about-journey-title")}
         <span class="module-code">NX / JOURNEY</span>
       </header>
       <ol class="surface panel about-journey__map">
