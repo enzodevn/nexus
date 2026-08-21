@@ -1,25 +1,11 @@
 {
-  "label": "FEATURED PROJECT",
-
-  "title": "Nordic Green Data Platform",
-
-  "subtitle": "Environmental Data Engineering Platform",
-
-  "description": "A personal Data Engineering project focused on collecting, transforming and analyzing environmental datasets through scalable ETL pipelines, Python automation and modern backend technologies.",
-
+  "eyebrow": "Featured system",
+  "name": "Nordic Green Data Platform",
+  "category": "Environmental Data Engineering Platform",
+  "description": "A data engineering platform designed to acquire, structure and expose Nordic environmental data through a dependable, extensible pipeline.",
   "status": "Building",
-
-  "stack": [
-    "Python",
-    "Pandas",
-    "SQLite",
-    "Git"
-  ],
-
-  "milestone": "Interactive Dashboard",
-
-  "button": {
-    "label": "Open Project",
-    "link": "#/projects"
-  }
+  "stack": ["Python", "Pandas", "SQLite", "Git"],
+  "nextMilestone": "Interactive Dashboard",
+  "systemCode": "NGDP / DATA-01",
+  "href": "#/projects"
 }

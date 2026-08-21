@@ -1,62 +1,85 @@
 {
-  "hero": {
-    "label": "ABOUT",
-    "title": "The Person Behind NEXUS",
-    "subtitle": "Building Intelligent Digital Systems",
-    "description": "I'm Enzo, a Software Engineering student building a long-term technology ecosystem focused on Software Engineering, Artificial Intelligence, Cloud Infrastructure, Cybersecurity and Data Engineering.",
-    "technologies": [
+  "meta": {
+    "index": "01",
+    "eyebrow": "Laboratory profile",
+    "title": "Built by curiosity. Shaped by engineering.",
+    "description": "NEXUS is the long-term technology laboratory where one engineering journey becomes a connected body of systems, research and operational knowledge."
+  },
+  "profile": {
+    "eyebrow": "Builder profile",
+    "name": "Enzo",
+    "role": "Software Engineering student",
+    "status": "Foundation active",
+    "description": "Focused on turning disciplined learning into dependable software, useful data systems and a foundation for increasingly advanced technology.",
+    "focus": [
       "Software Engineering",
-      "Cloud Infrastructure",
-      "Cybersecurity",
-      "Artificial Intelligence",
-      "Data Engineering"
-    ]
-  },
-
-  "about": {
-    "title": "Meet Enzo",
-    "description": "Passionate about building modern digital systems and exploring the future of technology through practical projects. NEXUS is the ecosystem where software engineering, cloud, cybersecurity, artificial intelligence and data engineering come together to create long-term solutions."
-  },
-
-  "purpose": {
-    "title": "Why NEXUS Exists",
-    "description": "NEXUS wasn't created to be just another portfolio. It was designed to become a technology ecosystem that grows alongside my career, connecting projects, research, laboratories and future innovations into a single platform."
-  },
-
-  "vision": {
-    "title": "Technology Vision",
-    "items": [
-      "Software Engineering",
-      "Cloud Infrastructure",
-      "Cybersecurity",
-      "Artificial Intelligence",
-      "Data Engineering"
-    ]
-  },
-
-  "journey": {
-    "title": "Current Journey",
-    "steps": [
-      "Foundation",
-      "Software Engineering",
-      "Cloud Infrastructure",
-      "Cybersecurity",
+      "Backend",
       "Data Engineering",
+      "Cloud",
       "Artificial Intelligence",
-      "Norway",
-      "Future Systems"
+      "Cybersecurity"
     ]
   },
-
-  "philosophy": {
-    "title": "Personal Philosophy",
+  "purpose": {
+    "eyebrow": "Why NEXUS exists",
+    "title": "A laboratory designed to outgrow the idea of a portfolio.",
+    "description": "NEXUS connects projects, research and technical evolution in one platform. Every system contributes knowledge that can strengthen the systems built after it.",
+    "supporting": "The objective is not to display isolated work. It is to build an engineering ecosystem that becomes more capable over time."
+  },
+  "principles": {
+    "eyebrow": "Operating philosophy",
+    "title": "Principles for work that lasts.",
+    "description": "The laboratory advances through a small set of constraints that protect quality while the technology becomes more ambitious.",
     "items": [
-      "Continuous Learning",
-      "Consistency",
-      "Quality",
-      "Minimalism",
-      "Innovation",
-      "Long-Term Thinking"
+      {
+        "title": "Engineering clarity",
+        "description": "Systems should remain understandable, maintainable and explicit about their responsibilities."
+      },
+      {
+        "title": "Continuous learning",
+        "description": "Research becomes valuable when it is tested, documented and transformed into practical capability."
+      },
+      {
+        "title": "Measured evolution",
+        "description": "Architecture grows when real requirements justify it, preserving stable foundations and avoiding unnecessary rewrites."
+      },
+      {
+        "title": "Long-term thinking",
+        "description": "Every project is treated as part of a larger technical trajectory rather than an isolated delivery."
+      }
     ]
+  },
+  "journey": {
+    "eyebrow": "Technical evolution",
+    "title": "Capability is built in layers.",
+    "description": "The path is organized around maturity, not artificial deadlines. Each stage expands what the laboratory can design, operate and investigate.",
+    "stages": [
+      {
+        "title": "Foundations",
+        "state": "Current",
+        "description": "Programming, computer science fundamentals and consistent engineering practice."
+      },
+      {
+        "title": "Production systems",
+        "state": "Building",
+        "description": "Backend architecture, APIs, databases and reliable data pipelines."
+      },
+      {
+        "title": "Infrastructure",
+        "state": "Expanding",
+        "description": "Cloud platforms, deployment, security, observability and operational discipline."
+      },
+      {
+        "title": "Intelligent systems",
+        "state": "Long term",
+        "description": "Applied AI and advanced systems supported by dependable software, data and infrastructure."
+      }
+    ]
+  },
+  "vision": {
+    "eyebrow": "Long-term direction",
+    "title": "One platform. A career of connected systems.",
+    "description": "As NEXUS matures, the interface can expand into APIs, cloud infrastructure, live project data, analytics, observability and AI systems without losing the clarity of its original foundation.",
+    "statement": "NEXUS is not a snapshot of what has already been learned. It is the operating system for what comes next."
   }
 }
