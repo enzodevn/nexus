@@ -80,44 +80,6 @@
   font-size: 0.8rem;
 }
 
-.registry-list {
-  display: grid;
-  gap: 0.8rem;
-}
-
-.registry-row {
-  display: grid;
-  grid-template-columns: 3rem 1fr auto;
-  align-items: center;
-  gap: 2rem;
-  min-height: 16rem;
-  padding: clamp(1.5rem, 3vw, 3rem);
-  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
-}
-
-.registry-row:hover {
-  border-color: var(--color-border-strong);
-  background-color: var(--color-surface-raised);
-  transform: translateY(-2px);
-}
-
-.registry-row h2 {
-  margin-top: 0.8rem;
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
-}
-
-.registry-row p {
-  max-width: 42rem;
-  margin-top: 0.8rem;
-}
-
-.registry-state {
-  color: var(--color-text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.08em;
-}
-
 .labs-directory {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -473,15 +435,6 @@
 
   .lab-directory-item.is-primary {
     grid-column: auto;
-  }
-
-  .registry-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .registry-state {
-    justify-self: start;
   }
 
   .about-purpose {

@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "index": "02",
+    "eyebrow": "System registry",
+    "title": "Engineering systems with a reason to exist.",
+    "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase."
+  },
+  "signals": [
+    { "value": "03", "label": "Systems catalogued" },
+    { "value": "01", "label": "Primary build" },
+    { "value": "V02", "label": "Platform release" }
+  ],
+  "featured": {
+    "code": "SYS / NGDP",
+    "eyebrow": "Primary system",
+    "name": "Nordic Green Data Platform",
+    "category": "Environmental Data Engineering Platform",
+    "status": "Building",
+    "description": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
+    "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
+    "focus": "Environmental data → dependable analytical products",
+    "stack": ["Python", "Pandas", "SQL / SQLite", "ETL", "Git"],
+    "flow": [
+      {
+        "index": "01",
+        "name": "Acquire",
+        "description": "Collect environmental and energy datasets from reliable sources."
+      },
+      {
+        "index": "02",
+        "name": "Transform",
+        "description": "Normalize structures and make data quality decisions explicit."
+      },
+      {
+        "index": "03",
+        "name": "Store",
+        "description": "Persist dependable datasets for repeatable analysis."
+      },
+      {
+        "index": "04",
+        "name": "Explore",
+        "description": "Expose useful signals through analytics and interfaces."
+      }
+    ],
+    "milestones": [
+      {
+        "state": "Current",
+        "title": "Pipeline foundation",
+        "description": "Strengthen ingestion, transformation and storage as one traceable data flow."
+      },
+      {
+        "state": "Next",
+        "title": "Interactive dashboard",
+        "description": "Turn prepared datasets into an accessible analytical experience."
+      },
+      {
+        "state": "Future",
+        "title": "Cloud & AI integration",
+        "description": "Expand only after the data and software foundations are dependable."
+      }
+    ]
+  },
+  "registry": {
+    "eyebrow": "Connected systems",
+    "title": "A registry of practical engineering work.",
+    "description": "The current catalog is intentionally focused. Every system must demonstrate a useful capability and contribute knowledge to the broader NEXUS ecosystem."
+  },
+  "systems": [
+    {
+      "code": "SYS / HEVY",
+      "name": "HEVY Pipeline",
+      "category": "Workout Data & Analytics Pipeline",
+      "status": "In development",
+      "signal": "active",
+      "summary": "A focused data pipeline for extracting structured workout data from APIs, transforming it with Python and Pandas, and preparing useful analytical datasets in SQLite.",
+      "focus": "API ingestion → analytics-ready workout data",
+      "stack": ["Python", "APIs", "JSON", "Pandas", "SQLite"]
+    },
+    {
+      "code": "SYS / NEXUS",
+      "name": "NEXUS",
+      "category": "Engineering Portfolio Platform",
+      "status": "V2 active",
+      "signal": "active",
+      "summary": "The evolving application that connects projects, research and technical progression through a modular, data-driven interface built for long-term growth.",
+      "focus": "Modular SPA → evolving engineering platform",
+      "stack": ["HTML", "CSS", "JavaScript", "ES Modules", "JSON"]
+    }
+  ]
+}

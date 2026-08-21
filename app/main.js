@@ -3,6 +3,7 @@ import { loadAppData } from "./core/data.js";
 import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
 import { renderHomeView } from "./views/home.js";
+import { renderProjectsView } from "./views/projects.js";
 import { renderSecondaryView } from "./views/secondary.js";
 import { bindShellInteractions, renderShell } from "../components/layout/shell.js";
 
@@ -58,7 +59,7 @@ try {
   const routes = {
     "/": () => renderHomeView(data),
     "/about": () => renderAboutView(),
-    "/projects": () => renderSecondaryView("/projects", data),
+    "/projects": () => renderProjectsView(),
     "/labs": () => renderSecondaryView("/labs", data),
     "/roadmap": () => renderSecondaryView("/roadmap", data),
     "*": () => renderSecondaryView("*", data),

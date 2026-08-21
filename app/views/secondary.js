@@ -5,13 +5,6 @@ import {
 } from "../../components/ui/primitives.js";
 
 const pageMeta = {
-  "/projects": {
-    index: "02",
-    eyebrow: "System registry",
-    title: "Projects are working parts of the laboratory.",
-    description:
-      "Each project is an opportunity to turn research into durable software, operational knowledge and reusable engineering practice.",
-  },
   "/labs": {
     index: "03",
     eyebrow: "Research operations",
@@ -27,27 +20,6 @@ const pageMeta = {
       "The roadmap is organized as capability levels. Every level strengthens the foundation required by the systems that follow.",
   },
 };
-
-function renderProjects(data) {
-  const projects = [data.featured, ...data.home.otherProjects];
-
-  return `<div class="registry-list">
-    ${projects
-      .map(
-        (project, index) => `
-          <article class="surface panel registry-row">
-            <span class="registry-index">${String(index + 1).padStart(2, "0")}</span>
-            <div>
-              ${operationLabel(project.status || "Active system", index === 0 ? "cyan" : "")}
-              <h2>${project.name}</h2>
-              <p>${project.summary || project.description}</p>
-            </div>
-            <span class="registry-state">${index === 0 ? "PRIMARY" : "ECOSYSTEM"}</span>
-          </article>`,
-      )
-      .join("")}
-  </div>`;
-}
 
 function renderLabs(data) {
   return `<div class="labs-directory">
@@ -82,7 +54,6 @@ function renderRoadmap(data) {
 }
 
 const pageRenderers = {
-  "/projects": renderProjects,
   "/labs": renderLabs,
   "/roadmap": renderRoadmap,
 };

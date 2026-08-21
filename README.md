@@ -6,7 +6,8 @@ Engineering Operations Center implemented as a dependency-free JavaScript SPA. T
 
 - Home: operational, data-driven mission-control experience
 - About: operational, with a dedicated view and structured journey data
-- Projects, Labs and Roadmap: navigable compact views awaiting recomposition
+- Projects: operational, with a dedicated system registry and NGDP showcase
+- Labs and Roadmap: navigable compact views awaiting recomposition
 
 ## Run in VS Code
 
@@ -48,4 +49,4 @@ No runtime dependencies, frameworks or external assets are required.
 
 ## Git workflow
 
-The recomposition work is currently prepared on the local branch `v2-recomposition`, based on the existing `master` history. Review the complete migration diff before creating its checkpoint commit.
+Development continues on `v2-recomposition`, preserving `master` as the previous baseline. Review and commit each page recomposition as a discrete checkpoint.
