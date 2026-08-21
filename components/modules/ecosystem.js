@@ -19,7 +19,7 @@ export function renderEcosystem(ecosystem) {
           ${operationLabel("Connected architecture")}
           <h2 id="ecosystem-title">Technology ecosystem</h2>
         </div>
-        <span class="module-code">NX / MAP-01</span>
+        <span class="module-code">LAB / ECOSYSTEM</span>
       </header>
 
       <div class="ecosystem-map" aria-label="NEXUS core connects software, cloud and data capabilities to AI and cybersecurity">

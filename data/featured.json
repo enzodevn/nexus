@@ -6,6 +6,6 @@
   "status": "Building",
   "stack": ["Python", "Pandas", "SQLite", "Git"],
   "nextMilestone": "Interactive Dashboard",
-  "systemCode": "NGDP / DATA-01",
+  "systemCode": "NGDP / DATA",
   "href": "#/projects"
 }

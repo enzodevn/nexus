@@ -12,7 +12,7 @@ function renderHero(home, status, focus) {
       <aside class="surface panel hero-side hero-context" data-reveal>
         <div class="panel-heading">
           ${operationLabel("Current focus")}
-          <span class="module-code">NX / 01-A</span>
+          <span class="module-code">NX / HOME</span>
         </div>
         <ol class="context-list">
           ${focus.areas
@@ -32,7 +32,7 @@ function renderHero(home, status, focus) {
         <div class="core-ambient" aria-hidden="true"></div>
         <div class="hero-core__topline">
           ${operationLabel(home.hero.category, "cyan")}
-          <span class="system-id">NXS–CORE / ${home.hero.version}</span>
+          <span class="system-id">NEXUS / ${home.hero.version}</span>
         </div>
         <div class="hero-copy">
           <p class="hero-pretitle">Engineering operations center</p>
@@ -53,7 +53,7 @@ function renderHero(home, status, focus) {
       <aside class="surface panel hero-side hero-status" data-reveal>
         <div class="panel-heading">
           ${operationLabel("System status")}
-          <span class="module-code">LIVE</span>
+          <span class="module-code">OPS / LIVE</span>
         </div>
         <dl class="status-list">
           ${status.items
@@ -80,7 +80,7 @@ function renderFeatured(featured) {
         <div class="featured-main">
           <div class="featured-heading">
             ${operationLabel(featured.eyebrow, "cyan")}
-            <span class="module-code">PRIMARY / 001</span>
+            <span class="module-code">SYS / NGDP</span>
           </div>
           <p class="featured-category">${featured.category}</p>
           <h2 id="featured-title">${featured.name}</h2>

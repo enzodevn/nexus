@@ -61,7 +61,7 @@ function renderJourney(journey) {
     <section class="section about-journey" aria-labelledby="about-journey-title" data-reveal>
       <header class="about-journey__header">
         ${sectionHeader(journey.eyebrow, journey.title, journey.description)}
-        <span class="module-code">NX / EVOLUTION</span>
+        <span class="module-code">NX / JOURNEY</span>
       </header>
       <ol class="surface panel about-journey__map">
         ${journey.stages
