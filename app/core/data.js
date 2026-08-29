@@ -1,4 +1,4 @@
-const DATA_FILES = ["home", "status", "featured", "focus", "ecosystem"];
+const DATA_FILES = ["home", "status", "projects", "focus", "ecosystem"];
 const dataCache = new Map();
 
 async function fetchJson(name) {

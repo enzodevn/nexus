@@ -3,88 +3,200 @@
     "index": "02",
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
-    "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase."
-  },
-  "signals": [
-    { "value": "03", "label": "Systems catalogued" },
-    { "value": "01", "label": "Primary build" },
-    { "value": "V02", "label": "Platform release" }
-  ],
-  "featured": {
-    "code": "SYS / NGDP",
-    "eyebrow": "Primary system",
-    "name": "Nordic Green Data Platform",
-    "category": "Environmental Data Engineering Platform",
-    "status": "Building",
-    "description": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
-    "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
-    "focus": "Environmental data → dependable analytical products",
-    "stack": ["Python", "Pandas", "SQL / SQLite", "ETL", "Git"],
-    "flow": [
-      {
-        "index": "01",
-        "name": "Acquire",
-        "description": "Collect environmental and energy datasets from reliable sources."
-      },
-      {
-        "index": "02",
-        "name": "Transform",
-        "description": "Normalize structures and make data quality decisions explicit."
-      },
-      {
-        "index": "03",
-        "name": "Store",
-        "description": "Persist dependable datasets for repeatable analysis."
-      },
-      {
-        "index": "04",
-        "name": "Explore",
-        "description": "Expose useful signals through analytics and interfaces."
-      }
-    ],
-    "milestones": [
-      {
-        "state": "Current",
-        "title": "Pipeline foundation",
-        "description": "Strengthen ingestion, transformation and storage as one traceable data flow."
-      },
-      {
-        "state": "Next",
-        "title": "Interactive dashboard",
-        "description": "Turn prepared datasets into an accessible analytical experience."
-      },
-      {
-        "state": "Future",
-        "title": "Cloud & AI integration",
-        "description": "Expand only after the data and software foundations are dependable."
-      }
-    ]
+    "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
+    "platformVersion": "v2.0.0"
   },
   "registry": {
     "eyebrow": "Connected systems",
     "title": "A registry of practical engineering work.",
-    "description": "The current catalog is intentionally focused. Every system must demonstrate a useful capability and contribute knowledge to the broader NEXUS ecosystem."
+    "description": "The catalog is intentionally focused. Every system must demonstrate a useful capability and contribute knowledge to the broader NEXUS ecosystem."
   },
-  "systems": [
+  "projects": [
     {
-      "code": "SYS / HEVY",
-      "name": "HEVY Pipeline",
-      "category": "Workout Data & Analytics Pipeline",
-      "status": "In development",
+      "id": "ngdp",
+      "slug": "ngdp",
+      "route": "#/projects/ngdp",
+      "code": "SYS / NGDP",
+      "shortName": "NGDP",
+      "name": "Nordic Green Data Platform",
+      "category": "Environmental Data Engineering Platform",
+      "status": "Building",
       "signal": "active",
-      "summary": "A focused data pipeline for extracting structured workout data from APIs, transforming it with Python and Pandas, and preparing useful analytical datasets in SQLite.",
-      "focus": "API ingestion → analytics-ready workout data",
-      "stack": ["Python", "APIs", "JSON", "Pandas", "SQLite"]
+      "featured": true,
+      "hasCaseStudy": true,
+      "summary": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
+      "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
+      "focus": "Environmental data → dependable analytical products",
+      "stack": ["Python", "Pandas", "SQL / SQLite", "ETL", "Git"],
+      "architecture": [
+        {
+          "index": "01",
+          "name": "Acquire",
+          "description": "Collect environmental and energy datasets from reliable sources."
+        },
+        {
+          "index": "02",
+          "name": "Transform",
+          "description": "Normalize structures and make data-quality decisions explicit."
+        },
+        {
+          "index": "03",
+          "name": "Store",
+          "description": "Persist dependable datasets for repeatable analysis."
+        },
+        {
+          "index": "04",
+          "name": "Explore",
+          "description": "Expose useful signals through analytics and interfaces."
+        }
+      ],
+      "milestones": [
+        {
+          "state": "Current",
+          "title": "Pipeline foundation",
+          "description": "Strengthen ingestion, transformation and storage as one traceable data flow."
+        },
+        {
+          "state": "Next",
+          "title": "Interactive dashboard",
+          "description": "Turn prepared datasets into an accessible analytical experience."
+        },
+        {
+          "state": "Future",
+          "title": "Cloud and AI integration",
+          "description": "Expand only after the data and software foundations are dependable."
+        }
+      ],
+      "caseStudy": {
+        "eyebrow": "Environmental data engineering",
+        "description": "NGDP applies data-engineering fundamentals to Nordic environmental and energy information, prioritizing traceability and dependable transformations before advanced analytics.",
+        "problem": {
+          "title": "Useful environmental analysis begins with dependable data.",
+          "description": "Environmental and energy datasets can arrive in different structures and levels of quality. Without an explicit ingestion and transformation process, analytical results become difficult to reproduce or trust."
+        },
+        "solution": {
+          "title": "Build the pipeline as the product foundation.",
+          "description": "NGDP organizes acquisition, transformation, storage and exploration as a traceable sequence. Each layer remains understandable before cloud delivery, forecasting or AI capabilities are introduced."
+        },
+        "capabilities": [
+          "Python-based ingestion and transformation foundation",
+          "Tabular processing and data-quality work with Pandas",
+          "Local persistence and analytical querying with SQL and SQLite",
+          "Source-controlled technical evolution with Git"
+        ],
+        "challenges": [
+          "Keep transformation decisions explicit as source structures evolve.",
+          "Separate current capabilities from future cloud and AI ambitions."
+        ],
+        "learnings": [
+          "Data-quality decisions are part of the system architecture, not a cleanup step.",
+          "A small reproducible pipeline creates more value than premature infrastructure."
+        ],
+        "links": []
+      }
     },
     {
+      "id": "hevy",
+      "slug": "hevy",
+      "route": "#/projects/hevy",
+      "code": "SYS / HEVY",
+      "shortName": "HEVY",
+      "name": "HEVY Pipeline",
+      "category": "Workout Data and Analytics Pipeline",
+      "status": "In development",
+      "signal": "active",
+      "featured": false,
+      "hasCaseStudy": true,
+      "summary": "A focused pipeline for extracting structured workout data, transforming it with Python and Pandas, and preparing useful analytical datasets in SQLite.",
+      "objective": "Transform personal training records into a dependable analytical history without losing the context behind each workout.",
+      "focus": "API and export ingestion → analytics-ready workout data",
+      "stack": ["Python", "APIs", "JSON", "Pandas", "SQLite"],
+      "architecture": [
+        {
+          "index": "01",
+          "name": "Ingest",
+          "description": "Acquire workout records from APIs or structured exports."
+        },
+        {
+          "index": "02",
+          "name": "Normalize",
+          "description": "Convert nested records into consistent analytical structures."
+        },
+        {
+          "index": "03",
+          "name": "Persist",
+          "description": "Store repeatable workout history in SQLite."
+        },
+        {
+          "index": "04",
+          "name": "Analyze",
+          "description": "Use Pandas to investigate volume, consistency and progression."
+        }
+      ],
+      "milestones": [
+        {
+          "state": "Current",
+          "title": "Data pipeline foundation",
+          "description": "Stabilize ingestion, normalization and storage around a clear workout schema."
+        },
+        {
+          "state": "Next",
+          "title": "Repeatable analytics",
+          "description": "Create dependable analyses for training volume, consistency and progression."
+        },
+        {
+          "state": "Future",
+          "title": "Performance interface",
+          "description": "Present validated insights through a focused dashboard when the analytical layer is ready."
+        }
+      ],
+      "caseStudy": {
+        "eyebrow": "Personal performance data",
+        "description": "HEVY Pipeline turns workout history into a structured data-engineering problem, connecting ingestion, modeling, persistence and analysis in one reproducible flow.",
+        "problem": {
+          "title": "Recorded workouts are not automatically useful data.",
+          "description": "Workout histories may be available through APIs or exports, but nested structures, inconsistent fields and missing context make long-term analysis difficult without a reliable pipeline."
+        },
+        "solution": {
+          "title": "Preserve the history before building the dashboard.",
+          "description": "The project normalizes workout records with Python, stores them in SQLite and prepares analytical datasets with Pandas. Visual interfaces remain a later layer, supported by validated data."
+        },
+        "capabilities": [
+          "Structured ingestion from APIs and JSON exports",
+          "Python transformations for repeatable workout records",
+          "Relational persistence with SQLite",
+          "Analytical preparation and exploration with Pandas"
+        ],
+        "challenges": [
+          "Preserve exercise and session context while flattening nested records.",
+          "Keep personal analytics reproducible as the source format evolves."
+        ],
+        "learnings": [
+          "A stable data model must come before performance dashboards.",
+          "Personal datasets still require deliberate privacy and traceability decisions."
+        ],
+        "links": []
+      }
+    },
+    {
+      "id": "nexus",
+      "slug": "nexus",
+      "route": null,
       "code": "SYS / NEXUS",
+      "shortName": "NEXUS",
       "name": "NEXUS",
       "category": "Engineering Portfolio Platform",
-      "status": "V2 active",
+      "status": "v2.0.0 stable",
       "signal": "active",
+      "featured": false,
+      "hasCaseStudy": false,
       "summary": "The evolving application that connects projects, research and technical progression through a modular, data-driven interface built for long-term growth.",
+      "objective": "Provide a dependable platform where projects can be presented, documented and connected without repeated reconstruction.",
       "focus": "Modular SPA → evolving engineering platform",
-      "stack": ["HTML", "CSS", "JavaScript", "ES Modules", "JSON"]
+      "stack": ["HTML", "CSS", "JavaScript", "ES Modules", "JSON"],
+      "architecture": [],
+      "milestones": [],
+      "caseStudy": null
     }
   ]
 }

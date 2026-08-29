@@ -6,6 +6,7 @@ import { renderAboutView } from "./views/about.js";
 import { renderHomeView } from "./views/home.js";
 import { renderLabsView } from "./views/labs.js";
 import { renderNotFoundView } from "./views/not-found.js";
+import { renderProjectDetailView } from "./views/project-detail.js";
 import { renderProjectsView } from "./views/projects.js";
 import { renderRoadmapView } from "./views/roadmap.js";
 import { bindShellInteractions, renderShell } from "../components/layout/shell.js";
@@ -55,6 +56,15 @@ function renderError(error) {
     </main>`;
 }
 
+function getPageTitle(path, pattern) {
+  const explicitTitle = app.querySelector("[data-page-title]")?.dataset.pageTitle;
+  if (explicitTitle) return explicitTitle;
+  if (pattern === "*") return "NOT FOUND";
+  if (path === "/") return "NEXUS";
+
+  return path.slice(1).toUpperCase();
+}
+
 bindInPageNavigation();
 
 try {
@@ -63,6 +73,7 @@ try {
     "/": () => renderHomeView(data),
     "/about": () => renderAboutView(),
     "/projects": () => renderProjectsView(),
+    "/projects/:slug": ({ slug }) => renderProjectDetailView(slug),
     "/labs": () => renderLabsView(),
     "/roadmap": () => renderRoadmapView(),
     "*": () => renderNotFoundView(),
@@ -70,21 +81,19 @@ try {
 
   let activeNavigation = 0;
   const router = new Router(routes);
-  router.start(async ({ path, route, isInitial }) => {
+  router.start(async ({ path, route, params, pattern, isInitial }) => {
     const navigation = ++activeNavigation;
     app.setAttribute("aria-busy", "true");
 
     try {
-      const content = await route();
+      const content = await route(params);
       if (navigation !== activeNavigation) return;
 
       app.innerHTML = renderShell(content, data.home, path);
       bindShellInteractions(app);
       initializeRevealAnimations(app);
       initializeSurfaceMotion(app);
-      const pageTitle =
-        path === "/" ? "NEXUS" : routes[path] ? path.slice(1).toUpperCase() : "NOT FOUND";
-      document.title = `${pageTitle} — Building Intelligent Systems`;
+      document.title = `${getPageTitle(path, pattern)} — Building Intelligent Systems`;
 
       const inPageTarget = getInPageTarget(window.location.hash);
       const mainContent = app.querySelector("#main-content");

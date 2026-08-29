@@ -1,14 +1,17 @@
-# NEXUS V2
+# NEXUS
 
-Engineering Operations Center implemented as a dependency-free JavaScript SPA. This branch is the selective architectural recomposition of the project preserved in the GitHub history.
+NEXUS is a personal Technology Laboratory and engineering portfolio built as a dependency-free JavaScript SPA. It connects projects, research and technical progression through one modular, data-driven interface.
 
 ## Current state
 
-- Home: operational, data-driven mission-control experience
-- About: operational, with a dedicated view and structured journey data
-- Projects: operational, with a dedicated system registry and NGDP showcase
-- Labs: operational, with a dedicated investigation registry and research method
-- Roadmap: operational, with a dedicated capability sequence and evidence gates
+The stable `v2.0.0` architecture is integrated into `master`. Current development expands the project registry into a reusable case-study platform.
+
+- Home: data-driven mission-control overview
+- About: professional profile, principles and technical journey
+- Projects: system registry with dedicated NGDP and HEVY case studies
+- Labs: investigation registry and research method
+- Roadmap: evidence-gated capability sequence
+- Not found: recovery state for unknown application and project routes
 
 ## Run in VS Code
 
@@ -33,7 +36,9 @@ Then visit `http://localhost:4173/#/`.
 
 - `#/` — Home
 - `#/about` — About
-- `#/projects` — Projects
+- `#/projects` — Project registry
+- `#/projects/ngdp` — Nordic Green Data Platform case study
+- `#/projects/hevy` — HEVY Pipeline case study
 - `#/labs` — Labs
 - `#/roadmap` — Roadmap
 
@@ -46,8 +51,19 @@ Then visit `http://localhost:4173/#/`.
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
 
+Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
+
 No runtime dependencies, frameworks or external assets are required.
 
-## Git workflow
+## Development workflow
 
-Development continues on `v2-recomposition`, preserving `master` as the previous baseline. Review and commit each page recomposition as a discrete checkpoint.
+Development uses focused branches created from the stable `master` branch.
+
+```bash
+git status
+git switch master
+git pull --ff-only origin master
+git switch -c feature-branch-name
+```
+
+Each checkpoint is validated before it is committed and pushed through the VS Code terminal. Tags, releases and merges are created only with explicit approval.
