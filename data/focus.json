@@ -1,22 +1,19 @@
 {
-    "title": "Current Focus",
-    "subtitle": "The technologies and engineering disciplines currently shaping the NEXUS ecosystem.",
-
-    "items": [
-        {
-            "title": "Backend Engineering",
-            "description": "Building scalable backend applications using Python, APIs, databases and software architecture.",
-            "stage": "Foundation"
-        },
-        {
-            "title": "Data Engineering",
-            "description": "Creating ETL pipelines, processing datasets and designing modern data platforms.",
-            "stage": "Building"
-        },
-        {
-            "title": "Cloud Computing",
-            "description": "Preparing cloud-native infrastructure with AWS, Docker and future Kubernetes adoption.",
-            "stage": "Learning"
-        }
-    ]
+  "areas": [
+    {
+      "title": "Backend Engineering",
+      "signal": "Core systems",
+      "capabilities": ["Python", "APIs", "Software architecture", "Databases"]
+    },
+    {
+      "title": "Data Engineering",
+      "signal": "Primary build",
+      "capabilities": ["Pipelines", "ETL", "Datasets", "SQL", "NGDP"]
+    },
+    {
+      "title": "Cloud Computing",
+      "signal": "Expanding",
+      "capabilities": ["AWS", "Azure", "Docker", "Infrastructure", "DevOps"]
+    }
+  ]
 }

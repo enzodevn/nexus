@@ -1,0 +1,236 @@
+@property --neon-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.motion-surface {
+  --pointer-x: 50%;
+  --pointer-y: 32%;
+  transition:
+    border-color var(--transition-medium),
+    box-shadow var(--transition-medium),
+    background-color var(--transition-medium);
+}
+
+.motion-surface:hover {
+  border-color: rgba(121, 216, 255, 0.32);
+  box-shadow:
+    0 28px 76px rgba(0, 0, 0, 0.3),
+    0 0 2.8rem rgba(63, 157, 226, 0.09),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.neon-frame {
+  --neon-cycle: 12s;
+  --neon-opacity: 0.64;
+  --scan-opacity: 0.55;
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    28rem circle at var(--pointer-x) var(--pointer-y),
+    rgba(121, 216, 255, 0.055),
+    transparent 68%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(121, 216, 255, 0.13),
+    inset 0 0 1.8rem rgba(63, 157, 226, 0.025);
+  transition: background-position var(--transition-fast), opacity var(--transition-medium);
+}
+
+.neon-frame--strong {
+  --neon-cycle: 9s;
+  --neon-opacity: 0.92;
+  --scan-opacity: 0.78;
+  box-shadow:
+    inset 0 0 0 1px rgba(121, 216, 255, 0.19),
+    inset 0 0 2.4rem rgba(63, 157, 226, 0.045),
+    0 0 2rem rgba(63, 157, 226, 0.035);
+}
+
+.neon-frame::after {
+  position: absolute;
+  top: -30%;
+  left: -15%;
+  width: 130%;
+  height: 22%;
+  content: "";
+  opacity: var(--scan-opacity);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(121, 216, 255, 0.035),
+    rgba(121, 216, 255, 0.075),
+    transparent
+  );
+  transform: translateY(-140%) skewY(-7deg);
+  animation: signal-scan calc(var(--neon-cycle) * 1.25) ease-in-out infinite;
+}
+
+@supports (-webkit-mask-composite: xor) {
+  .neon-frame::before {
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    content: "";
+    border-radius: inherit;
+    opacity: var(--neon-opacity);
+    background: conic-gradient(
+      from var(--neon-angle),
+      transparent 0 58%,
+      rgba(67, 157, 225, 0.08) 67%,
+      rgba(121, 216, 255, 0.88) 76%,
+      rgba(195, 239, 255, 0.32) 80%,
+      transparent 90%
+    );
+    filter: drop-shadow(0 0 0.35rem rgba(121, 216, 255, 0.55));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: neon-orbit var(--neon-cycle) linear infinite;
+  }
+}
+
+.motion-surface.is-pointer-active .neon-frame {
+  background: radial-gradient(
+    30rem circle at var(--pointer-x) var(--pointer-y),
+    rgba(121, 216, 255, 0.1),
+    rgba(67, 157, 225, 0.025) 38%,
+    transparent 70%
+  );
+}
+
+.page-index {
+  animation: index-drift 9s ease-in-out infinite;
+}
+
+.core-ambient {
+  animation: ambient-breathe 10s ease-in-out infinite;
+}
+
+.core-ambient::before {
+  animation: ambient-ring 14s ease-in-out infinite reverse;
+}
+
+.core-ambient::after {
+  animation: ambient-ring 11s ease-in-out infinite;
+}
+
+.lab-visual {
+  animation: lab-field-shift 18s linear infinite;
+}
+
+.lab-visual i {
+  animation: lab-core-rotate 20s linear infinite;
+}
+
+.lab-visual span,
+.core-node__orbit {
+  animation: signal-float 5s ease-in-out infinite;
+}
+
+.lab-visual span:nth-child(2) { animation-delay: -1.2s; }
+.lab-visual span:nth-child(3) { animation-delay: -2.4s; }
+.lab-visual span:nth-child(4) { animation-delay: -3.6s; }
+
+.mission-sequence::before {
+  background-size: 240% 100%;
+  animation: sequence-signal 8s linear infinite;
+}
+
+.operation-label--cyan::before {
+  animation: label-signal 3.2s ease-in-out infinite;
+}
+
+.button > span:last-child:not(:first-child),
+.lab-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.button:hover > span:last-child:not(:first-child) {
+  transform: translateX(0.2rem);
+}
+
+.lab-module:hover .lab-arrow {
+  transform: translate(0.15rem, -0.15rem);
+}
+
+@keyframes neon-orbit {
+  to { --neon-angle: 360deg; }
+}
+
+@keyframes signal-scan {
+  0%, 18% {
+    opacity: 0;
+    transform: translateY(-140%) skewY(-7deg);
+  }
+  30% {
+    opacity: var(--scan-opacity);
+  }
+  68% {
+    opacity: calc(var(--scan-opacity) * 0.6);
+  }
+  82%, 100% {
+    opacity: 0;
+    transform: translateY(650%) skewY(-7deg);
+  }
+}
+
+@keyframes index-drift {
+  0%, 100% {
+    opacity: 0.72;
+    transform: translateY(-50%) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) translate3d(-0.5rem, -0.35rem, 0);
+  }
+}
+
+@keyframes ambient-breathe {
+  0%, 100% { opacity: 0.62; transform: translateX(-50%) scale(0.97); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.035); }
+}
+
+@keyframes ambient-ring {
+  0%, 100% { opacity: 0.45; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes lab-field-shift {
+  0% { background-position: 0 0, 0 0, center; }
+  100% { background-position: 2.5rem 2.5rem, 2.5rem 2.5rem, center; }
+}
+
+@keyframes lab-core-rotate {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(405deg); }
+}
+
+@keyframes signal-float {
+  0%, 100% { opacity: 0.72; transform: translateY(0) scale(0.94); }
+  50% { opacity: 1; transform: translateY(-0.28rem) scale(1.08); }
+}
+
+@keyframes sequence-signal {
+  from { background-position: 100% 0; }
+  to { background-position: -120% 0; }
+}
+
+@keyframes label-signal {
+  0%, 100% { box-shadow: 0 0 0 rgba(121, 216, 255, 0); }
+  50% { box-shadow: 0 0 0.8rem rgba(121, 216, 255, 0.7); }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .motion-surface:hover {
+    border-color: inherit;
+    box-shadow: var(--shadow-panel);
+  }
+}

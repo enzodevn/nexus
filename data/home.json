@@ -1,63 +1,79 @@
 {
+  "navigation": [
+    { "label": "Home", "path": "/" },
+    { "label": "About", "path": "/about" },
+    { "label": "Projects", "path": "/projects" },
+    { "label": "Labs", "path": "/labs" },
+    { "label": "Roadmap", "path": "/roadmap" }
+  ],
   "hero": {
-    "label": "Operation Center",
-
-    "title": "NEXUS",
-
-    "subtitle": "Building Intelligent Software Ecosystems",
-
-    "description": "A personal engineering platform where software projects, cloud computing, backend development, artificial intelligence and long-term learning converge into one evolving ecosystem.",
-
-    "tags": [
-      "Backend",
-      "Cloud",
-      "Data Engineering",
-      "Artificial Intelligence",
-      "Python"
-    ],
-
-    "button": {
-      "label": "Explore Projects",
-      "link": "#/projects"
-    },
-
-    "secondaryButton": {
-      "label": "View Roadmap",
-      "link": "#/roadmap"
-    },
-
-    "metrics": [
-      {
-        "label": "Projects",
-        "value": "04"
-      },
-      {
-        "label": "Focus",
-        "value": "Backend"
-      },
-      {
-        "label": "Stack",
-        "value": "Python"
-      },
-      {
-        "label": "Status",
-        "value": "Building"
-      }
-    ]
+    "name": "NEXUS",
+    "slogan": "Building Intelligent Systems.",
+    "category": "Technology Laboratory",
+    "version": "V02",
+    "description": "A personal engineering laboratory focused on Software Engineering, Cloud Computing, Data Engineering, Artificial Intelligence and Cybersecurity.",
+    "primaryCta": { "label": "Explore Projects", "href": "#/projects" },
+    "secondaryCta": { "label": "View Roadmap", "href": "#/roadmap" }
   },
-
-  "mission": {
-    "title": "Current Mission",
-    "project": "NEXUS Platform",
-    "status": "Building",
-    "progress": 20,
-    "nextMilestone": "Developer Dashboard"
-  },
-
-  "overview": {
-    "projects": 4,
-    "labs": 2,
-    "technologies": 12,
-    "updated": "Live"
-  }
+  "positioning": "NEXUS is a personal technology laboratory where Software Engineering, Backend, Cloud Infrastructure, Data Engineering, Artificial Intelligence, Cybersecurity and research converge into one evolving engineering ecosystem.",
+  "labsDescription": "Focused investigation across the technologies that will shape the next NEXUS systems.",
+  "labs": [
+    {
+      "name": "Artificial Intelligence",
+      "state": "Primary research module",
+      "signal": "cyan",
+      "description": "Applied intelligence, model systems and the engineering required to make them dependable.",
+      "topics": ["Applied AI", "Intelligent systems", "Evaluation"]
+    },
+    {
+      "name": "Cloud Computing",
+      "state": "Active study",
+      "signal": "",
+      "description": "Architecture and operations for distributed systems.",
+      "topics": ["AWS", "Azure", "Containers"]
+    },
+    {
+      "name": "Cybersecurity",
+      "state": "Research track",
+      "signal": "amber",
+      "description": "Security principles for trustworthy platforms.",
+      "topics": ["Defense", "Identity", "Systems"]
+    },
+    {
+      "name": "Data Engineering",
+      "state": "Building",
+      "signal": "",
+      "description": "Reliable pipelines and useful data products.",
+      "topics": ["Pipelines", "ETL", "Quality"]
+    },
+    {
+      "name": "Backend Engineering",
+      "state": "Core practice",
+      "signal": "",
+      "description": "Durable software foundations and interfaces.",
+      "topics": ["Python", "APIs", "Architecture"]
+    }
+  ],
+  "visionDescription": "Capabilities advance in deliberate layers. Each stage compounds the engineering maturity of the one before it.",
+  "vision": [
+    { "title": "Foundation", "description": "Core programming and systems thinking." },
+    { "title": "Engineering", "description": "Reliable software and backend architecture." },
+    { "title": "Cloud & Infrastructure", "description": "Scalable, observable environments." },
+    { "title": "Data & AI", "description": "Pipelines, intelligence and evaluation." },
+    { "title": "Advanced Systems", "description": "Integrated autonomous capabilities." },
+    { "title": "Future Research", "description": "New questions at the edge of the stack." }
+  ],
+  "futureDirection": "The direction is clear: advanced intelligent systems built on strong engineering foundations.",
+  "otherProjects": [
+    {
+      "name": "HEVY Pipeline",
+      "status": "Data system",
+      "summary": "A focused data pipeline exploring extraction, transformation and reliable delivery."
+    },
+    {
+      "name": "NEXUS",
+      "status": "Platform system",
+      "summary": "The evolving interface, architecture and knowledge system of the laboratory itself."
+    }
+  ]
 }

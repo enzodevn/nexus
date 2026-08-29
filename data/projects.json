@@ -1,66 +1,90 @@
 {
-  "hero": {
-    "title": "Building Intelligent Digital Products",
-    "description": "Projects that combine Software Engineering, Cloud Infrastructure, Artificial Intelligence, Cybersecurity and Data Engineering into a unified technology ecosystem."
+  "meta": {
+    "index": "02",
+    "eyebrow": "System registry",
+    "title": "Engineering systems with a reason to exist.",
+    "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase."
   },
-
-  "featured": {
-    "name": "Nordic Green Data Platform",
-    "subtitle": "Environmental Data Platform",
-    "status": "Active Development",
-    "description": "Building a modern data engineering platform capable of collecting, processing and analyzing environmental datasets with scalable architecture focused on cloud technologies and future AI integration.",
-    "stack": [
-      "Python",
-      "SQL",
-      "Pandas",
-      "Cloud",
-      "ETL"
-    ],
-    "button": "View Project →",
-    "github": "",
-    "image": ""
-  },
-
-  "projects": [
-    {
-      "id": "hevy",
-      "name": "HEVY Pipeline",
-      "subtitle": "Workout Analytics Platform",
-      "status": "In Development",
-      "button": "View Project →"
-    },
-    {
-      "id": "nexus",
-      "name": "NEXUS Website",
-      "subtitle": "Technology Ecosystem",
-      "status": "Building",
-      "button": "View Project →"
-    },
-    {
-      "id": "samuel",
-      "name": "Samuel Business",
-      "subtitle": "Business Landing Page",
-      "status": "Completed",
-      "button": "View Project →"
-    }
+  "signals": [
+    { "value": "03", "label": "Systems catalogued" },
+    { "value": "01", "label": "Primary build" },
+    { "value": "V02", "label": "Platform release" }
   ],
-
-  "future": [
+  "featured": {
+    "code": "SYS / NGDP",
+    "eyebrow": "Primary system",
+    "name": "Nordic Green Data Platform",
+    "category": "Environmental Data Engineering Platform",
+    "status": "Building",
+    "description": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
+    "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
+    "focus": "Environmental data → dependable analytical products",
+    "stack": ["Python", "Pandas", "SQL / SQLite", "ETL", "Git"],
+    "flow": [
+      {
+        "index": "01",
+        "name": "Acquire",
+        "description": "Collect environmental and energy datasets from reliable sources."
+      },
+      {
+        "index": "02",
+        "name": "Transform",
+        "description": "Normalize structures and make data quality decisions explicit."
+      },
+      {
+        "index": "03",
+        "name": "Store",
+        "description": "Persist dependable datasets for repeatable analysis."
+      },
+      {
+        "index": "04",
+        "name": "Explore",
+        "description": "Expose useful signals through analytics and interfaces."
+      }
+    ],
+    "milestones": [
+      {
+        "state": "Current",
+        "title": "Pipeline foundation",
+        "description": "Strengthen ingestion, transformation and storage as one traceable data flow."
+      },
+      {
+        "state": "Next",
+        "title": "Interactive dashboard",
+        "description": "Turn prepared datasets into an accessible analytical experience."
+      },
+      {
+        "state": "Future",
+        "title": "Cloud & AI integration",
+        "description": "Expand only after the data and software foundations are dependable."
+      }
+    ]
+  },
+  "registry": {
+    "eyebrow": "Connected systems",
+    "title": "A registry of practical engineering work.",
+    "description": "The current catalog is intentionally focused. Every system must demonstrate a useful capability and contribute knowledge to the broader NEXUS ecosystem."
+  },
+  "systems": [
     {
-      "name": "AI Control Center",
-      "status": "Research"
+      "code": "SYS / HEVY",
+      "name": "HEVY Pipeline",
+      "category": "Workout Data & Analytics Pipeline",
+      "status": "In development",
+      "signal": "active",
+      "summary": "A focused data pipeline for extracting structured workout data from APIs, transforming it with Python and Pandas, and preparing useful analytical datasets in SQLite.",
+      "focus": "API ingestion → analytics-ready workout data",
+      "stack": ["Python", "APIs", "JSON", "Pandas", "SQLite"]
     },
     {
-      "name": "Cloud Platform",
-      "status": "Planning"
-    },
-    {
-      "name": "Cybersecurity Lab",
-      "status": "Research"
-    },
-    {
-      "name": "Quantum Computing",
-      "status": "Vision"
+      "code": "SYS / NEXUS",
+      "name": "NEXUS",
+      "category": "Engineering Portfolio Platform",
+      "status": "V2 active",
+      "signal": "active",
+      "summary": "The evolving application that connects projects, research and technical progression through a modular, data-driven interface built for long-term growth.",
+      "focus": "Modular SPA → evolving engineering platform",
+      "stack": ["HTML", "CSS", "JavaScript", "ES Modules", "JSON"]
     }
   ]
 }

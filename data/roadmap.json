@@ -1,39 +1,133 @@
 {
-  "hero": {
-    "title": "Journey to the Future",
-    "description": "A long-term roadmap focused on building expertise in Software Engineering, Artificial Intelligence, Cloud Computing, Cybersecurity and Data Engineering."
+  "meta": {
+    "index": "04",
+    "eyebrow": "Mission sequence",
+    "title": "Direction measured in capability, not calendar.",
+    "description": "The NEXUS roadmap is a dependency-aware sequence of engineering capabilities. Levels can overlap, but every expansion must be supported by working systems, explicit decisions and evidence that the previous layer is dependable."
   },
-
-  "current": {
-    "title": "Current Stage",
-    "description": "Building strong foundations through higher education, personal projects and continuous learning."
+  "signals": [
+    { "value": "06", "label": "Capability levels" },
+    { "value": "03", "label": "Active layers" },
+    { "value": "00", "label": "Fixed deadlines" }
+  ],
+  "position": {
+    "code": "OPS / VECTOR",
+    "eyebrow": "Current position",
+    "phase": "Foundation → Production capability",
+    "title": "Build the substrate before the frontier.",
+    "description": "NEXUS is consolidating software foundations while turning backend and data engineering practice into repeatable systems. NGDP currently leads that progression as the primary evidence-producing build.",
+    "focus": [
+      "Strengthen implementation consistency",
+      "Make data workflows repeatable",
+      "Document architecture and tradeoffs"
+    ],
+    "telemetry": [
+      { "label": "Primary system", "value": "NGDP" },
+      { "label": "Leading discipline", "value": "Data Engineering" },
+      { "label": "Operating mode", "value": "Evidence gated" }
+    ]
   },
-
-  "timeline": [
+  "gates": {
+    "eyebrow": "Advancement protocol",
+    "title": "A level advances when its evidence survives inspection.",
+    "items": [
+      {
+        "title": "Working artifact",
+        "description": "The capability exists in a system that can be run, inspected and explained."
+      },
+      {
+        "title": "Repeatable operation",
+        "description": "The result can be reproduced without relying on undocumented knowledge."
+      },
+      {
+        "title": "Transferable learning",
+        "description": "The decisions and limits are documented well enough to improve the next system."
+      }
+    ]
+  },
+  "map": {
+    "eyebrow": "Capability map",
+    "title": "Each layer earns the next one.",
+    "description": "The sequence protects the long-term ambition of NEXUS from weak foundations. Progress means expanding what can be designed, delivered and operated with confidence."
+  },
+  "levels": [
     {
-      "year": "2026",
-      "title": "Technology Degree",
-      "description": "Computer Science and Information Technology fundamentals."
+      "code": "LEVEL / 01",
+      "title": "Foundations",
+      "state": "Active",
+      "signal": "active",
+      "description": "Programming fluency, computer science fundamentals and disciplined engineering workflow form the base of every NEXUS system.",
+      "dependsOn": "Starting layer",
+      "capabilities": ["Programming", "Computer science", "Git workflow", "Testing mindset"],
+      "evidence": "Consistent implementation quality and explainable technical decisions across the repository.",
+      "unlocks": "Reliable software construction and stronger architectural judgement."
     },
     {
-      "year": "2027",
-      "title": "Professional Experience",
-      "description": "Internships, backend development and cloud technologies."
+      "code": "LEVEL / 02",
+      "title": "Production Systems",
+      "state": "Building",
+      "signal": "active",
+      "description": "Backend architecture, APIs, databases and verification practices turn code into dependable software systems.",
+      "dependsOn": "Foundations",
+      "capabilities": ["Python", "API design", "SQL", "Architecture", "Automated testing"],
+      "evidence": "A service with clear boundaries, reliable data access, documented behavior and automated verification.",
+      "unlocks": "Deployable services, integrations and operational ownership."
     },
     {
-      "year": "2028",
-      "title": "Engineering",
-      "description": "Computer Engineering and advanced software architecture."
+      "code": "LEVEL / 03",
+      "title": "Data Platforms",
+      "state": "Primary build",
+      "signal": "active",
+      "featured": true,
+      "description": "Traceable ingestion, transformation, storage and quality practices evolve isolated datasets into useful data products.",
+      "dependsOn": "Foundations + production patterns",
+      "capabilities": ["ETL", "Data quality", "Lineage", "Analytics", "Data products"],
+      "evidence": "NGDP and HEVY provide repeatable, testable flows from source data to useful analytical outputs.",
+      "unlocks": "Trustworthy analytics and the data substrate required by intelligent systems."
     },
     {
-      "year": "2030+",
-      "title": "Global Technology",
-      "description": "Building intelligent platforms with AI, Cloud and Data Engineering."
+      "code": "LEVEL / 04",
+      "title": "Cloud & Infrastructure",
+      "state": "Next expansion",
+      "signal": "muted",
+      "description": "Deployment, containers, security and observability create environments where systems can operate beyond a local machine.",
+      "dependsOn": "Operational software + representative workloads",
+      "capabilities": ["Cloud platforms", "Containers", "CI / CD", "Observability", "Security"],
+      "evidence": "A reproducible deployment with health signals, controlled configuration and documented recovery paths.",
+      "unlocks": "Scalable delivery, operational feedback and secure system integration."
+    },
+    {
+      "code": "LEVEL / 05",
+      "title": "Intelligent Systems",
+      "state": "Long term",
+      "signal": "muted",
+      "description": "Applied AI becomes a measured system capability supported by dependable software, quality data and observable infrastructure.",
+      "dependsOn": "Trusted data + observable infrastructure",
+      "capabilities": ["Applied AI", "Evaluation", "Model systems", "Human oversight"],
+      "evidence": "An intelligent feature with explicit evaluation, known limits and measurable value inside a working system.",
+      "unlocks": "Adaptive products and more advanced forms of engineering automation."
+    },
+    {
+      "code": "LEVEL / 06",
+      "title": "Advanced Research",
+      "state": "Horizon",
+      "signal": "muted",
+      "description": "Integrated systems create the foundation for investigating autonomous capabilities and questions at the edge of the stack.",
+      "dependsOn": "Integrated systems + operational evidence",
+      "capabilities": ["Autonomous systems", "Advanced evaluation", "Research engineering"],
+      "evidence": "Research artifacts that are reproducible, bounded by evidence and connected to practical system questions.",
+      "unlocks": "New directions determined by evidence rather than speculation."
     }
   ],
-
-  "vision": {
-    "title": "Long-Term Vision",
-    "description": "Creating an ecosystem of intelligent products capable of solving complex real-world problems through technology, research and innovation."
+  "principle": {
+    "eyebrow": "Roadmap principle",
+    "title": "The sequence can adapt. The standard cannot.",
+    "description": "Technologies, projects and opportunities will change. NEXUS can reorder experiments when reality provides a better path, but it does not bypass the engineering evidence required to make progress credible.",
+    "rules": [
+      "No capability without a working artifact",
+      "No expansion without operational understanding",
+      "No intelligence without dependable data",
+      "No roadmap claim without visible evidence"
+    ]
   }
 }

@@ -1,77 +1,9 @@
 {
-  "home": {
-    "title": "Control Center",
-    "subtitle": "Building Intelligent Systems.",
-    "items": [
-      {
-        "label": "Status",
-        "value": "Active"
-      },
-      {
-        "label": "Current Stage",
-        "value": "Foundation"
-      },
-      {
-        "label": "Primary Focus",
-        "value": "Backend Engineering"
-      },
-      {
-        "label": "Active Projects",
-        "value": "03"
-      },
-      {
-        "label": "Next Milestone",
-        "value": "Cloud & Data Engineering"
-      }
-    ]
-  },
-
-  "projects": {
-    "title": "Project Status",
-    "subtitle": "Current Portfolio",
-    "items": [
-      {
-        "label": "Projects",
-        "value": "03"
-      },
-      {
-        "label": "Featured Project",
-        "value": "NGDP"
-      },
-      {
-        "label": "Status",
-        "value": "Growing"
-      }
-    ]
-  },
-
-  "labs": {
-    "title": "Research Status",
-    "subtitle": "Active Research",
-    "items": [
-      {
-        "label": "Research Areas",
-        "value": "04"
-      },
-      {
-        "label": "Status",
-        "value": "Active"
-      }
-    ]
-  },
-
-  "roadmap": {
-    "title": "Roadmap Status",
-    "subtitle": "Long-Term Vision",
-    "items": [
-      {
-        "label": "Current Phase",
-        "value": "Foundation"
-      },
-      {
-        "label": "Next Phase",
-        "value": "Engineering"
-      }
-    ]
-  }
+  "items": [
+    { "label": "NEXUS", "value": "Building", "tone": "active" },
+    { "label": "Featured system", "value": "NGDP", "tone": "active" },
+    { "label": "Research", "value": "Active", "tone": "active" },
+    { "label": "Operating mode", "value": "Iterative", "tone": "muted" }
+  ],
+  "summary": "The laboratory is in active development, with the data engineering foundation currently leading the mission."
 }

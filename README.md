@@ -1,39 +1,53 @@
-# NEXUS
+# NEXUS V2
 
-> Personal Technology Laboratory focused on Software Engineering, Artificial Intelligence, Cloud Computing, Cybersecurity and Data Engineering.
+Engineering Operations Center implemented as a dependency-free JavaScript SPA. This branch is the selective architectural recomposition of the project preserved in the GitHub history.
 
-## About
+## Current state
 
-NEXUS is my personal technology laboratory where I build projects, explore modern technologies and document my learning journey.
+- Home: operational, data-driven mission-control experience
+- About: operational, with a dedicated view and structured journey data
+- Projects: operational, with a dedicated system registry and NGDP showcase
+- Labs: operational, with a dedicated investigation registry and research method
+- Roadmap: operational, with a dedicated capability sequence and evidence gates
 
-This repository is continuously evolving as I develop new skills and create real-world applications.
+## Run in VS Code
 
-## Technologies
+The application loads JSON through `fetch`, so it must be served over HTTP instead of opening `index.html` directly from the filesystem.
 
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- JSON
-- SPA Architecture
+1. Open this project folder in VS Code.
+2. Install the **Live Server** extension if it is not already available.
+3. Open `index.html` and select **Go Live**.
+4. Visit `http://127.0.0.1:5502/#/`.
 
-## Current Sections
+The repository setting in `.vscode/settings.json` keeps Live Server on port `5502`.
 
-- Home
-- About
-- Projects
-- Labs
-- Roadmap
+As an alternative, run:
 
-## Roadmap
+```bash
+python -m http.server 4173
+```
 
-- [x] Initial Architecture
-- [x] Modular Components
-- [x] SPA Navigation
-- [ ] Design System
-- [ ] GitHub Integration
-- [ ] Interactive Dashboard
-- [ ] AI Operation Center
+Then visit `http://localhost:4173/#/`.
 
-## Author
+## Routes
 
-Developed by **Enzo**.
+- `#/` — Home
+- `#/about` — About
+- `#/projects` — Projects
+- `#/labs` — Labs
+- `#/roadmap` — Roadmap
+
+## Architecture
+
+- `app/`: bootstrap, data loader, router, views and animation behavior
+- `components/`: layout, reusable UI primitives, sections and modules
+- `data/`: structured content consumed by the views
+- `styles/foundation/`: tokens, reset, typography and motion
+- `styles/ui/`: reusable visual primitives
+- `styles/components/`: page-specific compositions
+
+No runtime dependencies, frameworks or external assets are required.
+
+## Git workflow
+
+Development continues on `v2-recomposition`, preserving `master` as the previous baseline. Review and commit each page recomposition as a discrete checkpoint.

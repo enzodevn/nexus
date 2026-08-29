@@ -1,44 +1,5 @@
-import { createHero } from "../../components/sections/hero.js";
-import { createEcosystem } from "../../components/sections/ecosystem.js";
-import { createFeatured } from "../../components/sections/featured.js";
-import { createFocus } from "../../components/sections/focus.js";
-import { createVision } from "../../components/sections/vision.js";
-import { createFooter } from "../../components/layout/footer.js";
+import { renderHomeSections } from "../../components/sections/home.js";
 
-import { createStatusPanel } from "../../components/ui/status-panel.js";
-
-export async function renderHome() {
-
-    const page = document.createElement("main");
-
-    page.className = "page";
-
-    const home = await fetch("./data/home.json").then(r => r.json());
-
-    const ecosystem = await fetch("./data/ecosystem.json").then(r => r.json());
-
-    const featured = await fetch("./data/featured.json").then(r => r.json());
-
-    const focus = await fetch("./data/focus.json").then(r => r.json());
-
-    const status = await fetch("./data/status.json").then(r => r.json());
-
-    page.appendChild(createHero(home.hero));
-
-    page.appendChild(
-        createStatusPanel(status.home)
-    );
-
-    page.appendChild(createFeatured(featured));
-
-    page.appendChild(createFocus(focus));
-
-    page.appendChild(createEcosystem(ecosystem));
-
-    page.appendChild(createVision());
-
-    page.appendChild(createFooter());
-
-    return page;
-
+export function renderHomeView(data) {
+  return renderHomeSections(data);
 }

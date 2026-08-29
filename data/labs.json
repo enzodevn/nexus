@@ -1,41 +1,113 @@
 {
-  "hero": {
-    "title": "Research & Innovation Lab",
-    "description": "Exploring modern technologies through experimentation, continuous learning and real-world projects."
+  "meta": {
+    "index": "03",
+    "eyebrow": "Research operations",
+    "title": "Questions engineered into capability.",
+    "description": "Labs is where NEXUS investigates technologies before they become system decisions. Every track begins with a practical question, follows an explicit method and produces knowledge that can be transferred into real projects."
   },
-
-  "areas": [
+  "signals": [
+    { "value": "05", "label": "Research tracks" },
+    { "value": "01", "label": "Active inquiry" },
+    { "value": "04", "label": "Method stages" }
+  ],
+  "featured": {
+    "code": "LAB / AI",
+    "eyebrow": "Active inquiry",
+    "field": "Applied AI & Evaluation",
+    "title": "Intelligence deserves an engineering discipline.",
+    "description": "The primary investigation explores how intelligent features can be designed, evaluated and operated as dependable parts of a larger software system.",
+    "question": "How can an AI capability remain useful, measurable and transparent after the first successful prototype?",
+    "hypothesis": "Reliable intelligent systems emerge when evaluation, data quality and operational constraints are treated as architecture—not final checks.",
+    "methods": ["Applied AI", "Evaluation", "Data quality", "Observability"],
+    "protocol": [
+      {
+        "index": "01",
+        "name": "Frame",
+        "description": "Turn a broad technology interest into a precise engineering question."
+      },
+      {
+        "index": "02",
+        "name": "Prototype",
+        "description": "Build the smallest artifact capable of testing the central assumption."
+      },
+      {
+        "index": "03",
+        "name": "Measure",
+        "description": "Record evidence, failure modes and the limits of the result."
+      },
+      {
+        "index": "04",
+        "name": "Transfer",
+        "description": "Convert validated learning into a reusable system capability."
+      }
+    ]
+  },
+  "registry": {
+    "eyebrow": "Investigation registry",
+    "title": "Five disciplines, one engineering ecosystem.",
+    "description": "Each track has a distinct research surface, but the value appears when insights move across boundaries—from backend and cloud foundations to data, security and intelligent behavior."
+  },
+  "tracks": [
     {
-      "title": "Artificial Intelligence",
-      "description": "Building intelligent systems, automation and future AI applications."
+      "code": "LAB / AI",
+      "name": "Artificial Intelligence",
+      "state": "Active inquiry",
+      "signal": "active",
+      "description": "Applied intelligence, evaluation strategies and the software boundaries required to make model-driven behavior dependable.",
+      "question": "How should intelligent features be evaluated before they become system dependencies?",
+      "methods": ["Prototyping", "Evaluation", "Failure analysis"],
+      "transfer": "Future intelligent layers for NGDP and other NEXUS systems."
     },
     {
-      "title": "Cloud Computing",
-      "description": "Studying scalable infrastructure, cloud architecture and deployment."
+      "code": "LAB / CLOUD",
+      "name": "Cloud Computing",
+      "state": "Study track",
+      "signal": "muted",
+      "description": "Architecture, delivery and observability patterns for systems that must remain understandable while they scale.",
+      "question": "Which platform decisions improve reliability without creating unnecessary operational complexity?",
+      "methods": ["Architecture studies", "Containers", "Observability"],
+      "transfer": "Deployment foundations and operating models for project workloads."
     },
     {
-      "title": "Cybersecurity",
-      "description": "Researching secure systems, networking and defensive strategies."
+      "code": "LAB / SEC",
+      "name": "Cybersecurity",
+      "state": "Research track",
+      "signal": "muted",
+      "description": "Security principles embedded into identity, data handling and platform design from the beginning of a system.",
+      "question": "How can secure defaults become part of architecture instead of a later correction?",
+      "methods": ["Threat modelling", "Identity", "Secure design"],
+      "transfer": "Trust boundaries and defensive practices across the ecosystem."
     },
     {
-      "title": "Data Engineering",
-      "description": "Designing data pipelines, ETL processes and analytics platforms."
+      "code": "LAB / DATA",
+      "name": "Data Engineering",
+      "state": "Building",
+      "signal": "active",
+      "description": "Traceable pipelines, explicit quality decisions and data products that remain useful beyond a single analysis.",
+      "question": "What makes a small data pipeline dependable enough to evolve into a platform?",
+      "methods": ["ETL", "Data quality", "Lineage"],
+      "transfer": "Pipeline practices applied directly to NGDP and HEVY."
     },
     {
-      "title": "Backend Engineering",
-      "description": "Developing APIs, services and scalable software architectures."
+      "code": "LAB / BACKEND",
+      "name": "Backend Engineering",
+      "state": "Core practice",
+      "signal": "active",
+      "description": "Software boundaries, interfaces and testing practices that give every higher-level capability a durable foundation.",
+      "question": "Which abstractions keep a system simple today without limiting its next stage?",
+      "methods": ["API design", "Testing", "Architecture"],
+      "transfer": "Reusable service patterns and dependable system interfaces."
     }
   ],
-
-  "experiments": [
-    "NGDP Platform",
-    "HEVY Pipeline",
-    "AI Research",
-    "Cloud Infrastructure"
-  ],
-
-  "philosophy": {
-    "title": "Research Philosophy",
-    "description": "Every project begins with curiosity. Every experiment generates knowledge. Every line of code contributes to building reliable technology."
+  "principle": {
+    "eyebrow": "Research principle",
+    "title": "Evidence before expansion.",
+    "description": "A lab result is not a promise of production readiness. It is a documented reduction in uncertainty: what was tested, what was learned, where it failed and what deserves to move forward.",
+    "outcomes": [
+      "A sharper engineering question",
+      "A reproducible technical artifact",
+      "Recorded limits and failure modes",
+      "A clear transfer or stop decision"
+    ]
   }
 }
