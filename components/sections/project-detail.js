@@ -80,6 +80,9 @@ function renderExternalLinks(project) {
 
 export function renderProjectDetailSections(project) {
   const caseStudy = project.caseStudy;
+  const accessTitle = caseStudy.links.length
+    ? "Review the available project evidence."
+    : "Evidence will connect here as the system becomes public.";
 
   return `
     <section class="section page-intro project-detail-intro" data-page-title="${project.shortName}" data-reveal>
@@ -174,7 +177,7 @@ export function renderProjectDetailSections(project) {
     <section class="section surface panel project-detail-links" aria-labelledby="project-links-title" data-reveal>
       <div>
         ${operationLabel("Project access")}
-        <h2 id="project-links-title">Evidence will connect here as the system becomes public.</h2>
+        <h2 id="project-links-title">${accessTitle}</h2>
       </div>
       ${renderExternalLinks(project)}
     </section>

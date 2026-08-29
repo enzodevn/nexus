@@ -181,22 +181,90 @@
     {
       "id": "nexus",
       "slug": "nexus",
-      "route": null,
+      "route": "#/projects/nexus",
       "code": "SYS / NEXUS",
       "shortName": "NEXUS",
       "name": "NEXUS",
       "category": "Engineering Portfolio Platform",
-      "status": "v2.0.0 stable",
+      "status": "V3 platform sprint",
       "signal": "active",
       "featured": false,
-      "hasCaseStudy": false,
+      "hasCaseStudy": true,
       "summary": "The evolving application that connects projects, research and technical progression through a modular, data-driven interface built for long-term growth.",
       "objective": "Provide a dependable platform where projects can be presented, documented and connected without repeated reconstruction.",
       "focus": "Modular SPA → evolving engineering platform",
       "stack": ["HTML", "CSS", "JavaScript", "ES Modules", "JSON"],
-      "architecture": [],
-      "milestones": [],
-      "caseStudy": null
+      "architecture": [
+        {
+          "index": "01",
+          "name": "Route",
+          "description": "Resolve application and project paths through a lightweight hash router."
+        },
+        {
+          "index": "02",
+          "name": "Load",
+          "description": "Fetch and cache structured JSON records as the source of page content."
+        },
+        {
+          "index": "03",
+          "name": "Compose",
+          "description": "Build views from reusable layout, section and interface primitives."
+        },
+        {
+          "index": "04",
+          "name": "Enhance",
+          "description": "Add responsive motion and interaction while preserving accessible navigation."
+        }
+      ],
+      "milestones": [
+        {
+          "state": "Current",
+          "title": "Reusable case-study platform",
+          "description": "Document NGDP, HEVY and NEXUS through one centralized project schema and shared view."
+        },
+        {
+          "state": "Next",
+          "title": "Portfolio evidence layer",
+          "description": "Strengthen project proof with verified repositories, demonstrations and technical outcomes."
+        },
+        {
+          "state": "Future",
+          "title": "Production delivery",
+          "description": "Prepare the platform for dependable public hosting after content and quality gates are complete."
+        }
+      ],
+      "caseStudy": {
+        "eyebrow": "Portfolio systems engineering",
+        "description": "NEXUS treats a professional portfolio as an evolving software system: content is structured, routes are reusable and every capability is presented according to its real level of maturity.",
+        "problem": {
+          "title": "A growing engineering portfolio cannot depend on rebuilding every page.",
+          "description": "As projects, research and technical experience expand, repeated markup makes the platform harder to maintain and encourages inconsistent claims. The portfolio needs an architecture that can grow without losing clarity or credibility."
+        },
+        "solution": {
+          "title": "Separate the system, presentation and project evidence.",
+          "description": "NEXUS uses a dependency-free SPA, structured JSON data and reusable JavaScript components. The router resolves both primary pages and project-specific routes while shared views keep the visual and narrative system consistent."
+        },
+        "capabilities": [
+          "Dependency-free single-page application built with browser-native ES modules",
+          "Hash routing with parameterized project paths and recovery states",
+          "Centralized JSON content loaded through a cached data layer",
+          "Reusable responsive components with keyboard focus and reduced-motion support"
+        ],
+        "challenges": [
+          "Recompose the original interface without losing its established visual identity.",
+          "Keep stable capabilities, current development and future ambitions visibly distinct."
+        ],
+        "learnings": [
+          "A durable content model removes more duplication than page-by-page styling fixes.",
+          "Accessibility, motion and responsive behavior work best as architectural rules rather than final polish."
+        ],
+        "links": [
+          {
+            "label": "View repository",
+            "href": "https://github.com/enzodevn/nexus"
+          }
+        ]
+      }
     }
   ]
 }

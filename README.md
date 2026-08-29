@@ -8,7 +8,7 @@ The stable `v2.0.0` architecture is integrated into `master`. Current developmen
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
-- Projects: system registry with dedicated NGDP and HEVY case studies
+- Projects: system registry with dedicated NGDP, HEVY and NEXUS case studies
 - Labs: investigation registry and research method
 - Roadmap: evidence-gated capability sequence
 - Not found: recovery state for unknown application and project routes
@@ -39,6 +39,7 @@ Then visit `http://localhost:4173/#/`.
 - `#/projects` — Project registry
 - `#/projects/ngdp` — Nordic Green Data Platform case study
 - `#/projects/hevy` — HEVY Pipeline case study
+- `#/projects/nexus` — NEXUS platform case study
 - `#/labs` — Labs
 - `#/roadmap` — Roadmap
 
