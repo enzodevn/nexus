@@ -92,7 +92,12 @@
           "Data-quality decisions are part of the system architecture, not a cleanup step.",
           "A small reproducible pipeline creates more value than premature infrastructure."
         ],
-        "links": []
+        "links": [
+          {
+            "label": "View NGDP repository",
+            "href": "https://github.com/enzodevn/ngdp-python"
+          }
+        ]
       }
     },
     {
@@ -175,7 +180,12 @@
           "A stable data model must come before performance dashboards.",
           "Personal datasets still require deliberate privacy and traceability decisions."
         ],
-        "links": []
+        "links": [
+          {
+            "label": "View HEVY repository",
+            "href": "https://github.com/enzodevn/hevy-training-analytics"
+          }
+        ]
       }
     },
     {
@@ -260,7 +270,7 @@
         ],
         "links": [
           {
-            "label": "View repository",
+            "label": "View NEXUS repository",
             "href": "https://github.com/enzodevn/nexus"
           }
         ]
