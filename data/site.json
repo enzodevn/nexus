@@ -1,0 +1,78 @@
+{
+  "identity": {
+    "name": "NEXUS",
+    "headline": "Building Intelligent Systems.",
+    "title": "NEXUS — Building Intelligent Systems",
+    "description": "NEXUS is Enzo Félix Martins' engineering portfolio and technology laboratory for dependable software, data, cloud and intelligent systems.",
+    "language": "en",
+    "locale": "en_US",
+    "themeColor": "#03050a"
+  },
+  "author": {
+    "name": "Enzo Félix Martins",
+    "role": "Software Engineering student",
+    "sameAs": [
+      "https://www.linkedin.com/in/enzo-f%C3%A9lix-martins-88b595219/",
+      "https://github.com/enzodevn"
+    ]
+  },
+  "sharing": {
+    "image": "https://raw.githubusercontent.com/enzodevn/nexus/master/assets/nexus-social-preview.png",
+    "imagePath": "./assets/nexus-social-preview.png",
+    "imageAlt": "NEXUS — Building Intelligent Systems.",
+    "width": 1200,
+    "height": 630
+  },
+  "routes": {
+    "/": {
+      "title": "NEXUS — Building Intelligent Systems",
+      "description": "Explore Enzo Félix Martins' engineering portfolio: dependable software, data platforms, cloud foundations and the path toward intelligent systems.",
+      "type": "website",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "/about": {
+      "title": "About Enzo — NEXUS Engineering Journey",
+      "description": "Meet Enzo Félix Martins and the disciplined engineering journey behind NEXUS, from software foundations to data, cloud and intelligent systems.",
+      "type": "profile",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "/contact": {
+      "title": "Contact Enzo — NEXUS",
+      "description": "Connect with Enzo Félix Martins through verified professional channels for software engineering opportunities, collaboration and project discussion.",
+      "type": "profile",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "/projects": {
+      "title": "Engineering Projects — NEXUS",
+      "description": "Review verified NEXUS case studies across data engineering, analytics and portfolio architecture, with explicit evidence, decisions and technical limits.",
+      "type": "website",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "/projects/:slug": {
+      "title": "Project Case Study — NEXUS",
+      "description": "Read a NEXUS engineering case study with its architecture, implementation evidence, current limits and next milestones.",
+      "type": "article",
+      "robots": "index, follow",
+      "shareImage": false
+    },
+    "/labs": {
+      "title": "Technology Labs — NEXUS",
+      "description": "Explore the NEXUS research method across artificial intelligence, cloud, cybersecurity, data engineering and dependable backend systems.",
+      "type": "website",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "/roadmap": {
+      "title": "Engineering Roadmap — NEXUS",
+      "description": "Follow the evidence-gated NEXUS roadmap from software foundations through data, infrastructure, intelligent systems and advanced research.",
+      "type": "website",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "*": {
+      "title": "Page Not Found — NEXUS",
+      "description": "The requested NEXUS route could not be found. Return to the platform to explore projects, research and the engineering roadmap.",
+      "type": "website",
+      "robots": "noindex, nofollow",
+      "shareImage": false
+    }
+  }
+}

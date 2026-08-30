@@ -1,0 +1,17 @@
+{
+  "name": "NEXUS — Building Intelligent Systems",
+  "short_name": "NEXUS",
+  "description": "Engineering portfolio and technology laboratory for dependable software, data, cloud and intelligent systems.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#03050a",
+  "theme_color": "#03050a",
+  "icons": [
+    {
+      "src": "./assets/nexus-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

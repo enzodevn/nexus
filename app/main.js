@@ -1,6 +1,7 @@
 import { initializeRevealAnimations } from "./animations/reveal.js";
 import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
+import { applyPageMetadata } from "./core/metadata.js";
 import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
 import { renderContactView } from "./views/contact.js";
@@ -57,15 +58,6 @@ function renderError(error) {
     </main>`;
 }
 
-function getPageTitle(path, pattern) {
-  const explicitTitle = app.querySelector("[data-page-title]")?.dataset.pageTitle;
-  if (explicitTitle) return explicitTitle;
-  if (pattern === "*") return "NOT FOUND";
-  if (path === "/") return "NEXUS";
-
-  return path.slice(1).toUpperCase();
-}
-
 bindInPageNavigation();
 
 try {
@@ -95,7 +87,13 @@ try {
       bindShellInteractions(app);
       initializeRevealAnimations(app);
       initializeSurfaceMotion(app);
-      document.title = `${getPageTitle(path, pattern)} — Building Intelligent Systems`;
+      applyPageMetadata({
+        site: data.site,
+        projects: data.projects.projects,
+        path,
+        pattern,
+        params,
+      });
 
       const inPageTarget = getInPageTarget(window.location.hash);
       const mainContent = app.querySelector("#main-content");

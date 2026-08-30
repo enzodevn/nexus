@@ -4,11 +4,13 @@ NEXUS is a personal Technology Laboratory and engineering portfolio built as a d
 
 ## Current state
 
-The stable `v2.0.0` architecture is integrated into `master`. Current development expands the project registry into a reusable case-study platform.
+The stable `v2.0.0` architecture is integrated into `master`. Current development closes the remaining presentation and delivery gates around the reusable case-study platform.
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
 - Contact: verified LinkedIn, professional email and GitHub channels
+- Metadata: route-aware titles, descriptions, indexing rules and structured identity
+- Sharing: dedicated 1200×630 NEXUS social preview for Open Graph and X cards
 - Projects: system registry with dedicated NGDP, HEVY and NEXUS case studies
 - Evidence: revision-linked repository audits with verified metrics and explicit technical gaps
 - Labs: investigation registry and research method
@@ -51,12 +53,15 @@ Then visit `http://localhost:4173/#/`.
 - `app/`: bootstrap, data loader, router, views and animation behavior
 - `components/`: layout, reusable UI primitives, sections and modules
 - `data/`: structured content consumed by the views
+- `assets/`: local brand and social-preview media
 - `scripts/`: dependency-free repository validation
 - `styles/foundation/`: tokens, reset, typography and motion
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
 
 Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
+
+Site identity, route metadata and sharing rules are centralized in `data/site.json`. Canonical URLs and the production sitemap remain intentionally unset until a verified public address exists.
 
 No runtime dependencies, frameworks or external assets are required.
 
@@ -68,7 +73,7 @@ Node.js 20 or newer can validate the complete repository without installing pack
 npm run validate
 ```
 
-The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, application routes and the core accessibility contract. GitHub Actions runs the same command for every push and pull request.
+The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, application routes and the core accessibility contract. GitHub Actions runs the same command for every push and pull request.
 
 ## Development workflow
 
