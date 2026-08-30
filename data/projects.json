@@ -323,18 +323,18 @@
       "milestones": [
         {
           "state": "Current",
-          "title": "Reusable case-study platform",
-          "description": "Document NGDP, HEVY and NEXUS through one centralized project schema and shared view."
+          "title": "Audited case-study platform",
+          "description": "Document NGDP, HEVY and NEXUS through one schema, one shared view and revision-linked evidence snapshots."
         },
         {
           "state": "Next",
-          "title": "Portfolio evidence layer",
-          "description": "Strengthen project proof with verified repositories, demonstrations and technical outcomes."
+          "title": "Automated quality gates",
+          "description": "Turn syntax, data, accessibility and responsive checks into repeatable repository validation."
         },
         {
           "state": "Future",
           "title": "Production delivery",
-          "description": "Prepare the platform for dependable public hosting after content and quality gates are complete."
+          "description": "Add complete metadata, dependable public hosting and operational feedback after quality gates are established."
         }
       ],
       "caseStudy": {
@@ -348,6 +348,49 @@
           "title": "Separate the system, presentation and project evidence.",
           "description": "NEXUS uses a dependency-free SPA, structured JSON data and reusable JavaScript components. The router resolves both primary pages and project-specific routes while shared views keep the visual and narrative system consistent."
         },
+        "evidence": {
+          "eyebrow": "Verified repository evidence",
+          "title": "A browser-native platform with an inspectable architecture.",
+          "description": "The current branch was inspected and its complete JavaScript, JSON and CSS surface was validated before these claims were added to the NEXUS case study.",
+          "metrics": [
+            {
+              "value": "07",
+              "label": "Route patterns",
+              "description": "Six intentional application routes plus a wildcard recovery state."
+            },
+            {
+              "value": "42",
+              "label": "Checked surfaces",
+              "description": "Twenty-one JavaScript modules, thirteen CSS files and eight JSON datasets."
+            },
+            {
+              "value": "00",
+              "label": "Runtime packages",
+              "description": "The application runs through browser-native HTML, CSS, ES modules and Fetch APIs."
+            }
+          ],
+          "findings": [
+            {
+              "state": "Verified",
+              "signal": "active",
+              "title": "Dependency-free application core",
+              "description": "Every JavaScript module passed syntax validation, every JSON dataset parsed and the local application responded successfully over HTTP."
+            },
+            {
+              "state": "Inspectable",
+              "signal": "active",
+              "title": "Reusable case-study architecture",
+              "description": "Parameterized routing, centralized project records and one shared detail renderer support every published project without duplicated page markup."
+            },
+            {
+              "state": "Open gap",
+              "signal": "muted",
+              "title": "Production contract is not established",
+              "description": "The repository does not yet provide automated CI, a test runner, production hosting configuration or complete sharing metadata."
+            }
+          ],
+          "snapshot": "Audited against branch revision 807c69d on 30 August 2026. The evidence covers the local application architecture and validation surface; public hosting and production operations are intentionally not claimed yet."
+        },
         "capabilities": [
           "Dependency-free single-page application built with browser-native ES modules",
           "Hash routing with parameterized project paths and recovery states",
@@ -355,8 +398,8 @@
           "Reusable responsive components with keyboard focus and reduced-motion support"
         ],
         "challenges": [
-          "Recompose the original interface without losing its established visual identity.",
-          "Keep stable capabilities, current development and future ambitions visibly distinct."
+          "Convert the current manual quality audit into repeatable automated gates.",
+          "Prepare metadata and production delivery without weakening the lightweight architecture."
         ],
         "learnings": [
           "A durable content model removes more duplication than page-by-page styling fixes.",
@@ -366,6 +409,10 @@
           {
             "label": "View NEXUS repository",
             "href": "https://github.com/enzodevn/nexus"
+          },
+          {
+            "label": "Inspect audited revision",
+            "href": "https://github.com/enzodevn/nexus/commit/807c69dd8ba65139581bdab296c89af77cee2ce3"
           }
         ]
       }

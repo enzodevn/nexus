@@ -9,6 +9,7 @@ The stable `v2.0.0` architecture is integrated into `master`. Current developmen
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
 - Projects: system registry with dedicated NGDP, HEVY and NEXUS case studies
+- Evidence: revision-linked repository audits with verified metrics and explicit technical gaps
 - Labs: investigation registry and research method
 - Roadmap: evidence-gated capability sequence
 - Not found: recovery state for unknown application and project routes
