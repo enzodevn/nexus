@@ -8,6 +8,7 @@ The stable `v2.0.0` architecture is integrated into `master`. Current developmen
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
+- Contact: verified LinkedIn, professional email and GitHub channels
 - Projects: system registry with dedicated NGDP, HEVY and NEXUS case studies
 - Evidence: revision-linked repository audits with verified metrics and explicit technical gaps
 - Labs: investigation registry and research method
@@ -37,6 +38,7 @@ Then visit `http://localhost:4173/#/`.
 
 - `#/` — Home
 - `#/about` — About
+- `#/contact` — Professional contact
 - `#/projects` — Project registry
 - `#/projects/ngdp` — Nordic Green Data Platform case study
 - `#/projects/hevy` — HEVY Pipeline case study

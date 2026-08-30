@@ -4,7 +4,8 @@
     { "label": "About", "path": "/about" },
     { "label": "Projects", "path": "/projects" },
     { "label": "Labs", "path": "/labs" },
-    { "label": "Roadmap", "path": "/roadmap" }
+    { "label": "Roadmap", "path": "/roadmap" },
+    { "label": "Contact", "path": "/contact" }
   ],
   "hero": {
     "name": "NEXUS",

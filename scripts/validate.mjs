@@ -198,6 +198,7 @@ async function validateDocumentContract() {
   const expectedRoutes = [
     "/",
     "/about",
+    "/contact",
     "/projects",
     "/projects/:slug",
     "/labs",
@@ -211,6 +212,42 @@ async function validateDocumentContract() {
   );
 
   return routes.length;
+}
+
+function validateContact(contactData) {
+  assert(contactData && typeof contactData === "object", "data/contact.json must contain an object.");
+  requireString(contactData?.meta?.title, "data/contact.json meta.title");
+  requireString(contactData?.position?.title, "data/contact.json position.title");
+  requireString(contactData?.profile?.name, "data/contact.json profile.name");
+  requireList(contactData?.profile?.focus, "data/contact.json profile.focus");
+  requireList(contactData?.channels?.items, "data/contact.json channels.items", 3);
+  requireList(contactData?.context?.items, "data/contact.json context.items", 1);
+
+  const channels = Array.isArray(contactData?.channels?.items)
+    ? contactData.channels.items
+    : [];
+  const names = new Set();
+  const destinations = new Set();
+
+  for (const [index, channel] of channels.entries()) {
+    const label = `contact.channels.items[${index}]`;
+    requireString(channel.name, `${label}.name`);
+    requireString(channel.type, `${label}.type`);
+    requireString(channel.value, `${label}.value`);
+    requireString(channel.description, `${label}.description`);
+    requireString(channel.action, `${label}.action`);
+    assert(!names.has(channel.name), `${label}.name duplicates ${channel.name}.`);
+    assert(!destinations.has(channel.href), `${label}.href duplicates ${channel.href}.`);
+    assert(/^(?:https:\/\/|mailto:)/.test(channel.href), `${label}.href must use HTTPS or mailto.`);
+    assert(channel.signal === "active", `${label}.signal must identify a verified active channel.`);
+    names.add(channel.name);
+    destinations.add(channel.href);
+  }
+
+  assert(channels.some((channel) => channel.href.startsWith("mailto:")), "The contact contract must include one explicitly approved professional email channel.");
+  assert(channels.filter((channel) => channel.href.startsWith("https://")).length >= 2, "The contact contract must include at least two verified HTTPS profiles.");
+
+  return channels.length;
 }
 
 async function validateAutomationContract() {
@@ -308,6 +345,7 @@ async function run() {
   const { count: cssCount, breakpointCount } = await validateCss();
   const routeCount = await validateDocumentContract();
   const caseStudyCount = validateProjects(parsed.get("projects.json"));
+  const contactChannelCount = validateContact(parsed.get("contact.json"));
   const automationContract = await validateAutomationContract();
 
   if (failures.length) {
@@ -319,7 +357,7 @@ async function run() {
 
   console.log("NEXUS quality gates passed");
   console.log(`  JavaScript syntax and imports: ${javascriptCount} modules`);
-  console.log(`  JSON parsing and project contracts: ${jsonCount} datasets, ${caseStudyCount} case studies`);
+  console.log(`  JSON and content contracts: ${jsonCount} datasets, ${caseStudyCount} case studies, ${contactChannelCount} contact channels`);
   console.log(`  CSS structure and responsive rules: ${cssCount} stylesheets, ${breakpointCount} breakpoints`);
   console.log(`  Accessibility and routing contracts: ${routeCount} route patterns`);
   console.log(`  Automation contract: ${automationContract}`);
