@@ -162,44 +162,44 @@
       "summary": "A focused pipeline for extracting structured workout data, transforming it with Python and Pandas, and preparing useful analytical datasets in SQLite.",
       "objective": "Transform personal training records into a dependable analytical history without losing the context behind each workout.",
       "focus": "API and export ingestion → analytics-ready workout data",
-      "stack": ["Python", "APIs", "JSON", "Pandas", "SQLite"],
+      "stack": ["Python", "Hevy API", "JSON", "Pandas", "SQLite", "Streamlit"],
       "architecture": [
         {
           "index": "01",
           "name": "Ingest",
-          "description": "Acquire workout records from APIs or structured exports."
+          "description": "Page through the Hevy API and preserve the complete workout response as private raw JSON."
         },
         {
           "index": "02",
           "name": "Normalize",
-          "description": "Convert nested records into consistent analytical structures."
+          "description": "Flatten workouts, exercises and sets into a 23-field set-level analytical table."
         },
         {
           "index": "03",
           "name": "Persist",
-          "description": "Store repeatable workout history in SQLite."
+          "description": "Model workout and exercise-set relationships through a normalized SQLite schema."
         },
         {
           "index": "04",
           "name": "Analyze",
-          "description": "Use Pandas to investigate volume, consistency and progression."
+          "description": "Generate repeatable reports and expose query-backed views through Streamlit."
         }
       ],
       "milestones": [
         {
           "state": "Current",
-          "title": "Data pipeline foundation",
-          "description": "Stabilize ingestion, normalization and storage around a clear workout schema."
+          "title": "Repeatable analytics foundation",
+          "description": "Maintain the normalized set-level dataset, deterministic reports and explicit SQLite model."
         },
         {
           "state": "Next",
-          "title": "Repeatable analytics",
-          "description": "Create dependable analyses for training volume, consistency and progression."
+          "title": "Reproducible execution contract",
+          "description": "Document setup, provide safe fixtures, orchestrate the pipeline and add automated verification."
         },
         {
           "state": "Future",
-          "title": "Performance interface",
-          "description": "Present validated insights through a focused dashboard when the analytical layer is ready."
+          "title": "Automated private delivery",
+          "description": "Refresh authenticated data and operate the analytical dashboard without exposing personal source records."
         }
       ],
       "caseStudy": {
@@ -213,24 +213,71 @@
           "title": "Preserve the history before building the dashboard.",
           "description": "The project normalizes workout records with Python, stores them in SQLite and prepares analytical datasets with Pandas. Visual interfaces remain a later layer, supported by validated data."
         },
+        "evidence": {
+          "eyebrow": "Verified repository evidence",
+          "title": "A layered analytics pipeline with a private-data boundary.",
+          "description": "The public repository was inspected, its analytical reports were regenerated and its SQLite schema was executed before these claims were added to NEXUS.",
+          "metrics": [
+            {
+              "value": "396",
+              "label": "Set-level records",
+              "description": "Normalized public rows with workout, exercise, set and calculated volume context."
+            },
+            {
+              "value": "12",
+              "label": "Documented workouts",
+              "description": "Distinct workout identifiers represented in the versioned analytical dataset."
+            },
+            {
+              "value": "06",
+              "label": "Analytical outputs",
+              "description": "Repeatable CSV reports for volume, frequency, exercise ranking and personal records."
+            }
+          ],
+          "findings": [
+            {
+              "state": "Verified",
+              "signal": "active",
+              "title": "Deterministic analytical reports",
+              "description": "Running src/analysis_full.py regenerated all six versioned report files with byte-identical output."
+            },
+            {
+              "state": "Inspectable",
+              "signal": "active",
+              "title": "Layered data and query model",
+              "description": "API extraction, a 23-field set table, a two-entity SQLite schema, SQL query helpers and Streamlit views are visible in the repository."
+            },
+            {
+              "state": "Open gap",
+              "signal": "muted",
+              "title": "Execution contract needs documentation",
+              "description": "The repository has no README, safe raw fixture or populated database, and it does not yet provide an automated test suite or one-command pipeline."
+            }
+          ],
+          "snapshot": "Audited against public revision 85e833c on 30 August 2026. Raw API payloads, credentials and the SQLite database remain outside version control; only aggregate evidence from the processed public dataset is presented here."
+        },
         "capabilities": [
-          "Structured ingestion from APIs and JSON exports",
-          "Python transformations for repeatable workout records",
-          "Relational persistence with SQLite",
-          "Analytical preparation and exploration with Pandas"
+          "Paginated authenticated extraction from the Hevy API to private JSON",
+          "Nested workout normalization into a 23-field set-level dataset",
+          "Relational modeling and analytical queries with SQLite",
+          "Deterministic Pandas reports and query-backed Streamlit views"
         ],
         "challenges": [
-          "Preserve exercise and session context while flattening nested records.",
-          "Keep personal analytics reproducible as the source format evolves."
+          "Make the complete pipeline reproducible without publishing personal raw records.",
+          "Consolidate duplicate scripts behind one documented execution path and automated tests."
         ],
         "learnings": [
-          "A stable data model must come before performance dashboards.",
-          "Personal datasets still require deliberate privacy and traceability decisions."
+          "Versioned aggregate outputs can provide evidence while private source payloads remain excluded.",
+          "A dashboard is only operational evidence when its database setup and refresh path are reproducible."
         ],
         "links": [
           {
             "label": "View HEVY repository",
             "href": "https://github.com/enzodevn/hevy-training-analytics"
+          },
+          {
+            "label": "Inspect audited revision",
+            "href": "https://github.com/enzodevn/hevy-training-analytics/commit/85e833cdfc954a0da54044ef3c0e1a39137777a4"
           }
         ]
       }
