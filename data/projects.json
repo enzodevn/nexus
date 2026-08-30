@@ -27,12 +27,12 @@
       "summary": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
       "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
       "focus": "Environmental data → dependable analytical products",
-      "stack": ["Python", "Pandas", "SQL / SQLite", "ETL", "Git"],
+      "stack": ["Python", "Pandas", "CSV", "Matplotlib", "Seaborn"],
       "architecture": [
         {
           "index": "01",
           "name": "Acquire",
-          "description": "Collect environmental and energy datasets from reliable sources."
+          "description": "Start from a versioned extract of Statistics Norway electricity table 14091."
         },
         {
           "index": "02",
@@ -42,29 +42,29 @@
         {
           "index": "03",
           "name": "Store",
-          "description": "Persist dependable datasets for repeatable analysis."
+          "description": "Export a cleaned long-format CSV as a reproducible analytical dataset."
         },
         {
           "index": "04",
           "name": "Explore",
-          "description": "Expose useful signals through analytics and interfaces."
+          "description": "Prepare historical and recent production analysis with Pandas and plotting libraries."
         }
       ],
       "milestones": [
         {
           "state": "Current",
-          "title": "Pipeline foundation",
-          "description": "Strengthen ingestion, transformation and storage as one traceable data flow."
+          "title": "Repeatable CSV transformation",
+          "description": "Maintain a deterministic raw-to-clean flow across the versioned monthly electricity dataset."
         },
         {
           "state": "Next",
-          "title": "Interactive dashboard",
-          "description": "Turn prepared datasets into an accessible analytical experience."
+          "title": "Reproducible analysis contract",
+          "description": "Unify the runnable entry point, declare every dependency and generate traceable analytical outputs."
         },
         {
           "state": "Future",
-          "title": "Cloud and AI integration",
-          "description": "Expand only after the data and software foundations are dependable."
+          "title": "Storage and interactive delivery",
+          "description": "Add database persistence and an analytical interface only after the execution contract is dependable."
         }
       ],
       "caseStudy": {
@@ -78,24 +78,71 @@
           "title": "Build the pipeline as the product foundation.",
           "description": "NGDP organizes acquisition, transformation, storage and exploration as a traceable sequence. Each layer remains understandable before cloud delivery, forecasting or AI capabilities are introduced."
         },
+        "evidence": {
+          "eyebrow": "Verified repository evidence",
+          "title": "A working transformation with visible boundaries.",
+          "description": "The public repository was inspected and its data-cleaning path was executed before these claims were added to NEXUS.",
+          "metrics": [
+            {
+              "value": "1,192",
+              "label": "Clean records",
+              "description": "Numeric monthly observations after unavailable source values are removed."
+            },
+            {
+              "value": "1993–2026",
+              "label": "Monthly coverage",
+              "description": "The processed dataset runs from 1993M01 through 2026M01."
+            },
+            {
+              "value": "04",
+              "label": "Production categories",
+              "description": "Hydro, wind, solar and thermal electricity generation."
+            }
+          ],
+          "findings": [
+            {
+              "state": "Verified",
+              "signal": "active",
+              "title": "Deterministic raw-to-clean transformation",
+              "description": "Running src/data_cleaning.py against the versioned source produced a byte-identical cleaned CSV."
+            },
+            {
+              "state": "Inspectable",
+              "signal": "active",
+              "title": "Explicit data lineage",
+              "description": "The raw SSB table extract, Pandas reshape logic and cleaned long-format output are all available in the repository."
+            },
+            {
+              "state": "Open gap",
+              "signal": "muted",
+              "title": "Execution contract needs consolidation",
+              "description": "The documented root command does not run the pipeline, and the visualization path uses an undeclared dependency and does not save its current output."
+            }
+          ],
+          "snapshot": "Audited against public revision e1caa5a on 29 August 2026. Existing chart PNGs are not counted as pipeline evidence because their generation is not connected to the current monthly analysis path."
+        },
         "capabilities": [
-          "Python-based ingestion and transformation foundation",
-          "Tabular processing and data-quality work with Pandas",
-          "Local persistence and analytical querying with SQL and SQLite",
-          "Source-controlled technical evolution with Git"
+          "Wide-to-long monthly data normalization with Pandas",
+          "Filtering of unavailable values and explicit numeric conversion",
+          "Repeatable export of an analytics-ready CSV dataset",
+          "Historical and recent production analysis prepared with Matplotlib and Seaborn"
         ],
         "challenges": [
-          "Keep transformation decisions explicit as source structures evolve.",
-          "Separate current capabilities from future cloud and AI ambitions."
+          "Unify cleaning and analysis behind one documented entry point.",
+          "Make every visual output reproducible from the versioned monthly dataset."
         ],
         "learnings": [
-          "Data-quality decisions are part of the system architecture, not a cleanup step.",
-          "A small reproducible pipeline creates more value than premature infrastructure."
+          "Versioning the source, transform and cleaned output makes data lineage directly inspectable.",
+          "A chart becomes technical evidence only when its generation path is reproducible."
         ],
         "links": [
           {
             "label": "View NGDP repository",
             "href": "https://github.com/enzodevn/ngdp-python"
+          },
+          {
+            "label": "Inspect audited revision",
+            "href": "https://github.com/enzodevn/ngdp-python/commit/e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b"
           }
         ]
       }

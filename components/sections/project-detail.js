@@ -64,6 +64,47 @@ function renderRoadmap(project) {
   </ol>`;
 }
 
+function renderRepositoryEvidence(project) {
+  const evidence = project.caseStudy.evidence;
+
+  if (!evidence) return "";
+
+  return `<section class="section project-detail-proof" aria-labelledby="project-proof-title">
+    <header data-reveal>
+      ${sectionHeader(evidence.eyebrow, evidence.title, evidence.description, "h2", "project-proof-title")}
+    </header>
+    <dl class="project-proof-metrics" aria-label="${project.shortName} verified metrics">
+      ${evidence.metrics
+        .map(
+          (metric) => `<div class="surface panel" data-reveal>
+            <dt>${metric.label}</dt>
+            <dd>${metric.value}</dd>
+            <p>${metric.description}</p>
+          </div>`,
+        )
+        .join("")}
+    </dl>
+    <div class="project-proof-findings">
+      ${evidence.findings
+        .map(
+          (finding) => `<article class="surface panel" data-reveal>
+            <div class="project-proof-finding__state">
+              ${statusMark(finding.signal)}
+              <span>${finding.state}</span>
+            </div>
+            <h3>${finding.title}</h3>
+            <p>${finding.description}</p>
+          </article>`,
+        )
+        .join("")}
+    </div>
+    <p class="project-proof-snapshot" data-reveal>
+      <strong>Audit boundary</strong>
+      ${evidence.snapshot}
+    </p>
+  </section>`;
+}
+
 function renderExternalLinks(project) {
   const links = project.caseStudy.links;
 
@@ -146,6 +187,8 @@ export function renderProjectDetailSections(project) {
       </header>
       ${renderArchitecture(project)}
     </section>
+
+    ${renderRepositoryEvidence(project)}
 
     <section class="section project-detail-evidence" aria-labelledby="project-evidence-title">
       <header data-reveal>

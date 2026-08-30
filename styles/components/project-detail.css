@@ -145,6 +145,7 @@
 
 .project-detail-context > header,
 .project-detail-architecture > header,
+.project-detail-proof > header,
 .project-detail-evidence > header {
   margin-bottom: 2.5rem;
 }
@@ -197,6 +198,82 @@
 
 .project-detail-flow p {
   margin-top: 1rem;
+  font-size: 0.78rem;
+}
+
+.project-proof-metrics,
+.project-proof-findings {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.project-proof-metrics div {
+  min-height: 16rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.project-proof-metrics dt,
+.project-proof-finding__state,
+.project-proof-snapshot strong {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-proof-metrics dd {
+  margin-top: clamp(2rem, 5vw, 4rem);
+  color: var(--color-text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.9;
+}
+
+.project-proof-metrics p {
+  max-width: 24rem;
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+}
+
+.project-proof-findings {
+  margin-top: 0.8rem;
+}
+
+.project-proof-findings article {
+  display: flex;
+  min-height: 22rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  flex-direction: column;
+}
+
+.project-proof-finding__state {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.project-proof-findings h3 {
+  margin-top: auto;
+  padding-top: 5rem;
+  font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+}
+
+.project-proof-findings p {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+}
+
+.project-proof-snapshot {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.25fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin-top: 0.8rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-border-strong);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-size: 0.78rem;
 }
 
@@ -331,8 +408,15 @@
   }
 
   .project-detail-flow,
+  .project-proof-metrics,
+  .project-proof-findings,
   .project-detail-evidence__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-proof-metrics div:last-child,
+  .project-proof-findings article:last-child {
+    grid-column: 1 / -1;
   }
 
   .project-detail-evidence__grid article:last-child {
@@ -351,8 +435,20 @@
 @media (max-width: 760px) {
   .project-detail-context__grid,
   .project-detail-flow,
+  .project-proof-metrics,
+  .project-proof-findings,
   .project-detail-evidence__grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-proof-metrics div:last-child,
+  .project-proof-findings article:last-child {
+    grid-column: auto;
+  }
+
+  .project-proof-snapshot {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .project-detail-context__grid article,
