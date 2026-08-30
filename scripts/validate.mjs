@@ -390,10 +390,71 @@ async function validateAutomationContract() {
   assert(workflow.includes("actions/checkout@v7"), "The quality workflow must use the approved checkout action major.");
   assert(workflow.includes("actions/setup-node@v7"), "The quality workflow must use the approved setup-node action major.");
   assert(workflow.includes("package-manager-cache: false"), "The dependency-free workflow must keep package caching disabled.");
+  assert(workflow.includes("npm ci --ignore-scripts"), "The quality workflow must install the locked production build toolchain without lifecycle scripts.");
+  assert(workflow.includes("npm audit --audit-level=high"), "The quality workflow must reject high-severity build toolchain vulnerabilities.");
+  assert(workflow.includes("npm run build"), "The quality workflow must build the production worker before validation.");
   assert(workflow.includes("npm run validate"), "The quality workflow must execute the same validation command used locally.");
   assert(/^  push:\s*$/m.test(workflow) && /^  pull_request:\s*$/m.test(workflow), "The quality workflow must validate every push and pull request.");
 
   return "local command + GitHub Actions";
+}
+
+async function validateHostingContract() {
+  const hosting = JSON.parse(
+    await fs.readFile(path.join(root, ".openai", "hosting.json"), "utf8"),
+  );
+  const hostingKeys = Object.keys(hosting).sort();
+  assert(
+    JSON.stringify(hostingKeys) === JSON.stringify(["project_id"]),
+    ".openai/hosting.json must contain only the opaque Sites project_id.",
+  );
+  assert(/^appgprj_[A-Za-z0-9]+$/.test(hosting.project_id ?? ""), "The Sites project_id is missing or malformed.");
+
+  const packageData = JSON.parse(
+    await fs.readFile(path.join(root, "package.json"), "utf8"),
+  );
+  const packageLock = JSON.parse(
+    await fs.readFile(path.join(root, "package-lock.json"), "utf8"),
+  );
+  const lockRoot = packageLock.packages?.[""];
+
+  assert(packageData.scripts?.dev === "vite", "package.json must expose the Vite development command.");
+  assert(
+    packageData.scripts?.build === "vite build && node ./scripts/build-worker.mjs",
+    "package.json must build the static application before generating the production worker.",
+  );
+  assert(packageData.engines?.node === ">=22.13.0", "The build engine must satisfy the official Sites plugin requirement.");
+  assert(packageData.devDependencies?.["@openai/sites-vite-plugin"] === "0.2.0", "The official Sites Vite plugin must remain pinned.");
+  assert(packageData.devDependencies?.vite === "8.2.2", "Vite must remain pinned to the audited release.");
+  assert(!packageData.dependencies, "Production runtime dependencies are not allowed in the NEXUS architecture.");
+
+  assert(packageLock.lockfileVersion === 3, "package-lock.json must use the current deterministic lockfile format.");
+  assert(!lockRoot?.dependencies, "The lockfile must not introduce production runtime dependencies.");
+  assert(
+    lockRoot?.devDependencies?.["@openai/sites-vite-plugin"] === "0.2.0"
+      && lockRoot?.devDependencies?.vite === "8.2.2",
+    "The lockfile root must match the pinned production build tools.",
+  );
+  assert(
+    packageLock.packages?.["node_modules/vite"]?.version === "8.2.2",
+    "The resolved Vite package must match the audited release.",
+  );
+
+  const viteSource = await fs.readFile(path.join(root, "vite.config.js"), "utf8");
+  const workerSource = await fs.readFile(
+    path.join(root, "scripts", "build-worker.mjs"),
+    "utf8",
+  );
+  const gitignore = await fs.readFile(path.join(root, ".gitignore"), "utf8");
+
+  assert(viteSource.includes("sites()"), "The production build must use the official Sites Vite plugin.");
+  assert(viteSource.includes("preserveStaticContracts()"), "The production build must preserve data, robots and manifest files.");
+  assert(workerSource.includes('"X-Content-Type-Options": "nosniff"'), "The production worker must prevent MIME sniffing.");
+  assert(workerSource.includes('"X-Frame-Options": "DENY"'), "The production worker must prevent framing.");
+  assert(workerSource.includes('status: 405'), "The production worker must reject unsupported HTTP methods.");
+  assert(gitignore.includes("/node_modules/") && gitignore.includes("/dist/"), "Generated dependencies and build output must remain outside version control.");
+
+  return "Sites worker + locked build toolchain";
 }
 
 function validateProjects(projectData) {
@@ -472,6 +533,7 @@ async function run() {
   const caseStudyCount = validateProjects(parsed.get("projects.json"));
   const contactChannelCount = validateContact(parsed.get("contact.json"));
   const automationContract = await validateAutomationContract();
+  const hostingContract = await validateHostingContract();
 
   if (failures.length) {
     console.error(`\nNEXUS quality gates failed (${failures.length}):`);
@@ -487,6 +549,7 @@ async function run() {
   console.log(`  Accessibility and routing contracts: ${routeCount} route patterns`);
   console.log(`  Metadata and social sharing: ${metadataRouteCount} route definitions, 1200x630 preview`);
   console.log(`  Automation contract: ${automationContract}`);
+  console.log(`  Production delivery: ${hostingContract}`);
   console.log("  Runtime dependencies: 0");
 }
 

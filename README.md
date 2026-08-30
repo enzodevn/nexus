@@ -31,10 +31,11 @@ The repository setting in `.vscode/settings.json` keeps Live Server on port `550
 As an alternative, run:
 
 ```bash
-python -m http.server 4173
+npm install
+npm run dev
 ```
 
-Then visit `http://localhost:4173/#/`.
+Then open the local address printed by Vite.
 
 ## Routes
 
@@ -55,6 +56,7 @@ Then visit `http://localhost:4173/#/`.
 - `data/`: structured content consumed by the views
 - `assets/`: local brand and social-preview media
 - `scripts/`: dependency-free repository validation
+- `.openai/hosting.json`: opaque production-hosting project binding
 - `styles/foundation/`: tokens, reset, typography and motion
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
@@ -65,6 +67,21 @@ Site identity, route metadata and sharing rules are centralized in `data/site.js
 
 No runtime dependencies, frameworks or external assets are required.
 
+The production toolchain is development-only. Vite builds the browser-native application, the official Sites plugin carries deployment metadata and a focused build step emits the Cloudflare Worker-compatible entrypoint used by hosting.
+
+## Production build
+
+Install the locked build tools and create the exact production artifact:
+
+```bash
+npm ci --ignore-scripts
+npm audit --audit-level=high
+npm run build
+npm run validate
+```
+
+Generated output remains in `dist/` and is excluded from version control. The public URL, canonical metadata and sitemap are finalized only after the deployment address is verified.
+
 ## Quality gates
 
 Node.js 20 or newer can validate the complete repository without installing packages:
@@ -73,7 +90,7 @@ Node.js 20 or newer can validate the complete repository without installing pack
 npm run validate
 ```
 
-The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, application routes and the core accessibility contract. GitHub Actions runs the same command for every push and pull request.
+The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, hosting contracts, application routes and the core accessibility contract. GitHub Actions installs, audits and builds the locked production toolchain before running the same validation for every push and pull request.
 
 ## Development workflow
 
