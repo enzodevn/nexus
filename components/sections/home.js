@@ -47,7 +47,7 @@ function renderHero(home, status, focus) {
           </div>
         </div>
         <div class="hero-core__footer">
-          <span>${statusMark()} Operational</span>
+          <span>${statusMark()} Platform stable</span>
           <span>Software · Cloud · Data · Intelligence</span>
         </div>
       </div>
@@ -55,7 +55,7 @@ function renderHero(home, status, focus) {
       <aside class="surface panel hero-side hero-status" data-reveal>
         <div class="panel-heading">
           ${operationLabel("System status")}
-          <span class="module-code">OPS / LIVE</span>
+          <span class="module-code">OPS / STATUS</span>
         </div>
         <dl class="status-list">
           ${status.items
@@ -82,20 +82,20 @@ function renderFeatured(featured) {
         ${motionFrame("soft")}
         <div class="featured-main">
           <div class="featured-heading">
-            ${operationLabel(featured.eyebrow, "cyan")}
-            <span class="module-code">SYS / NGDP</span>
+            ${operationLabel("Featured system", "cyan")}
+            <span class="module-code">${featured.code}</span>
           </div>
           <p class="featured-category">${featured.category}</p>
           <h2 id="featured-title">${featured.name}</h2>
-          <p class="featured-description">${featured.description}</p>
-          ${buttonLink("Open project", featured.href, "text", "→")}
+          <p class="featured-description">${featured.summary}</p>
+          ${buttonLink("Open case study", featured.route, "text", "→")}
         </div>
         <div class="featured-specs">
           <dl>
             <div><dt>Status</dt><dd>${statusMark("active")} ${featured.status}</dd></div>
             <div><dt>Stack</dt><dd class="tag-list">${featured.stack.map((item) => `<span>${item}</span>`).join("")}</dd></div>
-            <div><dt>Next milestone</dt><dd><span class="amber-signal" aria-hidden="true"></span>${featured.nextMilestone}</dd></div>
-            <div><dt>System</dt><dd>${featured.systemCode}</dd></div>
+            <div><dt>Next milestone</dt><dd><span class="amber-signal" aria-hidden="true"></span>${featured.milestones[1].title}</dd></div>
+            <div><dt>System</dt><dd>${featured.code}</dd></div>
           </dl>
         </div>
       </article>
@@ -185,7 +185,13 @@ function renderVision(home) {
     </section>`;
 }
 
-export function renderHomeSections({ home, status, featured, focus, ecosystem }) {
+export function renderHomeSections({ home, status, projects, focus, ecosystem }) {
+  const featured = projects.projects.find((project) => project.featured);
+
+  if (!featured) {
+    throw new Error("The project registry requires one featured project.");
+  }
+
   return `
     ${renderHero(home, status, focus)}
     ${renderFeatured(featured)}

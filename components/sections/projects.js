@@ -1,11 +1,21 @@
 import {
+  buttonLink,
   motionFrame,
   operationLabel,
   sectionHeader,
   statusMark,
 } from "../ui/primitives.js";
 
-function renderSignals(signals) {
+function renderSignals(projects, platformVersion) {
+  const signals = [
+    { value: String(projects.length).padStart(2, "0"), label: "Systems catalogued" },
+    {
+      value: String(projects.filter((project) => project.hasCaseStudy).length).padStart(2, "0"),
+      label: "Case studies ready",
+    },
+    { value: platformVersion, label: "Stable platform" },
+  ];
+
   return `<dl class="projects-signals" aria-label="Project registry summary">
     ${signals
       .map(
@@ -18,9 +28,9 @@ function renderSignals(signals) {
   </dl>`;
 }
 
-function renderFlow(flow) {
-  return `<ol class="project-flow" aria-label="NGDP system flow">
-    ${flow
+function renderArchitecture(architecture, label) {
+  return `<ol class="project-flow" aria-label="${label} system flow">
+    ${architecture
       .map(
         (stage) => `<li>
           <span class="sequence-number">${stage.index}</span>
@@ -49,26 +59,29 @@ function renderMilestones(milestones) {
   </ol>`;
 }
 
-function renderFeaturedProject(featured) {
+function renderFeaturedProject(project) {
   return `<section class="section projects-featured" aria-labelledby="projects-featured-title" data-reveal>
     <article class="surface panel project-primary motion-surface" data-motion-surface>
       ${motionFrame("strong")}
       <header class="project-primary__header">
-        ${operationLabel(featured.eyebrow, "cyan")}
-        <span class="module-code">${featured.code}</span>
+        ${operationLabel("Primary system", "cyan")}
+        <span class="module-code">${project.code}</span>
       </header>
 
       <div class="project-primary__copy">
-        <p class="project-category">${featured.category}</p>
-        <h2 id="projects-featured-title">${featured.name}</h2>
-        <p class="project-primary__description">${featured.description}</p>
-        <p class="project-objective"><strong>Engineering objective</strong>${featured.objective}</p>
+        <p class="project-category">${project.category}</p>
+        <h2 id="projects-featured-title">${project.name}</h2>
+        <p class="project-primary__description">${project.summary}</p>
+        <p class="project-objective"><strong>Engineering objective</strong>${project.objective}</p>
         <div class="tag-list project-stack">
-          ${featured.stack.map((item) => `<span>${item}</span>`).join("")}
+          ${project.stack.map((item) => `<span>${item}</span>`).join("")}
+        </div>
+        <div class="project-primary__actions">
+          ${buttonLink(`Open ${project.shortName} case study`, project.route, "primary", "↗")}
         </div>
       </div>
 
-      ${renderFlow(featured.flow)}
+      ${renderArchitecture(project.architecture, project.shortName)}
     </article>
 
     <aside class="surface panel project-trajectory" aria-labelledby="project-trajectory-title">
@@ -76,66 +89,71 @@ function renderFeaturedProject(featured) {
         ${operationLabel("Delivery sequence")}
         <h2 id="project-trajectory-title">From foundation to intelligence.</h2>
       </header>
-      ${renderMilestones(featured.milestones)}
+      ${renderMilestones(project.milestones)}
     </aside>
   </section>`;
 }
 
-function renderRegistryItem(system, index) {
-  const titleId = `project-system-${index + 1}`;
+function renderRegistryAction(project) {
+  if (project.hasCaseStudy && project.route) {
+    return buttonLink(`Open ${project.shortName} case study`, project.route, "text", "→");
+  }
+
+  return `<span class="project-case-state">Case study planned after the current platform sprint</span>`;
+}
+
+function renderRegistryItem(project, index) {
+  const titleId = `project-system-${project.slug}`;
 
   return `<article class="surface panel project-registry-row ${index === 0 ? "is-primary motion-surface" : ""}" aria-labelledby="${titleId}" data-reveal ${index === 0 ? "data-motion-surface" : ""}>
     ${index === 0 ? motionFrame("soft") : ""}
     <div class="project-registry-row__identity">
       <div class="project-registry-row__topline">
-        <span class="module-code">${system.code}</span>
-        <span class="project-state">${statusMark(system.signal)} ${system.status}</span>
+        <span class="module-code">${project.code}</span>
+        <span class="project-state">${statusMark(project.signal)} ${project.status}</span>
       </div>
-      <p class="project-category">${system.category}</p>
-      <h3 id="${titleId}">${system.name}</h3>
+      <p class="project-category">${project.category}</p>
+      <h3 id="${titleId}">${project.name}</h3>
     </div>
     <div class="project-registry-row__details">
-      <p>${system.summary || system.description}</p>
+      <p>${project.summary}</p>
       <dl>
-        <div><dt>Focus</dt><dd>${system.focus}</dd></div>
-        <div><dt>Stack</dt><dd class="tag-list">${system.stack.map((item) => `<span>${item}</span>`).join("")}</dd></div>
+        <div><dt>Focus</dt><dd>${project.focus}</dd></div>
+        <div><dt>Stack</dt><dd class="tag-list">${project.stack.map((item) => `<span>${item}</span>`).join("")}</dd></div>
       </dl>
+      <div class="project-registry-row__action">${renderRegistryAction(project)}</div>
     </div>
   </article>`;
 }
 
-function renderSystemRegistry(featured, systems, registry) {
-  const entries = [
-    {
-      ...featured,
-      summary: featured.description,
-      focus: featured.focus,
-      signal: "active",
-    },
-    ...systems,
-  ];
-
+function renderSystemRegistry(projects, registry) {
   return `<section class="section projects-registry" aria-labelledby="project-registry-title">
     <header class="projects-registry__header" data-reveal>
       ${sectionHeader(registry.eyebrow, registry.title, registry.description, "h2", "project-registry-title")}
       <span class="module-code">SYS / REGISTRY</span>
     </header>
     <div class="project-registry-list">
-      ${entries.map(renderRegistryItem).join("")}
+      ${projects.map(renderRegistryItem).join("")}
     </div>
   </section>`;
 }
 
-export function renderProjectsSections(projects) {
+export function renderProjectsSections(projectsData) {
+  const featuredProject = projectsData.projects.find((project) => project.featured);
+
+  if (!featuredProject) {
+    throw new Error("The project registry requires one featured project.");
+  }
+
   return `
     <section class="section page-intro projects-intro" data-reveal>
-      <div class="page-index" aria-hidden="true">${projects.meta.index}</div>
+      <div class="page-index" aria-hidden="true">${projectsData.meta.index}</div>
       <div class="projects-intro__layout">
-        ${sectionHeader(projects.meta.eyebrow, projects.meta.title, projects.meta.description, "h1")}
-        ${renderSignals(projects.signals)}
+        ${sectionHeader(projectsData.meta.eyebrow, projectsData.meta.title, projectsData.meta.description, "h1")}
+        ${renderSignals(projectsData.projects, projectsData.meta.platformVersion)}
       </div>
     </section>
-    ${renderFeaturedProject(projects.featured)}
-    ${renderSystemRegistry(projects.featured, projects.systems, projects.registry)}
+    ${renderFeaturedProject(featuredProject)}
+    ${renderSystemRegistry(projectsData.projects, projectsData.registry)}
   `;
 }

@@ -10,7 +10,7 @@
     "name": "NEXUS",
     "slogan": "Building Intelligent Systems.",
     "category": "Technology Laboratory",
-    "version": "V02",
+    "version": "v2.0.0",
     "description": "A personal engineering laboratory focused on Software Engineering, Cloud Computing, Data Engineering, Artificial Intelligence and Cybersecurity.",
     "primaryCta": { "label": "Explore Projects", "href": "#/projects" },
     "secondaryCta": { "label": "View Roadmap", "href": "#/roadmap" }
@@ -63,17 +63,5 @@
     { "title": "Advanced Systems", "description": "Integrated autonomous capabilities." },
     { "title": "Future Research", "description": "New questions at the edge of the stack." }
   ],
-  "futureDirection": "The direction is clear: advanced intelligent systems built on strong engineering foundations.",
-  "otherProjects": [
-    {
-      "name": "HEVY Pipeline",
-      "status": "Data system",
-      "summary": "A focused data pipeline exploring extraction, transformation and reliable delivery."
-    },
-    {
-      "name": "NEXUS",
-      "status": "Platform system",
-      "summary": "The evolving interface, architecture and knowledge system of the laboratory itself."
-    }
-  ]
+  "futureDirection": "The direction is clear: advanced intelligent systems built on strong engineering foundations."
 }

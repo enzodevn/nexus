@@ -3,7 +3,9 @@ let shellAbortController;
 function renderNavigation(items, currentPath) {
   return items
     .map((item) => {
-      const isActive = item.path === currentPath;
+      const isActive =
+        item.path === currentPath ||
+        (item.path !== "/" && currentPath.startsWith(`${item.path}/`));
       return `<li><a href="#${item.path}" ${isActive ? 'aria-current="page"' : ""}>${item.label}</a></li>`;
     })
     .join("");
@@ -24,7 +26,7 @@ export function renderShell(content, home, currentPath) {
         <nav id="primary-navigation" aria-label="Primary navigation">
           <ul>${renderNavigation(home.navigation, currentPath)}</ul>
         </nav>
-        <span class="nav-system-state"><i aria-hidden="true"></i> Systems online</span>
+        <span class="nav-system-state"><i aria-hidden="true"></i> ${home.hero.version} / stable</span>
       </header>
       <main id="main-content" tabindex="-1">${content}</main>
       <footer class="site-footer section">

@@ -136,6 +136,11 @@
   margin-top: 2rem;
 }
 
+.project-primary__actions {
+  display: flex;
+  margin-top: 2rem;
+}
+
 .project-flow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -314,6 +319,20 @@
 .project-registry-row__details .tag-list {
   display: flex;
   gap: 0.35rem;
+}
+
+.project-registry-row__action {
+  display: flex;
+  align-items: center;
+  min-height: 2rem;
+}
+
+.project-case-state {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 @media (max-width: 1050px) {
