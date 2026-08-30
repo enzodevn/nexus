@@ -1,4 +1,4 @@
-# NEXUS V2
+# NEXUS 
 
 Engineering Operations Center implemented as a dependency-free JavaScript SPA. This branch is the selective architectural recomposition of the project preserved in the GitHub history.
 
