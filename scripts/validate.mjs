@@ -151,6 +151,14 @@ async function validateDocumentContract() {
   const requirements = [
     [/<html\s+lang=["'][^"']+["']/i, "index.html must declare a document language."],
     [/<meta\s+name=["']viewport["']/i, "index.html must include responsive viewport metadata."],
+    [/<meta\s+name=["']description["']/i, "index.html must include a search description."],
+    [/<meta\s+name=["']robots["']/i, "index.html must include indexing instructions."],
+    [/<meta\s+property=["']og:title["']/i, "index.html must include an Open Graph title."],
+    [/<meta\s+property=["']og:description["']/i, "index.html must include an Open Graph description."],
+    [/<meta\s+property=["']og:image["']/i, "index.html must include an Open Graph image."],
+    [/<meta\s+name=["']twitter:card["']/i, "index.html must include X card metadata."],
+    [/<link\s+rel=["']manifest["']/i, "index.html must reference the site manifest."],
+    [/<script\s+id=["']site-structured-data["']\s+type=["']application\/ld\+json["']/i, "index.html must expose structured site identity."],
     [/<a[^>]+class=["'][^"']*skip-link[^"']*["'][^>]+href=["']#main-content["']/i, "index.html must provide a skip link to the main content."],
     [/<script\s+type=["']module["'][^>]+src=["'].\/app\/main\.js["']/i, "index.html must load the application as an ES module."],
   ];
@@ -212,6 +220,122 @@ async function validateDocumentContract() {
   );
 
   return routes.length;
+}
+
+async function validateMetadataContract(siteData) {
+  assert(siteData && typeof siteData === "object", "data/site.json must contain an object.");
+  requireString(siteData?.identity?.name, "data/site.json identity.name");
+  requireString(siteData?.identity?.headline, "data/site.json identity.headline");
+  requireString(siteData?.identity?.title, "data/site.json identity.title");
+  requireString(siteData?.identity?.description, "data/site.json identity.description");
+  requireString(siteData?.identity?.language, "data/site.json identity.language");
+  requireString(siteData?.identity?.locale, "data/site.json identity.locale");
+  requireString(siteData?.identity?.themeColor, "data/site.json identity.themeColor");
+  requireString(siteData?.author?.name, "data/site.json author.name");
+  requireString(siteData?.author?.role, "data/site.json author.role");
+  requireList(siteData?.author?.sameAs, "data/site.json author.sameAs", 2);
+
+  for (const [index, profile] of (siteData?.author?.sameAs ?? []).entries()) {
+    assert(/^https:\/\//.test(profile), `data/site.json author.sameAs[${index}] must use HTTPS.`);
+  }
+
+  const expectedRoutes = [
+    "/",
+    "/about",
+    "/contact",
+    "/projects",
+    "/projects/:slug",
+    "/labs",
+    "/roadmap",
+    "*",
+  ];
+  const routeKeys = Object.keys(siteData?.routes ?? {});
+  assert(
+    JSON.stringify(routeKeys) === JSON.stringify(expectedRoutes),
+    `Metadata route contract changed. Expected ${expectedRoutes.join(", ")}; found ${routeKeys.join(", ") || "none"}.`,
+  );
+
+  for (const route of expectedRoutes) {
+    const metadata = siteData?.routes?.[route];
+    requireString(metadata?.title, `data/site.json routes.${route}.title`);
+    requireString(metadata?.description, `data/site.json routes.${route}.description`);
+    requireString(metadata?.type, `data/site.json routes.${route}.type`);
+    requireString(metadata?.robots, `data/site.json routes.${route}.robots`);
+    assert((metadata?.title?.length ?? 0) <= 65, `data/site.json routes.${route}.title must remain at or below 65 characters.`);
+    assert(
+      (metadata?.description?.length ?? 0) >= 80 && (metadata?.description?.length ?? 0) <= 170,
+      `data/site.json routes.${route}.description must remain between 80 and 170 characters.`,
+    );
+  }
+
+  assert(siteData?.routes?.["/projects/:slug"]?.shareImage === false, "Project detail metadata must clear the inherited site image when projects do not provide their own primary image.");
+  assert(siteData?.routes?.["*"]?.robots === "noindex, nofollow", "Unknown routes must remain excluded from indexing.");
+
+  requireString(siteData?.sharing?.image, "data/site.json sharing.image");
+  requireString(siteData?.sharing?.imagePath, "data/site.json sharing.imagePath");
+  requireString(siteData?.sharing?.imageAlt, "data/site.json sharing.imageAlt");
+  assert(/^https:\/\//.test(siteData?.sharing?.image ?? ""), "The social image must use an absolute HTTPS URL.");
+  assert(siteData?.sharing?.width === 1200, "The social image width must be 1200 pixels.");
+  assert(siteData?.sharing?.height === 630, "The social image height must be 630 pixels.");
+
+  const imagePath = path.resolve(root, siteData?.sharing?.imagePath ?? "");
+  assert(imagePath.startsWith(`${root}${path.sep}`), "The social image path must remain inside the repository.");
+  assert(await exists(imagePath), `The social image is missing: ${relative(imagePath)}.`);
+
+  if (await exists(imagePath)) {
+    const image = await fs.readFile(imagePath);
+    const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+    assert(image.subarray(0, 8).equals(pngSignature), "The social preview must be a valid PNG file.");
+    assert(image.length >= 24, "The social preview PNG is incomplete.");
+
+    if (image.length >= 24) {
+      assert(image.readUInt32BE(16) === 1200, "The social preview file must be exactly 1200 pixels wide.");
+      assert(image.readUInt32BE(20) === 630, "The social preview file must be exactly 630 pixels high.");
+    }
+  }
+
+  const html = await fs.readFile(path.join(root, "index.html"), "utf8");
+  assert(html.includes(siteData?.sharing?.image ?? ""), "index.html must use the configured absolute social image URL.");
+  assert(!/<link\s+rel=["']canonical["']/i.test(html), "A canonical URL must not be hard-coded before the production address is confirmed.");
+
+  const structuredMatch = html.match(
+    /<script\s+id=["']site-structured-data["']\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/i,
+  );
+  if (structuredMatch) {
+    try {
+      JSON.parse(structuredMatch[1]);
+    } catch (error) {
+      failures.push(`index.html structured data is not valid JSON: ${error.message}`);
+    }
+  }
+
+  const manifest = JSON.parse(
+    await fs.readFile(path.join(root, "site.webmanifest"), "utf8"),
+  );
+  assert(manifest.name === siteData?.identity?.title, "The web manifest name must match the NEXUS site title.");
+  assert(manifest.theme_color === siteData?.identity?.themeColor, "The web manifest theme color must match site metadata.");
+  requireList(manifest.icons, "site.webmanifest icons");
+
+  for (const icon of manifest.icons ?? []) {
+    requireString(icon.src, "site.webmanifest icon.src");
+    assert(await exists(path.resolve(root, icon.src)), `site.webmanifest references a missing icon: ${icon.src}.`);
+  }
+
+  const robots = await fs.readFile(path.join(root, "robots.txt"), "utf8");
+  assert(/^User-agent:\s*\*/m.test(robots), "robots.txt must define the default crawler policy.");
+  assert(/^Allow:\s*\/$/m.test(robots), "robots.txt must allow the public site surface.");
+  assert(!/^Sitemap:/m.test(robots), "robots.txt must not invent a sitemap URL before production hosting.");
+
+  const metadataSource = await fs.readFile(
+    path.join(root, "app", "core", "metadata.js"),
+    "utf8",
+  );
+  assert(metadataSource.includes("getPublicDocumentUrl"), "Route metadata must derive public URLs only at runtime.");
+  assert(metadataSource.includes("LOCAL_HOSTNAMES"), "Local preview origins must be excluded from canonical metadata.");
+  assert(metadataSource.includes("shareImage !== false"), "Route metadata must support clearing inherited social images.");
+  assert(metadataSource.includes("SoftwareSourceCode"), "Project detail routes must expose record-specific structured data.");
+
+  return routeKeys.length;
 }
 
 function validateContact(contactData) {
@@ -344,6 +468,7 @@ async function run() {
   const { count: jsonCount, parsed } = await validateJson();
   const { count: cssCount, breakpointCount } = await validateCss();
   const routeCount = await validateDocumentContract();
+  const metadataRouteCount = await validateMetadataContract(parsed.get("site.json"));
   const caseStudyCount = validateProjects(parsed.get("projects.json"));
   const contactChannelCount = validateContact(parsed.get("contact.json"));
   const automationContract = await validateAutomationContract();
@@ -360,6 +485,7 @@ async function run() {
   console.log(`  JSON and content contracts: ${jsonCount} datasets, ${caseStudyCount} case studies, ${contactChannelCount} contact channels`);
   console.log(`  CSS structure and responsive rules: ${cssCount} stylesheets, ${breakpointCount} breakpoints`);
   console.log(`  Accessibility and routing contracts: ${routeCount} route patterns`);
+  console.log(`  Metadata and social sharing: ${metadataRouteCount} route definitions, 1200x630 preview`);
   console.log(`  Automation contract: ${automationContract}`);
   console.log("  Runtime dependencies: 0");
 }

@@ -323,18 +323,18 @@
       "milestones": [
         {
           "state": "Current",
-          "title": "Automated quality gates",
-          "description": "Validate syntax, file references, structured data, accessibility contracts and responsive rules through one local command and GitHub Actions."
+          "title": "Sharing metadata and quality gates",
+          "description": "Validate the application locally and through GitHub Actions while route-aware metadata, structured identity and a dedicated social preview establish the public presentation contract."
         },
         {
           "state": "Next",
-          "title": "Sharing and delivery metadata",
-          "description": "Prepare trustworthy page metadata and social previews before the platform receives a public production address."
+          "title": "Production delivery",
+          "description": "Confirm a public address, connect canonical URLs and the sitemap, then validate the deployed surface without weakening the lightweight architecture."
         },
         {
           "state": "Future",
-          "title": "Production delivery",
-          "description": "Add complete metadata, dependable public hosting and operational feedback after quality gates are established."
+          "title": "Operational feedback",
+          "description": "Add privacy-conscious production monitoring only after public hosting and its operational needs are concrete."
         }
       ],
       "caseStudy": {
@@ -396,11 +396,12 @@
           "Hash routing with parameterized project paths and recovery states",
           "Centralized JSON content loaded through a cached data layer",
           "Reusable responsive components with keyboard focus and reduced-motion support",
-          "Dependency-free repository validation executed locally and through GitHub Actions"
+          "Dependency-free repository validation executed locally and through GitHub Actions",
+          "Route-aware search metadata, structured identity and branded social sharing"
         ],
         "challenges": [
           "Extend structural quality checks with rendered browser regression tests when the production target is stable.",
-          "Prepare metadata and production delivery without weakening the lightweight architecture."
+          "Establish canonical URLs, a sitemap and operational checks only after the production address is verified."
         ],
         "learnings": [
           "A durable content model removes more duplication than page-by-page styling fixes.",

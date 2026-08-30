@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# The production sitemap will be declared after the public URL is confirmed.
