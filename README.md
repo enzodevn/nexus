@@ -49,6 +49,7 @@ Then visit `http://localhost:4173/#/`.
 - `app/`: bootstrap, data loader, router, views and animation behavior
 - `components/`: layout, reusable UI primitives, sections and modules
 - `data/`: structured content consumed by the views
+- `scripts/`: dependency-free repository validation
 - `styles/foundation/`: tokens, reset, typography and motion
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
@@ -56,6 +57,16 @@ Then visit `http://localhost:4173/#/`.
 Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
 
 No runtime dependencies, frameworks or external assets are required.
+
+## Quality gates
+
+Node.js 20 or newer can validate the complete repository without installing packages:
+
+```bash
+npm run validate
+```
+
+The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, application routes and the core accessibility contract. GitHub Actions runs the same command for every push and pull request.
 
 ## Development workflow
 

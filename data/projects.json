@@ -323,13 +323,13 @@
       "milestones": [
         {
           "state": "Current",
-          "title": "Audited case-study platform",
-          "description": "Document NGDP, HEVY and NEXUS through one schema, one shared view and revision-linked evidence snapshots."
+          "title": "Automated quality gates",
+          "description": "Validate syntax, file references, structured data, accessibility contracts and responsive rules through one local command and GitHub Actions."
         },
         {
           "state": "Next",
-          "title": "Automated quality gates",
-          "description": "Turn syntax, data, accessibility and responsive checks into repeatable repository validation."
+          "title": "Sharing and delivery metadata",
+          "description": "Prepare trustworthy page metadata and social previews before the platform receives a public production address."
         },
         {
           "state": "Future",
@@ -385,8 +385,8 @@
             {
               "state": "Open gap",
               "signal": "muted",
-              "title": "Production contract is not established",
-              "description": "The repository does not yet provide automated CI, a test runner, production hosting configuration or complete sharing metadata."
+              "title": "Production contract was not established",
+              "description": "At the audited revision, the repository did not yet provide automated CI, a test runner, production hosting configuration or complete sharing metadata."
             }
           ],
           "snapshot": "Audited against branch revision 807c69d on 30 August 2026. The evidence covers the local application architecture and validation surface; public hosting and production operations are intentionally not claimed yet."
@@ -395,10 +395,11 @@
           "Dependency-free single-page application built with browser-native ES modules",
           "Hash routing with parameterized project paths and recovery states",
           "Centralized JSON content loaded through a cached data layer",
-          "Reusable responsive components with keyboard focus and reduced-motion support"
+          "Reusable responsive components with keyboard focus and reduced-motion support",
+          "Dependency-free repository validation executed locally and through GitHub Actions"
         ],
         "challenges": [
-          "Convert the current manual quality audit into repeatable automated gates.",
+          "Extend structural quality checks with rendered browser regression tests when the production target is stable.",
           "Prepare metadata and production delivery without weakening the lightweight architecture."
         ],
         "learnings": [
