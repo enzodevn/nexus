@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "index": "05",
+    "eyebrow": "Professional connection",
+    "title": "Let the work start the conversation.",
+    "description": "NEXUS keeps professional contact direct, verifiable and connected to the engineering evidence presented across the platform."
+  },
+  "position": {
+    "eyebrow": "Contact protocol",
+    "title": "Clear context creates a better first conversation.",
+    "description": "For professional opportunities, technical collaboration or project discussion, choose the channel that best matches the context. The public work remains available before any conversation begins.",
+    "supporting": "No contact form, tracking layer or automated outreach sits between the message and its destination."
+  },
+  "profile": {
+    "eyebrow": "Professional profile",
+    "name": "Enzo",
+    "role": "Software Engineering student",
+    "status": "Verified public channels",
+    "description": "Focused on Backend Engineering, Data Engineering and dependable systems built through visible, documented progression.",
+    "focus": [
+      "Backend Engineering",
+      "Data Engineering",
+      "Cloud Foundations",
+      "Software Architecture"
+    ]
+  },
+  "channels": {
+    "eyebrow": "Verified channels",
+    "title": "Choose the right professional surface.",
+    "description": "Every destination below was explicitly confirmed for public professional use.",
+    "items": [
+      {
+        "code": "01",
+        "name": "LinkedIn",
+        "type": "Professional profile",
+        "value": "Enzo Félix Martins",
+        "description": "Career context, professional background and direct networking.",
+        "action": "Open LinkedIn",
+        "href": "https://www.linkedin.com/in/enzo-f%C3%A9lix-martins-88b595219/",
+        "signal": "active"
+      },
+      {
+        "code": "02",
+        "name": "Email",
+        "type": "Direct contact",
+        "value": "enzodevnordic@gmail.com",
+        "description": "A direct channel for professional opportunities and focused project conversations.",
+        "action": "Send email",
+        "href": "mailto:enzodevnordic@gmail.com",
+        "signal": "active"
+      },
+      {
+        "code": "03",
+        "name": "GitHub",
+        "type": "Engineering evidence",
+        "value": "@enzodevn",
+        "description": "Repositories, commit history and the public technical record behind NEXUS.",
+        "action": "Open GitHub",
+        "href": "https://github.com/enzodevn",
+        "signal": "active"
+      }
+    ]
+  },
+  "context": {
+    "eyebrow": "Useful context",
+    "title": "A concise message is enough.",
+    "description": "The strongest introductions explain the opportunity, the relevant system and the next useful step.",
+    "items": [
+      {
+        "title": "Professional opportunity",
+        "description": "Include the role, team or problem space and why the current engineering trajectory may be relevant."
+      },
+      {
+        "title": "Technical collaboration",
+        "description": "Reference the project, repository or engineering question that provides context for the conversation."
+      },
+      {
+        "title": "Project discussion",
+        "description": "Point to the case-study evidence or architectural decision you would like to explore further."
+      }
+    ]
+  },
+  "closing": {
+    "eyebrow": "Review before outreach",
+    "title": "The public systems provide the starting point.",
+    "description": "Explore the project registry for verified implementation evidence or review the builder profile for the broader engineering direction.",
+    "primaryCta": {
+      "label": "Explore projects",
+      "href": "#/projects"
+    },
+    "secondaryCta": {
+      "label": "Review profile",
+      "href": "#/about"
+    }
+  }
+}

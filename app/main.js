@@ -3,6 +3,7 @@ import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
 import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
+import { renderContactView } from "./views/contact.js";
 import { renderHomeView } from "./views/home.js";
 import { renderLabsView } from "./views/labs.js";
 import { renderNotFoundView } from "./views/not-found.js";
@@ -72,6 +73,7 @@ try {
   const routes = {
     "/": () => renderHomeView(data),
     "/about": () => renderAboutView(),
+    "/contact": () => renderContactView(),
     "/projects": () => renderProjectsView(),
     "/projects/:slug": ({ slug }) => renderProjectDetailView(slug),
     "/labs": () => renderLabsView(),
