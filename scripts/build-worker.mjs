@@ -15,6 +15,7 @@ const MIME_TYPES = {
   ".svg": "image/svg+xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
   ".webmanifest": "application/manifest+json; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
 };
 
 async function collectFiles(directory) {
@@ -46,7 +47,7 @@ function getCacheControl(publicPath) {
 
   if (isHashedAsset) return "public, max-age=31536000, immutable";
   if (publicPath.startsWith("/data/")) return "public, max-age=300, must-revalidate";
-  if (["/index.html", "/robots.txt", "/site.webmanifest"].includes(publicPath)) {
+  if (["/index.html", "/robots.txt", "/site.webmanifest", "/sitemap.xml"].includes(publicPath)) {
     return "public, max-age=0, must-revalidate";
   }
 

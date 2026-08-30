@@ -8,7 +8,7 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 
 function preserveStaticContracts() {
   const directories = ["assets", "data"];
-  const files = ["robots.txt", "site.webmanifest"];
+  const files = ["robots.txt", "site.webmanifest", "sitemap.xml"];
 
   return {
     name: "nexus-static-contracts",

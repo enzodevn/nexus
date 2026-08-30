@@ -34,13 +34,15 @@ function setCanonical(url) {
   canonical.setAttribute("href", url);
 }
 
-function getPublicDocumentUrl() {
-  if (!["http:", "https:"].includes(window.location.protocol)) return null;
-  if (LOCAL_HOSTNAMES.has(window.location.hostname)) return null;
-
-  const url = new URL(window.location.href);
-  url.hash = "";
-  return url.href;
+function getPublicDocumentUrl(site) {
+  try {
+    const url = new URL(site.identity.url);
+    if (url.protocol !== "https:" || LOCAL_HOSTNAMES.has(url.hostname)) return null;
+    url.hash = "";
+    return url.href;
+  } catch {
+    return null;
+  }
 }
 
 function getProjectMetadata(site, projects, slug) {
@@ -127,7 +129,7 @@ function updateShareImage(site, shouldShare) {
 
 export function applyPageMetadata({ site, projects, path, pattern, params }) {
   const metadata = resolveMetadata(site, projects, path, pattern, params);
-  const publicUrl = getPublicDocumentUrl();
+  const publicUrl = getPublicDocumentUrl(site);
   const shareImage = metadata.shareImage !== false;
 
   document.documentElement.lang = site.identity.language;

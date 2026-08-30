@@ -323,13 +323,13 @@
       "milestones": [
         {
           "state": "Current",
-          "title": "Sharing metadata and quality gates",
-          "description": "Validate the application locally and through GitHub Actions while route-aware metadata, structured identity and a dedicated social preview establish the public presentation contract."
+          "title": "Production baseline",
+          "description": "Operate a locked, audited build through a verified public origin while canonical metadata, structured identity and a dedicated social preview establish the delivery contract."
         },
         {
           "state": "Next",
-          "title": "Production delivery",
-          "description": "Confirm a public address, connect canonical URLs and the sitemap, then validate the deployed surface without weakening the lightweight architecture."
+          "title": "Production validation",
+          "description": "Observe crawlability, external link previews and public behavior against the deployed surface without weakening the lightweight architecture."
         },
         {
           "state": "Future",

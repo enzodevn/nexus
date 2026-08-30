@@ -2,6 +2,8 @@
 
 NEXUS is a personal Technology Laboratory and engineering portfolio built as a dependency-free JavaScript SPA. It connects projects, research and technical progression through one modular, data-driven interface.
 
+Production: [nexus-enzodevn.laptopenzo.chatgpt.site](https://nexus-enzodevn.laptopenzo.chatgpt.site/)
+
 ## Current state
 
 The stable `v2.0.0` architecture is integrated into `master`. Current development closes the remaining presentation and delivery gates around the reusable case-study platform.
@@ -63,7 +65,7 @@ Then open the local address printed by Vite.
 
 Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
 
-Site identity, route metadata and sharing rules are centralized in `data/site.json`. Canonical URLs and the production sitemap remain intentionally unset until a verified public address exists.
+Site identity, the verified production URL, route metadata and sharing rules are centralized in `data/site.json`. The canonical document URL, Open Graph identity, social image and sitemap all resolve through the production origin.
 
 No runtime dependencies, frameworks or external assets are required.
 
@@ -80,7 +82,7 @@ npm run build
 npm run validate
 ```
 
-Generated output remains in `dist/` and is excluded from version control. The public URL, canonical metadata and sitemap are finalized only after the deployment address is verified.
+Generated output remains in `dist/` and is excluded from version control. Production publishing uses the verified Sites address and the same commit SHA validated by the repository workflow.
 
 ## Quality gates
 
