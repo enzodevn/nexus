@@ -4,7 +4,7 @@
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
     "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
-    "platformVersion": "v3.0.0-rc.1"
+    "platformVersion": "v3.0.0"
   },
   "registry": {
     "eyebrow": "Connected systems",
@@ -290,7 +290,7 @@
       "shortName": "NEXUS",
       "name": "NEXUS",
       "category": "Engineering Portfolio Platform",
-      "status": "V3 release candidate",
+      "status": "V3 stable",
       "signal": "active",
       "featured": false,
       "hasCaseStudy": true,
@@ -324,7 +324,7 @@
         {
           "state": "Current",
           "title": "Production baseline",
-          "description": "Operate a locked, audited build through a verified public origin while canonical metadata, structured identity and a dedicated social preview establish the delivery contract."
+          "description": "Operate a locked, audited build through a verified private deployment while canonical metadata, structured identity and a dedicated social preview establish the delivery contract."
         },
         {
           "state": "Next",

@@ -28,6 +28,9 @@
 }
 
 .project-breadcrumb a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   color: var(--color-cyan);
 }
 

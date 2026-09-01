@@ -11,9 +11,9 @@
     "name": "NEXUS",
     "slogan": "Building Intelligent Systems.",
     "category": "Technology Laboratory",
-    "version": "v3.0.0-rc.1",
-    "releaseState": "readiness",
-    "platformState": "Release candidate",
+    "version": "v3.0.0",
+    "releaseState": "stable",
+    "platformState": "Stable release",
     "description": "A personal engineering laboratory focused on Software Engineering, Cloud Computing, Data Engineering, Artificial Intelligence and Cybersecurity.",
     "primaryCta": { "label": "Explore Projects", "href": "#/projects" },
     "secondaryCta": { "label": "View Roadmap", "href": "#/roadmap" }
