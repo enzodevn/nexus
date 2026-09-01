@@ -14,6 +14,10 @@ function renderNavigation(items, currentPath) {
 export function renderShell(content, home, currentPath) {
   return `
     <div class="site-frame">
+      <div class="ambient-signals" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
       <header class="floating-nav" data-nav>
         <a class="brand-mark" href="#/" aria-label="NEXUS home">
           <span class="brand-symbol" aria-hidden="true">N</span>
@@ -26,7 +30,7 @@ export function renderShell(content, home, currentPath) {
         <nav id="primary-navigation" aria-label="Primary navigation">
           <ul>${renderNavigation(home.navigation, currentPath)}</ul>
         </nav>
-        <span class="nav-system-state"><i aria-hidden="true"></i> ${home.hero.version} / stable</span>
+        <span class="nav-system-state"><i aria-hidden="true"></i> ${home.hero.version} / ${home.hero.releaseState}</span>
       </header>
       <main id="main-content" tabindex="-1">${content}</main>
       <footer class="site-footer section">
@@ -40,6 +44,10 @@ export function renderShell(content, home, currentPath) {
         </div>
         <a href="#main-content" class="back-to-top">Back to top <span aria-hidden="true">↑</span></a>
       </footer>
+      <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="true">
+        <span class="motion-toggle__signal" aria-hidden="true"></span>
+        <span data-motion-label>Motion on</span>
+      </button>
     </div>`;
 }
 

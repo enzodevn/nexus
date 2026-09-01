@@ -12,7 +12,11 @@ export function motionFrame(tone = "soft") {
 }
 
 export function buttonLink(label, href, variant = "secondary", icon = "") {
-  return `<a class="button button--${variant}" href="${href}">
+  const externalAttributes = /^https?:\/\//i.test(href)
+    ? ' target="_blank" rel="noopener noreferrer"'
+    : "";
+
+  return `<a class="button button--${variant}" href="${href}"${externalAttributes}>
     <span>${label}</span>${icon ? `<span aria-hidden="true">${icon}</span>` : ""}
   </a>`;
 }

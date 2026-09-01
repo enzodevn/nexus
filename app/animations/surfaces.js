@@ -1,10 +1,12 @@
+import { prefersReducedMotion } from "../core/motion.js";
+
 let surfaceAbortController;
 
 export function initializeSurfaceMotion(root = document) {
   surfaceAbortController?.abort();
   surfaceAbortController = new AbortController();
 
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = prefersReducedMotion();
   const supportsPointerMotion = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   if (reduceMotion || !supportsPointerMotion) return;

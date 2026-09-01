@@ -1,10 +1,12 @@
+import { prefersReducedMotion } from "../core/motion.js";
+
 let activeObserver;
 
 export function initializeRevealAnimations(root = document) {
   activeObserver?.disconnect();
 
   const elements = [...root.querySelectorAll("[data-reveal]")];
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion = prefersReducedMotion();
 
   if (reduceMotion || !("IntersectionObserver" in window)) {
     elements.forEach((element) => element.classList.add("is-visible"));

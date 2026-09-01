@@ -6,7 +6,7 @@ Production: [nexus-enzodevn.laptopenzo.chatgpt.site](https://nexus-enzodevn.lapt
 
 ## Current state
 
-The stable `v2.0.0` architecture is integrated into `master`. Current development closes the remaining presentation and delivery gates around the reusable case-study platform.
+The stable V2 architecture is integrated into `master`. Current development runs as `v3.0.0-rc.1` on `v3-portfolio-readiness`, closing the remaining accuracy, presentation and delivery gates before the final V3 release.
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
@@ -86,7 +86,7 @@ Generated output remains in `dist/` and is excluded from version control. Produc
 
 ## Quality gates
 
-Node.js 20 or newer can validate the complete repository without installing packages:
+Node.js 22.13 or newer can validate the complete repository without installing packages:
 
 ```bash
 npm run validate

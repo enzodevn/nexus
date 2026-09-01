@@ -51,7 +51,9 @@ function getProjectMetadata(site, projects, slug) {
 
   return {
     ...site.routes["/projects/:slug"],
-    title: `${project.name} — NEXUS Case Study`,
+    title: project.slug === "nexus"
+      ? "NEXUS Platform Case Study"
+      : `${project.name} — NEXUS Case Study`,
     description: project.summary,
     project,
   };

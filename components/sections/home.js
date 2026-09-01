@@ -29,7 +29,7 @@ function renderHero(home, status, focus) {
         <p class="panel-note">Priority disciplines currently shaping the laboratory.</p>
       </aside>
 
-      <div class="surface panel hero-core motion-surface" data-reveal data-motion-surface>
+      <div class="surface panel hero-core motion-surface home-neon-card" data-reveal data-motion-surface>
         ${motionFrame("strong")}
         <div class="core-ambient" aria-hidden="true"></div>
         <div class="hero-core__topline">
@@ -47,7 +47,7 @@ function renderHero(home, status, focus) {
           </div>
         </div>
         <div class="hero-core__footer">
-          <span>${statusMark()} Platform stable</span>
+          <span>${statusMark()} ${home.hero.platformState}</span>
           <span>Software · Cloud · Data · Intelligence</span>
         </div>
       </div>
@@ -78,7 +78,7 @@ function renderHero(home, status, focus) {
 function renderFeatured(featured) {
   return `
     <section class="section" aria-labelledby="featured-title" data-reveal>
-      <article class="surface panel featured-system motion-surface" data-motion-surface>
+      <article class="surface panel featured-system motion-surface home-neon-card" data-motion-surface>
         ${motionFrame("soft")}
         <div class="featured-main">
           <div class="featured-heading">
@@ -137,7 +137,7 @@ function renderLabs(home) {
         ${buttonLink("Explore labs", "#/labs", "secondary", "→")}
       </div>
       <div class="labs-grid">
-        <article class="surface panel lab-primary motion-surface" data-reveal data-motion-surface>
+        <article class="surface panel lab-primary motion-surface home-neon-card" data-reveal data-motion-surface>
           ${motionFrame("soft")}
           <div class="lab-visual" aria-hidden="true">
             <span></span><span></span><span></span><span></span><i></i>

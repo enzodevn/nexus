@@ -4,7 +4,7 @@
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
     "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
-    "platformVersion": "v2.0.0"
+    "platformVersion": "v3.0.0-rc.1"
   },
   "registry": {
     "eyebrow": "Connected systems",
@@ -290,7 +290,7 @@
       "shortName": "NEXUS",
       "name": "NEXUS",
       "category": "Engineering Portfolio Platform",
-      "status": "V3 platform sprint",
+      "status": "V3 release candidate",
       "signal": "active",
       "featured": false,
       "hasCaseStudy": true,
@@ -354,14 +354,14 @@
           "description": "The current branch was inspected and its complete JavaScript, JSON and CSS surface was validated before these claims were added to the NEXUS case study.",
           "metrics": [
             {
-              "value": "07",
+              "value": "08",
               "label": "Route patterns",
-              "description": "Six intentional application routes plus a wildcard recovery state."
+              "description": "Seven intentional application route patterns plus a wildcard recovery state."
             },
             {
-              "value": "42",
+              "value": "49",
               "label": "Checked surfaces",
-              "description": "Twenty-one JavaScript modules, thirteen CSS files and eight JSON datasets."
+              "description": "Twenty-five JavaScript modules, fourteen CSS files and ten JSON datasets."
             },
             {
               "value": "00",
@@ -385,11 +385,11 @@
             {
               "state": "Open gap",
               "signal": "muted",
-              "title": "Production contract was not established",
-              "description": "At the audited revision, the repository did not yet provide automated CI, a test runner, production hosting configuration or complete sharing metadata."
+              "title": "Independent route discovery remains deferred",
+              "description": "The production contract now includes CI, hosting, canonical metadata, a sitemap and social sharing. Hash routes still share one canonical document until the public routing strategy is finalized."
             }
           ],
-          "snapshot": "Audited against branch revision 807c69d on 30 August 2026. The evidence covers the local application architecture and validation surface; public hosting and production operations are intentionally not claimed yet."
+          "snapshot": "Validated against checkpoint 9fbaca2 on 1 September 2026. The evidence covers the application architecture, automated quality gates, production delivery contract and verified private deployment; independent public route discovery remains outside this boundary."
         },
         "capabilities": [
           "Dependency-free single-page application built with browser-native ES modules",
@@ -401,7 +401,7 @@
         ],
         "challenges": [
           "Extend structural quality checks with rendered browser regression tests when the production target is stable.",
-          "Establish canonical URLs, a sitemap and operational checks only after the production address is verified."
+          "Choose an independently crawlable routing strategy before the portfolio becomes public."
         ],
         "learnings": [
           "A durable content model removes more duplication than page-by-page styling fixes.",
@@ -414,7 +414,7 @@
           },
           {
             "label": "Inspect audited revision",
-            "href": "https://github.com/enzodevn/nexus/commit/807c69dd8ba65139581bdab296c89af77cee2ce3"
+            "href": "https://github.com/enzodevn/nexus/commit/9fbaca23bfa512d09e611d4d0ab0107478a37156"
           }
         ]
       }

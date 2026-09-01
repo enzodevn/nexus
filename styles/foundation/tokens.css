@@ -21,6 +21,13 @@
   --font-body: "Aptos", "Segoe UI Variable Text", "SF Pro Text", system-ui, sans-serif;
   --font-mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
 
+  --type-display: clamp(3.15rem, 5.6vw, 6rem);
+  --type-page: clamp(2.35rem, 4.5vw, 4.65rem);
+  --type-feature: clamp(1.95rem, 3.6vw, 3.7rem);
+  --type-section: clamp(1.5rem, 2.45vw, 2.5rem);
+  --type-card: clamp(1.1rem, 1.5vw, 1.45rem);
+  --type-micro: clamp(0.68rem, 0.64rem + 0.12vw, 0.74rem);
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

@@ -106,6 +106,76 @@
   );
 }
 
+.motion-surface:not(.home-neon-card) {
+  animation: primary-neon-breathe 6.8s ease-in-out infinite;
+}
+
+.motion-surface:not(.home-neon-card) > .neon-frame {
+  --neon-cycle: 8.5s;
+  --neon-opacity: 0.86;
+  --scan-opacity: 0.72;
+  box-shadow:
+    inset 0 0 0 1px rgba(121, 216, 255, 0.24),
+    inset 0 0 2.2rem rgba(75, 159, 255, 0.055),
+    0 0 1.8rem rgba(75, 159, 255, 0.08);
+}
+
+.project-registry-row.motion-surface,
+.labs-track.motion-surface,
+.roadmap-level.motion-surface {
+  animation-delay: -3.4s;
+}
+
+@supports (-webkit-mask-composite: xor) {
+  .motion-surface:not(.home-neon-card) > .neon-frame::before {
+    filter:
+      drop-shadow(0 0 0.4rem rgba(121, 216, 255, 0.66))
+      drop-shadow(0 0 0.9rem rgba(75, 159, 255, 0.28));
+  }
+}
+
+.home-neon-card {
+  animation: home-neon-breathe 4.6s ease-in-out infinite;
+}
+
+.featured-system.home-neon-card {
+  animation-delay: -1.55s;
+}
+
+.lab-primary.home-neon-card {
+  animation-delay: -3.1s;
+}
+
+.home-neon-card > .neon-frame {
+  --neon-cycle: 6.5s;
+  --neon-opacity: 1;
+  --scan-opacity: 0.96;
+  box-shadow:
+    inset 0 0 0 1px rgba(121, 216, 255, 0.34),
+    inset 0 0 2.8rem rgba(75, 159, 255, 0.08),
+    0 0 2.5rem rgba(75, 159, 255, 0.13);
+}
+
+.home-neon-card > .neon-frame::after {
+  height: 28%;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(121, 216, 255, 0.06),
+    rgba(121, 216, 255, 0.17),
+    transparent
+  );
+}
+
+@supports (-webkit-mask-composite: xor) {
+  .home-neon-card > .neon-frame::before {
+    padding: 1.5px;
+    filter:
+      drop-shadow(0 0 0.5rem rgba(121, 216, 255, 0.82))
+      drop-shadow(0 0 1.2rem rgba(75, 159, 255, 0.42));
+  }
+}
+
 .page-index {
   animation: index-drift 9s ease-in-out infinite;
 }
