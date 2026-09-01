@@ -240,7 +240,7 @@ body::after {
   width: fit-content;
   color: #8291a7;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: var(--type-micro);
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.13em;
@@ -269,7 +269,7 @@ body::after {
 .sequence-number {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -334,7 +334,7 @@ body::after {
 }
 
 .button--text {
-  min-height: auto;
+  min-height: 2.75rem;
   padding: 0.5rem 0;
   color: var(--color-cyan);
   border-radius: 0;
@@ -404,6 +404,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  min-height: 2.75rem;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -456,7 +457,7 @@ body::after {
   gap: 0.45rem;
   color: #8090a5;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -477,7 +478,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  min-height: 2.25rem;
+  min-height: 2.75rem;
   padding: 0.55rem 0.72rem;
   color: #9dadbf;
   border: 1px solid rgba(121, 216, 255, 0.18);
@@ -485,7 +486,7 @@ body::after {
   background: rgba(5, 10, 18, 0.78);
   box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.035);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   backdrop-filter: blur(14px);
@@ -514,8 +515,8 @@ html[data-motion="reduced"] .motion-toggle__signal {
 
 .nav-toggle {
   display: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   padding: 0.7rem;
   border: 1px solid var(--color-border);
   border-radius: 0.65rem;
@@ -559,6 +560,9 @@ html[data-motion="reduced"] .motion-toggle__signal {
 }
 
 .back-to-top {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   color: var(--color-text-secondary);
 }
 

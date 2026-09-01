@@ -40,7 +40,7 @@
 .projects-signals dt {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -91,7 +91,7 @@
 .project-category {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -124,7 +124,7 @@
 .project-objective strong {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: var(--type-micro);
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -208,7 +208,7 @@
   gap: 0.55rem;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -306,7 +306,7 @@
 .project-registry-row__details dt {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -324,13 +324,13 @@
 .project-registry-row__action {
   display: flex;
   align-items: center;
-  min-height: 2rem;
+  min-height: 2.75rem;
 }
 
 .project-case-state {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }

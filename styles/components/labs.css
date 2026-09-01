@@ -42,7 +42,7 @@
 .labs-track__details > div > span {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -93,7 +93,7 @@
 .labs-field {
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -221,7 +221,7 @@
   gap: 0.55rem;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: var(--type-micro);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }

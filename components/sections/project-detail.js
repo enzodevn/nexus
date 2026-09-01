@@ -64,12 +64,37 @@ function renderRoadmap(project) {
   </ol>`;
 }
 
+function renderSectionNavigation(project) {
+  const sections = [
+    ["Overview", "project-overview"],
+    ["Context", "project-context"],
+    ["Architecture", "project-architecture"],
+    ...(project.caseStudy.evidence ? [["Repository evidence", "project-proof"]] : []),
+    ["Engineering evidence", "project-evidence"],
+    ["Roadmap", "project-delivery"],
+    ["Access", "project-links"],
+  ];
+
+  return `<nav class="section surface panel project-detail-navigation" aria-label="Case study sections" data-reveal>
+    ${operationLabel("Case study map", "cyan")}
+    <ol>
+      ${sections
+        .map(
+          ([label, id], index) => `<li>
+            <a href="#${id}"><span>${String(index + 1).padStart(2, "0")}</span>${label}</a>
+          </li>`,
+        )
+        .join("")}
+    </ol>
+  </nav>`;
+}
+
 function renderRepositoryEvidence(project) {
   const evidence = project.caseStudy.evidence;
 
   if (!evidence) return "";
 
-  return `<section class="section project-detail-proof" aria-labelledby="project-proof-title">
+  return `<section id="project-proof" class="section project-detail-proof" aria-labelledby="project-proof-title" tabindex="-1">
     <header data-reveal>
       ${sectionHeader(evidence.eyebrow, evidence.title, evidence.description, "h2", "project-proof-title")}
     </header>
@@ -147,7 +172,9 @@ export function renderProjectDetailSections(project) {
       </div>
     </section>
 
-    <section class="section project-detail-overview" aria-labelledby="project-overview-title" data-reveal>
+    ${renderSectionNavigation(project)}
+
+    <section id="project-overview" class="section project-detail-overview" aria-labelledby="project-overview-title" data-reveal tabindex="-1">
       <article class="surface panel project-detail-mission motion-surface" data-motion-surface>
         ${motionFrame("strong")}
         ${operationLabel("Engineering objective", "cyan")}
@@ -163,7 +190,7 @@ export function renderProjectDetailSections(project) {
       </aside>
     </section>
 
-    <section class="section project-detail-context" aria-labelledby="project-context-title">
+    <section id="project-context" class="section project-detail-context" aria-labelledby="project-context-title" tabindex="-1">
       <header data-reveal>
         ${sectionHeader("System context", "Problem and engineering response", "The case study separates the reason for the project from the system being built to address it.", "h2", "project-context-title")}
       </header>
@@ -181,7 +208,7 @@ export function renderProjectDetailSections(project) {
       </div>
     </section>
 
-    <section class="section project-detail-architecture" aria-labelledby="project-architecture-title">
+    <section id="project-architecture" class="section project-detail-architecture" aria-labelledby="project-architecture-title" tabindex="-1">
       <header data-reveal>
         ${sectionHeader("System architecture", "A traceable flow from source to useful output", "Each stage has one clear responsibility and creates a dependable input for the next.", "h2", "project-architecture-title")}
       </header>
@@ -190,7 +217,7 @@ export function renderProjectDetailSections(project) {
 
     ${renderRepositoryEvidence(project)}
 
-    <section class="section project-detail-evidence" aria-labelledby="project-evidence-title">
+    <section id="project-evidence" class="section project-detail-evidence" aria-labelledby="project-evidence-title" tabindex="-1">
       <header data-reveal>
         ${sectionHeader("Technical evidence", "Capabilities, challenges and learning", "The project is documented through demonstrated foundations and explicit engineering decisions, not speculative features.", "h2", "project-evidence-title")}
       </header>
@@ -210,14 +237,14 @@ export function renderProjectDetailSections(project) {
       </div>
     </section>
 
-    <section class="section surface panel project-detail-delivery" aria-labelledby="project-delivery-title" data-reveal>
+    <section id="project-delivery" class="section surface panel project-detail-delivery" aria-labelledby="project-delivery-title" data-reveal tabindex="-1">
       <header>
         ${sectionHeader("Delivery path", "Roadmap grounded in working foundations", "Future capabilities remain visible without being presented as completed work.", "h2", "project-delivery-title")}
       </header>
       ${renderRoadmap(project)}
     </section>
 
-    <section class="section surface panel project-detail-links" aria-labelledby="project-links-title" data-reveal>
+    <section id="project-links" class="section surface panel project-detail-links" aria-labelledby="project-links-title" data-reveal tabindex="-1">
       <div>
         ${operationLabel("Project access")}
         <h2 id="project-links-title">${accessTitle}</h2>

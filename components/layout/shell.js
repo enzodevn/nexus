@@ -30,7 +30,7 @@ export function renderShell(content, home, currentPath) {
         <nav id="primary-navigation" aria-label="Primary navigation">
           <ul>${renderNavigation(home.navigation, currentPath)}</ul>
         </nav>
-        <span class="nav-system-state"><i aria-hidden="true"></i> ${home.hero.version} / stable</span>
+        <span class="nav-system-state"><i aria-hidden="true"></i> ${home.hero.version} / ${home.hero.releaseState}</span>
       </header>
       <main id="main-content" tabindex="-1">${content}</main>
       <footer class="site-footer section">

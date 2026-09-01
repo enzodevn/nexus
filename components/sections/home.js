@@ -47,7 +47,7 @@ function renderHero(home, status, focus) {
           </div>
         </div>
         <div class="hero-core__footer">
-          <span>${statusMark()} Platform stable</span>
+          <span>${statusMark()} ${home.hero.platformState}</span>
           <span>Software · Cloud · Data · Intelligence</span>
         </div>
       </div>
