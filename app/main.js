@@ -2,6 +2,11 @@ import { initializeRevealAnimations } from "./animations/reveal.js";
 import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
 import { applyPageMetadata } from "./core/metadata.js";
+import {
+  bindMotionPreferenceControl,
+  initializeMotionPreference,
+  prefersReducedMotion,
+} from "./core/motion.js";
 import { Router } from "./router/router.js";
 import { renderAboutView } from "./views/about.js";
 import { renderContactView } from "./views/contact.js";
@@ -14,6 +19,7 @@ import { renderRoadmapView } from "./views/roadmap.js";
 import { bindShellInteractions, renderShell } from "../components/layout/shell.js";
 
 const app = document.querySelector("#app");
+initializeMotionPreference();
 
 function getInPageTarget(hash) {
   if (!hash?.startsWith("#") || hash.startsWith("#/")) return null;
@@ -26,7 +32,8 @@ function getInPageTarget(hash) {
 }
 
 function focusAndScrollTo(target) {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotion =
+    prefersReducedMotion() || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   target.focus({ preventScroll: true });
   target.scrollIntoView({
@@ -85,6 +92,7 @@ try {
 
       app.innerHTML = renderShell(content, data.home, path);
       bindShellInteractions(app);
+      bindMotionPreferenceControl(app);
       initializeRevealAnimations(app);
       initializeSurfaceMotion(app);
       applyPageMetadata({

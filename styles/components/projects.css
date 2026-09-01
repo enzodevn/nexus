@@ -99,7 +99,7 @@
 .project-primary h2 {
   max-width: 62rem;
   margin-top: 1.25rem;
-  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-size: var(--type-feature);
 }
 
 .project-primary__description {
@@ -183,7 +183,7 @@
 .project-trajectory h2 {
   max-width: 22rem;
   margin-top: 1.25rem;
-  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-size: var(--type-section);
 }
 
 .project-milestones {
@@ -274,7 +274,7 @@
 
 .project-registry-row h3 {
   margin-top: 0.8rem;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--type-section);
 }
 
 .project-registry-row__details {
@@ -444,7 +444,7 @@
   }
 
   .project-primary h2 {
-    font-size: 2.7rem;
+    font-size: var(--type-feature);
   }
 
   .project-objective {

@@ -1,8 +1,8 @@
 .page-intro {
   position: relative;
-  min-height: 35rem;
-  margin-top: clamp(4rem, 8vw, 7rem);
-  padding-block: clamp(6rem, 12vw, 10rem);
+  min-height: 27rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(4rem, 8vw, 7rem);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -14,7 +14,7 @@
 
 .page-intro h1 {
   max-width: 65rem;
-  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-size: var(--type-page);
 }
 
 .page-intro .section-header p {
@@ -87,7 +87,7 @@
 
 .about-purpose h2 {
   max-width: 52rem;
-  font-size: clamp(2.5rem, 5vw, 5.2rem);
+  font-size: var(--type-feature);
 }
 
 .about-purpose__copy p {
@@ -131,7 +131,7 @@
 
 .about-profile h2 {
   margin-top: 1.4rem;
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-size: var(--type-feature);
 }
 
 .about-profile__role {
@@ -169,7 +169,7 @@
 }
 
 .about-principles__intro .section-header h2 {
-  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  font-size: var(--type-section);
 }
 
 .about-principles__list {
@@ -356,7 +356,7 @@
   }
 
   .page-intro h1 {
-    font-size: 3.15rem;
+    font-size: var(--type-page);
   }
 
   .about-purpose,
@@ -367,7 +367,7 @@
   }
 
   .about-purpose h2 {
-    font-size: 2.5rem;
+    font-size: var(--type-feature);
   }
 
   .about-principles__list li {

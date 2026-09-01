@@ -35,7 +35,7 @@
 
 .contact-position h2 {
   max-width: 52rem;
-  font-size: clamp(2.5rem, 5vw, 5.2rem);
+  font-size: var(--type-feature);
 }
 
 .contact-position__copy p {
@@ -78,7 +78,7 @@
 
 .contact-profile h2 {
   margin-top: 1.4rem;
-  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-size: var(--type-feature);
 }
 
 .contact-profile__role {
@@ -142,7 +142,7 @@
 }
 
 .contact-channel h3 {
-  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  font-size: var(--type-section);
 }
 
 .contact-channel__value {
@@ -187,7 +187,7 @@
 
 .contact-context__list h3 {
   margin-top: 5rem;
-  font-size: clamp(1.3rem, 2.2vw, 2rem);
+  font-size: var(--type-card);
 }
 
 .contact-context__list p {
@@ -291,7 +291,7 @@
   }
 
   .contact-position h2 {
-    font-size: 2.5rem;
+    font-size: var(--type-feature);
   }
 
   .contact-channel__topline {

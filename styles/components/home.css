@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: minmax(12rem, 0.78fr) minmax(28rem, 2.2fr) minmax(12rem, 0.78fr);
   gap: clamp(0.7rem, 1.2vw, 1.25rem);
-  min-height: 42rem;
-  margin-top: clamp(4rem, 8vw, 7rem);
+  min-height: 37rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
 }
 
 .hero-side,
@@ -82,7 +82,7 @@
 
 .hero-core {
   display: flex;
-  min-height: 42rem;
+  min-height: 37rem;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   flex-direction: column;
   border-color: rgba(114, 174, 224, 0.22);
@@ -380,7 +380,7 @@
 .focus-header h2,
 .ecosystem-header h2 {
   margin-top: 0.8rem;
-  font-size: clamp(1.7rem, 3vw, 2.75rem);
+  font-size: var(--type-section);
 }
 
 .focus-console {
@@ -677,7 +677,7 @@
 
 .lab-content h3 {
   margin-top: auto;
-  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-size: var(--type-section);
 }
 
 .lab-content p {
@@ -904,7 +904,7 @@
 
   .hero-core {
     grid-column: auto;
-    min-height: 39rem;
+    min-height: 36rem;
   }
 
   .hero-side {
@@ -998,12 +998,12 @@
 
 @media (max-width: 430px) {
   .hero-core {
-    min-height: 37rem;
+    min-height: 35rem;
     padding: 1.25rem;
   }
 
   .hero h1 {
-    font-size: clamp(3.6rem, 20vw, 5rem);
+    font-size: var(--type-display);
   }
 
   .hero-actions {
@@ -1029,7 +1029,7 @@
   }
 
   .featured-main h2 {
-    font-size: 2.3rem;
+    font-size: var(--type-section);
   }
 
   .lab-primary {

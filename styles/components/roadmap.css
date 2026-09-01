@@ -101,7 +101,7 @@
 .roadmap-vector h2 {
   max-width: 58rem;
   margin-top: 1.25rem;
-  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-size: var(--type-feature);
 }
 
 .roadmap-vector__copy > p:last-child {
@@ -167,7 +167,7 @@
 .roadmap-gates h2 {
   max-width: 23rem;
   margin-top: 1.25rem;
-  font-size: clamp(2rem, 3vw, 3.2rem);
+  font-size: var(--type-section);
 }
 
 .roadmap-gates ol {
@@ -265,7 +265,7 @@
 
 .roadmap-level__identity h3 {
   margin-top: 1.25rem;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: var(--type-section);
 }
 
 .roadmap-level__identity > p:last-child {
@@ -314,7 +314,7 @@
 .roadmap-principle h2 {
   max-width: 56rem;
   margin-top: 1.4rem;
-  font-size: clamp(3rem, 6vw, 6.2rem);
+  font-size: var(--type-feature);
 }
 
 .roadmap-principle > div > p {
@@ -459,7 +459,7 @@
 
   .roadmap-vector h2,
   .roadmap-principle h2 {
-    font-size: 2.7rem;
+    font-size: var(--type-feature);
   }
 
   .roadmap-gates {
