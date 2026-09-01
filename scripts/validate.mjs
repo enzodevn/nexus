@@ -155,8 +155,10 @@ async function validateDocumentContract() {
     [/<meta\s+name=["']robots["']/i, "index.html must include indexing instructions."],
     [/<meta\s+property=["']og:title["']/i, "index.html must include an Open Graph title."],
     [/<meta\s+property=["']og:description["']/i, "index.html must include an Open Graph description."],
+    [/<meta\s+property=["']og:url["']/i, "index.html must include the verified Open Graph URL."],
     [/<meta\s+property=["']og:image["']/i, "index.html must include an Open Graph image."],
     [/<meta\s+name=["']twitter:card["']/i, "index.html must include X card metadata."],
+    [/<link\s+rel=["']canonical["']/i, "index.html must include the verified canonical URL."],
     [/<link\s+rel=["']manifest["']/i, "index.html must reference the site manifest."],
     [/<script\s+id=["']site-structured-data["']\s+type=["']application\/ld\+json["']/i, "index.html must expose structured site identity."],
     [/<a[^>]+class=["'][^"']*skip-link[^"']*["'][^>]+href=["']#main-content["']/i, "index.html must provide a skip link to the main content."],
@@ -227,6 +229,7 @@ async function validateMetadataContract(siteData) {
   requireString(siteData?.identity?.name, "data/site.json identity.name");
   requireString(siteData?.identity?.headline, "data/site.json identity.headline");
   requireString(siteData?.identity?.title, "data/site.json identity.title");
+  requireString(siteData?.identity?.url, "data/site.json identity.url");
   requireString(siteData?.identity?.description, "data/site.json identity.description");
   requireString(siteData?.identity?.language, "data/site.json identity.language");
   requireString(siteData?.identity?.locale, "data/site.json identity.locale");
@@ -234,6 +237,10 @@ async function validateMetadataContract(siteData) {
   requireString(siteData?.author?.name, "data/site.json author.name");
   requireString(siteData?.author?.role, "data/site.json author.role");
   requireList(siteData?.author?.sameAs, "data/site.json author.sameAs", 2);
+  assert(
+    /^https:\/\/[^/]+\/$/.test(siteData?.identity?.url ?? ""),
+    "The verified production URL must use HTTPS and end at the origin root.",
+  );
 
   for (const [index, profile] of (siteData?.author?.sameAs ?? []).entries()) {
     assert(/^https:\/\//.test(profile), `data/site.json author.sameAs[${index}] must use HTTPS.`);
@@ -275,6 +282,10 @@ async function validateMetadataContract(siteData) {
   requireString(siteData?.sharing?.imagePath, "data/site.json sharing.imagePath");
   requireString(siteData?.sharing?.imageAlt, "data/site.json sharing.imageAlt");
   assert(/^https:\/\//.test(siteData?.sharing?.image ?? ""), "The social image must use an absolute HTTPS URL.");
+  assert(
+    siteData?.sharing?.image === `${siteData?.identity?.url}assets/nexus-social-preview.png`,
+    "The social image must be served from the verified production origin.",
+  );
   assert(siteData?.sharing?.width === 1200, "The social image width must be 1200 pixels.");
   assert(siteData?.sharing?.height === 630, "The social image height must be 630 pixels.");
 
@@ -296,14 +307,28 @@ async function validateMetadataContract(siteData) {
 
   const html = await fs.readFile(path.join(root, "index.html"), "utf8");
   assert(html.includes(siteData?.sharing?.image ?? ""), "index.html must use the configured absolute social image URL.");
-  assert(!/<link\s+rel=["']canonical["']/i.test(html), "A canonical URL must not be hard-coded before the production address is confirmed.");
+  assert(
+    html.includes(`<link rel="canonical" href="${siteData?.identity?.url}" />`),
+    "index.html canonical URL must match the verified production origin.",
+  );
+  assert(
+    html.includes(`<meta property="og:url" content="${siteData?.identity?.url}" />`),
+    "index.html Open Graph URL must match the verified production origin.",
+  );
 
   const structuredMatch = html.match(
     /<script\s+id=["']site-structured-data["']\s+type=["']application\/ld\+json["']>([\s\S]*?)<\/script>/i,
   );
   if (structuredMatch) {
     try {
-      JSON.parse(structuredMatch[1]);
+      const structuredData = JSON.parse(structuredMatch[1]);
+      const website = structuredData?.["@graph"]?.find(
+        (entry) => entry?.["@type"] === "WebSite",
+      );
+      assert(
+        website?.url === siteData?.identity?.url,
+        "Structured WebSite data must use the verified production origin.",
+      );
     } catch (error) {
       failures.push(`index.html structured data is not valid JSON: ${error.message}`);
     }
@@ -324,13 +349,28 @@ async function validateMetadataContract(siteData) {
   const robots = await fs.readFile(path.join(root, "robots.txt"), "utf8");
   assert(/^User-agent:\s*\*/m.test(robots), "robots.txt must define the default crawler policy.");
   assert(/^Allow:\s*\/$/m.test(robots), "robots.txt must allow the public site surface.");
-  assert(!/^Sitemap:/m.test(robots), "robots.txt must not invent a sitemap URL before production hosting.");
+  assert(
+    robots.includes(`Sitemap: ${siteData?.identity?.url}sitemap.xml`),
+    "robots.txt must declare the production sitemap URL.",
+  );
+
+  const sitemap = await fs.readFile(path.join(root, "sitemap.xml"), "utf8");
+  const sitemapUrls = [...sitemap.matchAll(/<url>/g)];
+  assert(
+    sitemap.includes(`<loc>${siteData?.identity?.url}</loc>`),
+    "sitemap.xml must contain the verified production origin.",
+  );
+  assert(
+    sitemapUrls.length === 1,
+    "The hash-routed SPA sitemap must expose only its single indexable document URL.",
+  );
 
   const metadataSource = await fs.readFile(
     path.join(root, "app", "core", "metadata.js"),
     "utf8",
   );
-  assert(metadataSource.includes("getPublicDocumentUrl"), "Route metadata must derive public URLs only at runtime.");
+  assert(metadataSource.includes("getPublicDocumentUrl"), "Route metadata must resolve the verified public URL centrally.");
+  assert(metadataSource.includes("site.identity.url"), "Route metadata must use the verified production URL from structured data.");
   assert(metadataSource.includes("LOCAL_HOSTNAMES"), "Local preview origins must be excluded from canonical metadata.");
   assert(metadataSource.includes("shareImage !== false"), "Route metadata must support clearing inherited social images.");
   assert(metadataSource.includes("SoftwareSourceCode"), "Project detail routes must expose record-specific structured data.");
@@ -390,10 +430,72 @@ async function validateAutomationContract() {
   assert(workflow.includes("actions/checkout@v7"), "The quality workflow must use the approved checkout action major.");
   assert(workflow.includes("actions/setup-node@v7"), "The quality workflow must use the approved setup-node action major.");
   assert(workflow.includes("package-manager-cache: false"), "The dependency-free workflow must keep package caching disabled.");
+  assert(workflow.includes("npm ci --ignore-scripts"), "The quality workflow must install the locked production build toolchain without lifecycle scripts.");
+  assert(workflow.includes("npm audit --audit-level=high"), "The quality workflow must reject high-severity build toolchain vulnerabilities.");
+  assert(workflow.includes("npm run build"), "The quality workflow must build the production worker before validation.");
   assert(workflow.includes("npm run validate"), "The quality workflow must execute the same validation command used locally.");
   assert(/^  push:\s*$/m.test(workflow) && /^  pull_request:\s*$/m.test(workflow), "The quality workflow must validate every push and pull request.");
 
   return "local command + GitHub Actions";
+}
+
+async function validateHostingContract() {
+  const hosting = JSON.parse(
+    await fs.readFile(path.join(root, ".openai", "hosting.json"), "utf8"),
+  );
+  const hostingKeys = Object.keys(hosting).sort();
+  assert(
+    JSON.stringify(hostingKeys) === JSON.stringify(["project_id"]),
+    ".openai/hosting.json must contain only the opaque Sites project_id.",
+  );
+  assert(/^appgprj_[A-Za-z0-9]+$/.test(hosting.project_id ?? ""), "The Sites project_id is missing or malformed.");
+
+  const packageData = JSON.parse(
+    await fs.readFile(path.join(root, "package.json"), "utf8"),
+  );
+  const packageLock = JSON.parse(
+    await fs.readFile(path.join(root, "package-lock.json"), "utf8"),
+  );
+  const lockRoot = packageLock.packages?.[""];
+
+  assert(packageData.scripts?.dev === "vite", "package.json must expose the Vite development command.");
+  assert(
+    packageData.scripts?.build === "vite build && node ./scripts/build-worker.mjs",
+    "package.json must build the static application before generating the production worker.",
+  );
+  assert(packageData.engines?.node === ">=22.13.0", "The build engine must satisfy the official Sites plugin requirement.");
+  assert(packageData.devDependencies?.["@openai/sites-vite-plugin"] === "0.2.0", "The official Sites Vite plugin must remain pinned.");
+  assert(packageData.devDependencies?.vite === "8.2.2", "Vite must remain pinned to the audited release.");
+  assert(!packageData.dependencies, "Production runtime dependencies are not allowed in the NEXUS architecture.");
+
+  assert(packageLock.lockfileVersion === 3, "package-lock.json must use the current deterministic lockfile format.");
+  assert(!lockRoot?.dependencies, "The lockfile must not introduce production runtime dependencies.");
+  assert(
+    lockRoot?.devDependencies?.["@openai/sites-vite-plugin"] === "0.2.0"
+      && lockRoot?.devDependencies?.vite === "8.2.2",
+    "The lockfile root must match the pinned production build tools.",
+  );
+  assert(
+    packageLock.packages?.["node_modules/vite"]?.version === "8.2.2",
+    "The resolved Vite package must match the audited release.",
+  );
+
+  const viteSource = await fs.readFile(path.join(root, "vite.config.js"), "utf8");
+  const workerSource = await fs.readFile(
+    path.join(root, "scripts", "build-worker.mjs"),
+    "utf8",
+  );
+  const gitignore = await fs.readFile(path.join(root, ".gitignore"), "utf8");
+
+  assert(viteSource.includes("sites()"), "The production build must use the official Sites Vite plugin.");
+  assert(viteSource.includes("preserveStaticContracts()"), "The production build must preserve data, robots and manifest files.");
+  assert(viteSource.includes('"sitemap.xml"'), "The production build must preserve the sitemap.");
+  assert(workerSource.includes('"X-Content-Type-Options": "nosniff"'), "The production worker must prevent MIME sniffing.");
+  assert(workerSource.includes('"X-Frame-Options": "DENY"'), "The production worker must prevent framing.");
+  assert(workerSource.includes('status: 405'), "The production worker must reject unsupported HTTP methods.");
+  assert(gitignore.includes("/node_modules/") && gitignore.includes("/dist/"), "Generated dependencies and build output must remain outside version control.");
+
+  return "Sites worker + locked build toolchain";
 }
 
 function validateProjects(projectData) {
@@ -472,6 +574,7 @@ async function run() {
   const caseStudyCount = validateProjects(parsed.get("projects.json"));
   const contactChannelCount = validateContact(parsed.get("contact.json"));
   const automationContract = await validateAutomationContract();
+  const hostingContract = await validateHostingContract();
 
   if (failures.length) {
     console.error(`\nNEXUS quality gates failed (${failures.length}):`);
@@ -487,6 +590,7 @@ async function run() {
   console.log(`  Accessibility and routing contracts: ${routeCount} route patterns`);
   console.log(`  Metadata and social sharing: ${metadataRouteCount} route definitions, 1200x630 preview`);
   console.log(`  Automation contract: ${automationContract}`);
+  console.log(`  Production delivery: ${hostingContract}`);
   console.log("  Runtime dependencies: 0");
 }
 

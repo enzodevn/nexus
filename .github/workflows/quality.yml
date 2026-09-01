@@ -27,5 +27,14 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Run quality gates
+      - name: Install production build tools
+        run: npm ci --ignore-scripts
+
+      - name: Audit build toolchain
+        run: npm audit --audit-level=high
+
+      - name: Build production worker
+        run: npm run build
+
+      - name: Run application quality gates
         run: npm run validate

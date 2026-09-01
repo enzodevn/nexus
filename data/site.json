@@ -3,6 +3,7 @@
     "name": "NEXUS",
     "headline": "Building Intelligent Systems.",
     "title": "NEXUS — Building Intelligent Systems",
+    "url": "https://nexus-enzodevn.laptopenzo.chatgpt.site/",
     "description": "NEXUS is Enzo Félix Martins' engineering portfolio and technology laboratory for dependable software, data, cloud and intelligent systems.",
     "language": "en",
     "locale": "en_US",
@@ -17,7 +18,7 @@
     ]
   },
   "sharing": {
-    "image": "https://raw.githubusercontent.com/enzodevn/nexus/master/assets/nexus-social-preview.png",
+    "image": "https://nexus-enzodevn.laptopenzo.chatgpt.site/assets/nexus-social-preview.png",
     "imagePath": "./assets/nexus-social-preview.png",
     "imageAlt": "NEXUS — Building Intelligent Systems.",
     "width": 1200,
