@@ -1,3 +1,8 @@
+import {
+  findProjectBySlug,
+  hasPublishedCaseStudy,
+} from "./projects.js";
+
 const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "0.0.0.0", "[::1]"]);
 
 function setMeta(attribute, key, content) {
@@ -36,7 +41,7 @@ function setCanonical(url) {
 
 function getPublicDocumentUrl(site) {
   try {
-    const url = new URL(site.identity.url);
+    const url = new URL(site.identity.publicUrl);
     if (url.protocol !== "https:" || LOCAL_HOSTNAMES.has(url.hostname)) return null;
     url.hash = "";
     return url.href;
@@ -45,15 +50,26 @@ function getPublicDocumentUrl(site) {
   }
 }
 
-function getProjectMetadata(site, projects, slug) {
-  const project = projects.find((entry) => entry.slug === slug);
+export function resolveProjectMetadata(site, projects, slug) {
+  const project = findProjectBySlug(projects, slug);
   if (!project) return { ...site.routes["*"], project: null };
+
+  if (!hasPublishedCaseStudy(project)) {
+    return {
+      ...site.routes["*"],
+      title: `${project.name} — Case Study Pending`,
+      description: `${project.name} is registered in NEXUS, but its case study remains unpublished until verified evidence is complete.`,
+      project: null,
+    };
+  }
+
+  const title = project.name === site.identity.name
+    ? `${project.name} Platform Case Study`
+    : `${project.name} — ${site.identity.name} Case Study`;
 
   return {
     ...site.routes["/projects/:slug"],
-    title: project.slug === "nexus"
-      ? "NEXUS Platform Case Study"
-      : `${project.name} — NEXUS Case Study`,
+    title,
     description: project.summary,
     project,
   };
@@ -61,7 +77,7 @@ function getProjectMetadata(site, projects, slug) {
 
 function resolveMetadata(site, projects, path, pattern, params) {
   if (pattern === "/projects/:slug") {
-    return getProjectMetadata(site, projects, params.slug);
+    return resolveProjectMetadata(site, projects, params.slug);
   }
 
   const routeKey = pattern === "*" ? "*" : path;
@@ -116,8 +132,18 @@ function updateStructuredData(site, metadata, publicUrl) {
   }).replace(/</g, "\\u003c");
 }
 
-function updateShareImage(site, shouldShare) {
-  const image = shouldShare ? site.sharing.image : null;
+function getPublicImageUrl(site, publicUrl) {
+  if (!publicUrl) return null;
+
+  try {
+    return new URL(site.sharing.imagePath, publicUrl).href;
+  } catch {
+    return null;
+  }
+}
+
+function updateShareImage(site, shouldShare, publicUrl) {
+  const image = shouldShare ? getPublicImageUrl(site, publicUrl) : null;
 
   setMeta("property", "og:image", image);
   setMeta("property", "og:image:secure_url", image);
@@ -152,7 +178,7 @@ export function applyPageMetadata({ site, projects, path, pattern, params }) {
   setMeta("name", "twitter:title", metadata.title);
   setMeta("name", "twitter:description", metadata.description);
 
-  updateShareImage(site, shareImage);
+  updateShareImage(site, shareImage, publicUrl);
   setCanonical(publicUrl);
   updateStructuredData(site, metadata, publicUrl);
 }

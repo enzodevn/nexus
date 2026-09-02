@@ -5,6 +5,11 @@ import {
   sectionHeader,
   statusMark,
 } from "../ui/primitives.js";
+import {
+  getFeaturedProject,
+  getProjectRoute,
+  hasPublishedCaseStudy,
+} from "../../app/core/projects.js";
 
 function renderSignals(projects, platformVersion) {
   const signals = [
@@ -77,7 +82,7 @@ function renderFeaturedProject(project) {
           ${project.stack.map((item) => `<span>${item}</span>`).join("")}
         </div>
         <div class="project-primary__actions">
-          ${buttonLink(`Open ${project.shortName} case study`, project.route, "primary", "↗")}
+          ${buttonLink(`Open ${project.shortName} case study`, getProjectRoute(project), "primary", "↗")}
         </div>
       </div>
 
@@ -95,11 +100,11 @@ function renderFeaturedProject(project) {
 }
 
 function renderRegistryAction(project) {
-  if (project.hasCaseStudy && project.route) {
-    return buttonLink(`Open ${project.shortName} case study`, project.route, "text", "→");
+  if (hasPublishedCaseStudy(project)) {
+    return buttonLink(`Open ${project.shortName} case study`, getProjectRoute(project), "text", "→");
   }
 
-  return `<span class="project-case-state">Case study planned after the current platform sprint</span>`;
+  return `<span class="project-case-state">Case study pending verified evidence</span>`;
 }
 
 function renderRegistryItem(project, index) {
@@ -139,7 +144,7 @@ function renderSystemRegistry(projects, registry) {
 }
 
 export function renderProjectsSections(projectsData) {
-  const featuredProject = projectsData.projects.find((project) => project.featured);
+  const featuredProject = getFeaturedProject(projectsData.projects);
 
   if (!featuredProject) {
     throw new Error("The project registry requires one featured project.");

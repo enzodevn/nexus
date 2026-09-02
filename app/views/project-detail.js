@@ -3,13 +3,16 @@ import {
   renderProjectDetailSections,
   renderProjectUnavailable,
 } from "../../components/sections/project-detail.js";
+import {
+  findProjectBySlug,
+  hasPublishedCaseStudy,
+} from "../core/projects.js";
 
 export async function renderProjectDetailView(slug) {
   const { projects } = await loadData("projects");
-  const normalizedSlug = slug.trim().toLowerCase();
-  const project = projects.projects.find((entry) => entry.slug === normalizedSlug);
+  const project = findProjectBySlug(projects.projects, slug);
 
-  if (!project?.hasCaseStudy || !project.caseStudy) {
+  if (!hasPublishedCaseStudy(project)) {
     return renderProjectUnavailable(project);
   }
 

@@ -15,7 +15,6 @@
     {
       "id": "ngdp",
       "slug": "ngdp",
-      "route": "#/projects/ngdp",
       "code": "SYS / NGDP",
       "shortName": "NGDP",
       "name": "Nordic Green Data Platform",
@@ -82,6 +81,11 @@
           "eyebrow": "Verified repository evidence",
           "title": "A working transformation with visible boundaries.",
           "description": "The public repository was inspected and its data-cleaning path was executed before these claims were added to NEXUS.",
+          "audit": {
+            "revision": "e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b",
+            "verifiedOn": "2026-08-29",
+            "source": "https://github.com/enzodevn/ngdp-python/commit/e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b"
+          },
           "metrics": [
             {
               "value": "1,192",
@@ -150,7 +154,6 @@
     {
       "id": "hevy",
       "slug": "hevy",
-      "route": "#/projects/hevy",
       "code": "SYS / HEVY",
       "shortName": "HEVY",
       "name": "HEVY Pipeline",
@@ -217,6 +220,11 @@
           "eyebrow": "Verified repository evidence",
           "title": "A layered analytics pipeline with a private-data boundary.",
           "description": "The public repository was inspected, its analytical reports were regenerated and its SQLite schema was executed before these claims were added to NEXUS.",
+          "audit": {
+            "revision": "85e833cdfc954a0da54044ef3c0e1a39137777a4",
+            "verifiedOn": "2026-08-30",
+            "source": "https://github.com/enzodevn/hevy-training-analytics/commit/85e833cdfc954a0da54044ef3c0e1a39137777a4"
+          },
           "metrics": [
             {
               "value": "396",
@@ -285,7 +293,6 @@
     {
       "id": "nexus",
       "slug": "nexus",
-      "route": "#/projects/nexus",
       "code": "SYS / NEXUS",
       "shortName": "NEXUS",
       "name": "NEXUS",
@@ -324,7 +331,7 @@
         {
           "state": "Current",
           "title": "Production baseline",
-          "description": "Operate a locked, audited build through a verified private deployment while canonical metadata, structured identity and a dedicated social preview establish the delivery contract."
+          "description": "Operate a locked, audited build with structured identity, a dedicated social preview and a portable delivery artifact that remains independent from any hosting provider."
         },
         {
           "state": "Next",
@@ -351,7 +358,12 @@
         "evidence": {
           "eyebrow": "Verified repository evidence",
           "title": "A browser-native platform with an inspectable architecture.",
-          "description": "The current branch was inspected and its complete JavaScript, JSON and CSS surface was validated before these claims were added to the NEXUS case study.",
+          "description": "The referenced stable V3 checkpoint was inspected and its complete JavaScript, JSON and CSS surface was validated before these claims were added to the NEXUS case study.",
+          "audit": {
+            "revision": "9fbaca23bfa512d09e611d4d0ab0107478a37156",
+            "verifiedOn": "2026-09-01",
+            "source": "https://github.com/enzodevn/nexus/commit/9fbaca23bfa512d09e611d4d0ab0107478a37156"
+          },
           "metrics": [
             {
               "value": "08",
@@ -386,10 +398,10 @@
               "state": "Open gap",
               "signal": "muted",
               "title": "Independent route discovery remains deferred",
-              "description": "The production contract now includes CI, hosting, canonical metadata, a sitemap and social sharing. Hash routes still share one canonical document until the public routing strategy is finalized."
+              "description": "CI, production builds and the social-preview asset are ready. Public hosting, canonical metadata and a sitemap remain intentionally deferred until the routing strategy and independent production origin are finalized."
             }
           ],
-          "snapshot": "Validated against checkpoint 9fbaca2 on 1 September 2026. The evidence covers the application architecture, automated quality gates, production delivery contract and verified private deployment; independent public route discovery remains outside this boundary."
+          "snapshot": "Validated against checkpoint 9fbaca2 on 1 September 2026. The evidence covers the application architecture, automated quality gates and portable production delivery; independent public hosting and route discovery remain outside this boundary."
         },
         "capabilities": [
           "Dependency-free single-page application built with browser-native ES modules",

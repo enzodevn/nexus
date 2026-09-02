@@ -2,7 +2,7 @@
 
 NEXUS is a personal Technology Laboratory and engineering portfolio built as a dependency-free JavaScript SPA. It connects projects, research and technical progression through one modular, data-driven interface.
 
-Production: [nexus-enzodevn.laptopenzo.chatgpt.site](https://nexus-enzodevn.laptopenzo.chatgpt.site/)
+Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
@@ -62,18 +62,17 @@ Then open the local address printed by Vite.
 - `data/`: structured content consumed by the views
 - `assets/`: local brand and social-preview media
 - `scripts/`: dependency-free repository validation
-- `.openai/hosting.json`: opaque production-hosting project binding
 - `styles/foundation/`: tokens, reset, typography and motion
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
 
 Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
 
-Site identity, the verified production URL, route metadata and sharing rules are centralized in `data/site.json`. The canonical document URL, Open Graph identity, social image and sitemap all resolve through the production origin.
+Site identity, route metadata and sharing rules are centralized in `data/site.json`. No hosting provider or public origin is committed while the portfolio remains private; canonical and absolute sharing URLs are activated only after an independent production address is selected.
 
 No runtime dependencies, frameworks or external assets are required.
 
-The production toolchain is development-only. Vite builds the browser-native application, the official Sites plugin carries deployment metadata and a focused build step emits the Cloudflare Worker-compatible entrypoint used by hosting.
+The production toolchain is development-only. Vite builds the browser-native application and a focused build step emits a portable edge-worker entrypoint without binding the repository to a hosting provider.
 
 ## Production build
 
@@ -86,7 +85,7 @@ npm run build
 npm run validate
 ```
 
-Generated output remains in `dist/` and is excluded from version control. Production publishing uses the verified Sites address and the same commit SHA validated by the repository workflow.
+Generated output remains in `dist/` and is excluded from version control. A public origin, canonical URL and sitemap will be configured only when the independent production target is selected.
 
 ## Quality gates
 
@@ -96,7 +95,7 @@ Node.js 22.13 or newer can validate the complete repository without installing p
 npm run validate
 ```
 
-The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, hosting contracts, application routes and the core accessibility contract. GitHub Actions installs, audits and builds the locked production toolchain before running the same validation for every push and pull request.
+The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, delivery contracts, application routes and the core accessibility contract. GitHub Actions installs, audits and builds the locked production toolchain before running the same validation for every push and pull request.
 
 ## Development workflow
 
