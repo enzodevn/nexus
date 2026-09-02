@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nexus:project-schema:1.0.0",
+  "title": "NEXUS project record",
+  "description": "Contract for one project rendered by the NEXUS project registry and case-study framework.",
+  "x-nexus-contract-version": "1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "slug",
+    "code",
+    "shortName",
+    "name",
+    "category",
+    "status",
+    "signal",
+    "featured",
+    "hasCaseStudy",
+    "summary",
+    "objective",
+    "focus",
+    "stack",
+    "architecture",
+    "milestones"
+  ],
+  "properties": {
+    "id": { "$ref": "#/$defs/slug" },
+    "slug": { "$ref": "#/$defs/slug" },
+    "code": {
+      "type": "string",
+      "pattern": "^SYS / [A-Z0-9-]+$"
+    },
+    "shortName": { "$ref": "#/$defs/nonEmptyString" },
+    "name": { "$ref": "#/$defs/nonEmptyString" },
+    "category": {
+      "type": "string",
+      "pattern": "^.+ (Platform|Pipeline|System|Application|Service|Research)$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Stable", "In development", "Planned", "Paused", "Concept"]
+    },
+    "signal": { "$ref": "#/$defs/signal" },
+    "featured": { "type": "boolean" },
+    "hasCaseStudy": { "type": "boolean" },
+    "summary": { "$ref": "#/$defs/nonEmptyString" },
+    "objective": { "$ref": "#/$defs/nonEmptyString" },
+    "focus": { "$ref": "#/$defs/nonEmptyString" },
+    "stack": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonEmptyString" }
+    },
+    "architecture": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/architectureStage" }
+    },
+    "milestones": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "$ref": "#/$defs/currentMilestone" },
+        { "$ref": "#/$defs/nextMilestone" },
+        { "$ref": "#/$defs/futureMilestone" }
+      ],
+      "items": false
+    },
+    "caseStudy": { "$ref": "#/$defs/caseStudy" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "hasCaseStudy": { "const": true } },
+        "required": ["hasCaseStudy"]
+      },
+      "then": { "required": ["caseStudy"] },
+      "else": { "not": { "required": ["caseStudy"] } }
+    }
+  ],
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "signal": {
+      "type": "string",
+      "enum": ["active", "muted"]
+    },
+    "architectureStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "name", "description"],
+      "properties": {
+        "index": { "type": "string", "pattern": "^[0-9]{2}$" },
+        "name": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "title", "description"],
+      "properties": {
+        "state": { "type": "string" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "currentMilestone": {
+      "allOf": [
+        { "$ref": "#/$defs/milestone" },
+        { "properties": { "state": { "const": "Current" } } }
+      ]
+    },
+    "nextMilestone": {
+      "allOf": [
+        { "$ref": "#/$defs/milestone" },
+        { "properties": { "state": { "const": "Next" } } }
+      ]
+    },
+    "futureMilestone": {
+      "allOf": [
+        { "$ref": "#/$defs/milestone" },
+        { "properties": { "state": { "const": "Future" } } }
+      ]
+    },
+    "narrativeBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "label", "description"],
+      "properties": {
+        "value": { "$ref": "#/$defs/nonEmptyString" },
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "title", "description", "signal"],
+      "properties": {
+        "state": { "$ref": "#/$defs/nonEmptyString" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "signal": { "$ref": "#/$defs/signal" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "description", "audit", "metrics", "findings", "snapshot"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "audit": { "$ref": "#/$defs/audit" },
+        "metrics": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/metric" }
+        },
+        "findings": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/finding" }
+        },
+        "snapshot": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["revision", "verifiedOn", "source"],
+      "properties": {
+        "revision": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "verifiedOn": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "source": {
+          "type": "string",
+          "pattern": "^https://github\\.com/[^/]+/[^/]+/commit/[a-f0-9]{40}$"
+        }
+      }
+    },
+    "externalLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "href"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "href": { "type": "string", "pattern": "^https://" }
+      }
+    },
+    "caseStudy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eyebrow",
+        "description",
+        "problem",
+        "solution",
+        "evidence",
+        "capabilities",
+        "challenges",
+        "learnings",
+        "links"
+      ],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "problem": { "$ref": "#/$defs/narrativeBlock" },
+        "solution": { "$ref": "#/$defs/narrativeBlock" },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "challenges": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "learnings": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/nonEmptyString" }
+        },
+        "links": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/externalLink" }
+        }
+      }
+    }
+  }
+}

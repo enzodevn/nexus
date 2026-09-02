@@ -2,11 +2,11 @@
 
 NEXUS is a personal Technology Laboratory and engineering portfolio built as a dependency-free JavaScript SPA. It connects projects, research and technical progression through one modular, data-driven interface.
 
-Production: [nexus-enzodevn.laptopenzo.chatgpt.site](https://nexus-enzodevn.laptopenzo.chatgpt.site/)
+Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
-NEXUS V3 is the current stable baseline on `master`. Release `v3.0.0` consolidates the modular platform, professional presentation, responsive motion system and release-ready project framework.
+NEXUS V3.1 defines the current platform baseline. Version `v3.1.0` formalizes the data-driven Project Framework, derived project routes, published and pending case-study states, structured evidence audits and provider-neutral production delivery.
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey
@@ -18,6 +18,10 @@ NEXUS V3 is the current stable baseline on `master`. Release `v3.0.0` consolidat
 - Labs: investigation registry and research method
 - Roadmap: evidence-gated capability sequence
 - Not found: recovery state for unknown application and project routes
+
+## Project Framework
+
+Projects are registered once in `data/projects.json` and rendered through shared registry and case-study components. The versioned contract and onboarding workflow are documented in [`docs/PROJECT_FRAMEWORK.md`](docs/PROJECT_FRAMEWORK.md).
 
 ## Run in VS Code
 
@@ -58,18 +62,17 @@ Then open the local address printed by Vite.
 - `data/`: structured content consumed by the views
 - `assets/`: local brand and social-preview media
 - `scripts/`: dependency-free repository validation
-- `.openai/hosting.json`: opaque production-hosting project binding
 - `styles/foundation/`: tokens, reset, typography and motion
 - `styles/ui/`: reusable visual primitives
 - `styles/components/`: page-specific compositions
 
 Project data is centralized in `data/projects.json`. A project record can define its registry presentation, route, architecture, milestones and technical case-study content without duplicating page markup.
 
-Site identity, the verified production URL, route metadata and sharing rules are centralized in `data/site.json`. The canonical document URL, Open Graph identity, social image and sitemap all resolve through the production origin.
+Site identity, route metadata and sharing rules are centralized in `data/site.json`. No hosting provider or public origin is committed while the portfolio remains private; canonical and absolute sharing URLs are activated only after an independent production address is selected.
 
 No runtime dependencies, frameworks or external assets are required.
 
-The production toolchain is development-only. Vite builds the browser-native application, the official Sites plugin carries deployment metadata and a focused build step emits the Cloudflare Worker-compatible entrypoint used by hosting.
+The production toolchain is development-only. Vite builds the browser-native application and a focused build step emits a portable edge-worker entrypoint without binding the repository to a hosting provider.
 
 ## Production build
 
@@ -82,7 +85,7 @@ npm run build
 npm run validate
 ```
 
-Generated output remains in `dist/` and is excluded from version control. Production publishing uses the verified Sites address and the same commit SHA validated by the repository workflow.
+Generated output remains in `dist/` and is excluded from version control. A public origin, canonical URL and sitemap will be configured only when the independent production target is selected.
 
 ## Quality gates
 
@@ -92,7 +95,7 @@ Node.js 22.13 or newer can validate the complete repository without installing p
 npm run validate
 ```
 
-The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, hosting contracts, application routes and the core accessibility contract. GitHub Actions installs, audits and builds the locked production toolchain before running the same validation for every push and pull request.
+The command checks JavaScript syntax and relative imports, JSON parsing and project evidence contracts, CSS structure and responsive breakpoints, local document references, route metadata, social-preview dimensions, delivery contracts, application routes and the core accessibility contract. GitHub Actions installs, audits and builds the locked production toolchain before running the same validation for every push and pull request.
 
 ## Development workflow
 

@@ -23,7 +23,7 @@ async function collectFiles(directory) {
   const files = [];
 
   for (const entry of entries) {
-    if ([".openai", "server"].includes(entry.name)) continue;
+    if (entry.name === "server") continue;
 
     const entryPath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
@@ -47,7 +47,7 @@ function getCacheControl(publicPath) {
 
   if (isHashedAsset) return "public, max-age=31536000, immutable";
   if (publicPath.startsWith("/data/")) return "public, max-age=300, must-revalidate";
-  if (["/index.html", "/robots.txt", "/site.webmanifest", "/sitemap.xml"].includes(publicPath)) {
+  if (["/index.html", "/robots.txt", "/site.webmanifest"].includes(publicPath)) {
     return "public, max-age=0, must-revalidate";
   }
 

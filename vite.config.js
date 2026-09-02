@@ -1,14 +1,13 @@
 import { cp, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { sites } from "@openai/sites-vite-plugin";
 import { defineConfig } from "vite";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
 function preserveStaticContracts() {
   const directories = ["assets", "data"];
-  const files = ["robots.txt", "site.webmanifest", "sitemap.xml"];
+  const files = ["robots.txt", "site.webmanifest"];
 
   return {
     name: "nexus-static-contracts",
@@ -33,7 +32,7 @@ function preserveStaticContracts() {
 }
 
 export default defineConfig({
-  plugins: [sites(), preserveStaticContracts()],
+  plugins: [preserveStaticContracts()],
   build: {
     outDir: "dist",
     emptyOutDir: true,
