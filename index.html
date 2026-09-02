@@ -64,13 +64,67 @@
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div id="app">
-      <div class="boot-screen" role="status">
-        <span class="status-indicator" aria-hidden="true"></span>
-        Initializing NEXUS
+    <section class="boot-screen" data-boot aria-labelledby="boot-title">
+      <div class="boot-screen__field" aria-hidden="true">
+        <span class="boot-screen__aurora"></span>
+        <span class="boot-screen__grid"></span>
+        <span class="boot-screen__scan"></span>
+        <div class="boot-orbits">
+          <span class="boot-orbit boot-orbit--outer"></span>
+          <span class="boot-orbit boot-orbit--middle"></span>
+          <span class="boot-orbit boot-orbit--inner"></span>
+        </div>
       </div>
-    </div>
+
+      <div class="boot-screen__topline" aria-hidden="true">
+        <span>NXS / STARTUP SEQUENCE</span>
+        <span class="boot-screen__signal"><i></i> SIGNAL LOCKED</span>
+      </div>
+
+      <div class="boot-screen__content">
+        <div class="boot-core" aria-hidden="true">
+          <span class="boot-core__halo"></span>
+          <img src="./assets/nexus-mark.svg" alt="" />
+          <span class="boot-core__index">01</span>
+        </div>
+        <p class="boot-screen__eyebrow">Engineering ecosystem</p>
+        <h1 id="boot-title" class="boot-screen__title" aria-label="NEXUS">
+          <span aria-hidden="true">N</span><span aria-hidden="true">E</span><span aria-hidden="true">X</span><span aria-hidden="true">U</span><span aria-hidden="true">S</span>
+        </h1>
+        <p class="boot-screen__descriptor">Building Intelligent Systems.</p>
+      </div>
+
+      <div class="boot-screen__footer">
+        <div class="boot-progress">
+          <div class="boot-progress__meta">
+            <span data-boot-stage role="status" aria-live="polite">Establishing core link</span>
+            <span><b data-boot-progress-value>000</b> / 100</span>
+          </div>
+          <div
+            class="boot-progress__track"
+            data-boot-progress
+            role="progressbar"
+            aria-label="NEXUS initialization progress"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <span data-boot-progress-bar></span>
+          </div>
+        </div>
+        <button class="boot-screen__skip" type="button" data-boot-skip>
+          Skip intro <span>ESC</span>
+        </button>
+      </div>
+
+      <span class="boot-screen__corner boot-screen__corner--tl" aria-hidden="true"></span>
+      <span class="boot-screen__corner boot-screen__corner--tr" aria-hidden="true"></span>
+      <span class="boot-screen__corner boot-screen__corner--bl" aria-hidden="true"></span>
+      <span class="boot-screen__corner boot-screen__corner--br" aria-hidden="true"></span>
+    </section>
+    <div id="app" inert aria-hidden="true"></div>
     <noscript>
+      <style>.boot-screen { display: none; }</style>
       <p class="noscript-message">NEXUS requires JavaScript to run this interface.</p>
     </noscript>
     <script type="module" src="./app/main.js"></script>

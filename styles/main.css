@@ -3,6 +3,7 @@
 @import url("./foundation/typography.css");
 @import url("./foundation/motion.css");
 @import url("./ui/primitives.css");
+@import url("./ui/boot.css");
 @import url("./ui/effects.css");
 @import url("./components/home.css");
 @import url("./components/pages.css");

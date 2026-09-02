@@ -1,4 +1,5 @@
 import { initializeRevealAnimations } from "./animations/reveal.js";
+import { initializeBootSequence } from "./animations/boot.js";
 import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
 import { applyPageMetadata } from "./core/metadata.js";
@@ -20,6 +21,9 @@ import { bindShellInteractions, renderShell } from "../components/layout/shell.j
 
 const app = document.querySelector("#app");
 initializeMotionPreference();
+const bootSequence = initializeBootSequence(document, {
+  reducedMotion: prefersReducedMotion(),
+});
 
 function getInPageTarget(hash) {
   if (!hash?.startsWith("#") || hash.startsWith("#/")) return null;
@@ -57,6 +61,7 @@ function bindInPageNavigation() {
 
 function renderError(error) {
   console.error(error);
+  bootSequence.dismiss();
   app.innerHTML = `
     <main class="fatal-error">
       <span class="operation-label operation-label--amber">Initialization error</span>
@@ -103,10 +108,15 @@ try {
         params,
       });
 
+      if (isInitial) bootSequence.markReady();
+
       const inPageTarget = getInPageTarget(window.location.hash);
       const mainContent = app.querySelector("#main-content");
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame(async () => {
+        if (navigation !== activeNavigation) return;
+
+        if (isInitial) await bootSequence.finished;
         if (navigation !== activeNavigation) return;
 
         if (inPageTarget) {

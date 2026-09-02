@@ -1,0 +1,582 @@
+html.is-booting,
+html.is-booting body {
+  overflow: hidden;
+}
+
+.boot-screen {
+  position: fixed;
+  z-index: 500;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 20rem;
+  min-height: 100svh;
+  padding: clamp(1.25rem, 3.5vw, 3.5rem);
+  overflow: hidden;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 50% 46%, rgba(37, 113, 185, 0.16), transparent 21rem),
+    linear-gradient(145deg, #02040a 0%, #050a14 52%, #02040a 100%);
+  isolation: isolate;
+}
+
+.boot-screen::before {
+  position: absolute;
+  z-index: -1;
+  inset: -40%;
+  content: "";
+  pointer-events: none;
+  opacity: 0.7;
+  background: conic-gradient(
+    from 25deg at 50% 50%,
+    transparent 0 42%,
+    rgba(75, 159, 255, 0.025) 46%,
+    rgba(121, 216, 255, 0.15) 50%,
+    rgba(75, 159, 255, 0.025) 54%,
+    transparent 58% 100%
+  );
+  mask-image: radial-gradient(circle, transparent 0 8%, black 27%, transparent 63%);
+  animation: boot-field-rotate 13s linear infinite;
+}
+
+.boot-screen::after {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.14;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 3px,
+    rgba(194, 235, 255, 0.12) 4px
+  );
+  mix-blend-mode: soft-light;
+}
+
+.boot-screen__field,
+.boot-screen__aurora,
+.boot-screen__grid,
+.boot-screen__scan {
+  position: absolute;
+  pointer-events: none;
+}
+
+.boot-screen__field {
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+}
+
+.boot-screen__aurora {
+  inset: -35%;
+  opacity: 0.72;
+  background:
+    radial-gradient(ellipse at 20% 36%, rgba(44, 124, 212, 0.2), transparent 25%),
+    radial-gradient(ellipse at 78% 58%, rgba(92, 205, 255, 0.13), transparent 22%);
+  filter: blur(28px);
+  animation: boot-aurora-drift 6.5s ease-in-out infinite alternate;
+}
+
+.boot-screen__grid {
+  left: -20%;
+  right: -20%;
+  bottom: -36%;
+  height: 76%;
+  opacity: 0.3;
+  background-image:
+    linear-gradient(rgba(121, 216, 255, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121, 216, 255, 0.13) 1px, transparent 1px);
+  background-size: clamp(3rem, 7vw, 6.5rem) clamp(3rem, 7vw, 6.5rem);
+  mask-image: linear-gradient(to bottom, transparent, black 32%, transparent 86%);
+  transform: perspective(34rem) rotateX(61deg) translateY(11%);
+  transform-origin: center top;
+  animation: boot-grid-travel 2.8s linear infinite;
+}
+
+.boot-screen__scan {
+  z-index: 4;
+  top: -12%;
+  right: 0;
+  left: 0;
+  height: 18%;
+  opacity: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(121, 216, 255, 0.015),
+    rgba(121, 216, 255, 0.2),
+    transparent
+  );
+  filter: blur(1px);
+  animation: boot-scan-travel 3.6s ease-in-out infinite;
+}
+
+.boot-orbits {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: min(66vmin, 42rem);
+  aspect-ratio: 1;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.76);
+  animation: boot-orbits-arrive 1.4s 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.boot-orbit {
+  position: absolute;
+  border: 1px solid rgba(121, 216, 255, 0.13);
+  border-radius: 50%;
+}
+
+.boot-orbit::before,
+.boot-orbit::after {
+  position: absolute;
+  top: 50%;
+  left: -0.22rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  content: "";
+  border-radius: 50%;
+  background: var(--color-cyan);
+  box-shadow: 0 0 0.6rem var(--color-cyan), 0 0 1.8rem rgba(75, 159, 255, 0.7);
+}
+
+.boot-orbit::after {
+  inset: auto -0.16rem 23% auto;
+  width: 0.3rem;
+  height: 0.3rem;
+  opacity: 0.6;
+}
+
+.boot-orbit--outer {
+  inset: 0;
+  border-style: dashed;
+  animation: boot-orbit-rotate 15s linear infinite;
+}
+
+.boot-orbit--middle {
+  inset: 13%;
+  border-color: rgba(121, 216, 255, 0.22);
+  transform: rotate(31deg);
+  animation: boot-orbit-rotate-reverse 9s linear infinite;
+}
+
+.boot-orbit--inner {
+  inset: 28%;
+  border-color: rgba(121, 216, 255, 0.3);
+  border-style: dotted;
+  animation: boot-orbit-rotate 5.5s linear infinite;
+}
+
+.boot-screen__topline,
+.boot-screen__footer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.boot-screen__topline {
+  color: var(--color-text-muted);
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  animation: boot-interface-arrive 700ms 180ms ease forwards;
+}
+
+.boot-screen__signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--color-text-secondary);
+}
+
+.boot-screen__signal i {
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  box-shadow: 0 0 0.8rem rgba(121, 216, 255, 0.9);
+  animation: boot-signal-pulse 1.25s ease-in-out infinite;
+}
+
+.boot-screen__content {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  justify-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+.boot-core {
+  position: relative;
+  display: grid;
+  width: clamp(4.5rem, 8vw, 6.25rem);
+  aspect-ratio: 1;
+  margin-bottom: clamp(1.5rem, 3vh, 2.4rem);
+  place-items: center;
+  opacity: 0;
+  transform: scale(0.62) rotate(-12deg);
+  animation: boot-core-arrive 1.2s 380ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.boot-core::before,
+.boot-core::after,
+.boot-core__halo {
+  position: absolute;
+  content: "";
+  border: 1px solid rgba(121, 216, 255, 0.2);
+  border-radius: 1.35rem;
+}
+
+.boot-core::before {
+  inset: -0.65rem;
+  border-style: dashed;
+  animation: boot-core-spin 8s linear infinite;
+}
+
+.boot-core::after {
+  inset: -1.25rem;
+  opacity: 0.5;
+  transform: rotate(45deg);
+  animation: boot-core-spin-reverse 12s linear infinite;
+}
+
+.boot-core__halo {
+  inset: -1.9rem;
+  border-radius: 50%;
+  opacity: 0.35;
+  box-shadow: inset 0 0 2.5rem rgba(75, 159, 255, 0.08);
+  animation: boot-core-breathe 2.4s ease-in-out infinite;
+}
+
+.boot-core img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  filter: drop-shadow(0 0 1.2rem rgba(121, 216, 255, 0.32));
+}
+
+.boot-core__index {
+  position: absolute;
+  right: -2.4rem;
+  bottom: -1.7rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+}
+
+.boot-screen__eyebrow {
+  color: var(--color-cyan);
+  font-family: var(--font-mono);
+  font-size: clamp(0.62rem, 1vw, 0.74rem);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(0.7rem);
+  animation: boot-copy-arrive 720ms 850ms ease forwards;
+}
+
+.boot-screen__title {
+  display: flex;
+  margin: 0.55rem 0 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: clamp(3.35rem, 10vw, 7.4rem);
+  font-weight: 650;
+  line-height: 0.9;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 2.8rem rgba(75, 159, 255, 0.2);
+}
+
+.boot-screen__title span {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(0.55em) scale(0.94);
+  animation: boot-letter-arrive 820ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.boot-screen__title span:nth-child(1) { animation-delay: 1.08s; }
+.boot-screen__title span:nth-child(2) { animation-delay: 1.18s; }
+.boot-screen__title span:nth-child(3) { animation-delay: 1.28s; }
+.boot-screen__title span:nth-child(4) { animation-delay: 1.38s; }
+.boot-screen__title span:nth-child(5) { animation-delay: 1.48s; }
+
+.boot-screen__descriptor {
+  margin-top: 1.15rem;
+  color: var(--color-text-secondary);
+  font-size: clamp(0.88rem, 1.6vw, 1.05rem);
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transform: translateY(0.65rem);
+  animation: boot-copy-arrive 760ms 1.72s ease forwards;
+}
+
+.boot-screen__footer {
+  opacity: 0;
+  transform: translateY(0.75rem);
+  animation: boot-interface-arrive 700ms 650ms ease forwards;
+}
+
+.boot-progress {
+  width: min(31rem, 68vw);
+}
+
+.boot-progress__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--color-text-muted);
+}
+
+.boot-progress__meta b {
+  color: var(--color-cyan);
+  font-weight: 500;
+}
+
+.boot-progress__track {
+  position: relative;
+  height: 1px;
+  overflow: visible;
+  background: rgba(139, 174, 210, 0.16);
+}
+
+.boot-progress__track::after {
+  position: absolute;
+  inset: -0.18rem auto -0.18rem 0;
+  width: 1px;
+  content: "";
+  background: var(--color-cyan);
+  box-shadow: 0 0 0.8rem rgba(121, 216, 255, 0.8);
+}
+
+.boot-progress__track > span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-cyan));
+  box-shadow: 0 0 0.8rem rgba(121, 216, 255, 0.45);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.boot-progress__track > span::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  content: "";
+  border-radius: 50%;
+  background: #d9f5ff;
+  box-shadow: 0 0 0.7rem var(--color-cyan), 0 0 1.4rem var(--color-blue);
+  transform: translate(50%, -50%);
+}
+
+.boot-screen__skip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  color: var(--color-text-muted);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast);
+}
+
+.boot-screen__skip span {
+  padding: 0.25rem 0.38rem;
+  border: 1px solid rgba(139, 174, 210, 0.2);
+  border-radius: 0.3rem;
+  font-size: 0.52rem;
+}
+
+.boot-screen__skip:hover,
+.boot-screen__skip:focus-visible {
+  color: var(--color-cyan);
+}
+
+.boot-screen__corner {
+  position: absolute;
+  z-index: 10;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-color: rgba(121, 216, 255, 0.32);
+  opacity: 0;
+  animation: boot-corner-arrive 500ms 300ms ease forwards;
+}
+
+.boot-screen__corner--tl { top: 1rem; left: 1rem; border-top: 1px solid; border-left: 1px solid; }
+.boot-screen__corner--tr { top: 1rem; right: 1rem; border-top: 1px solid; border-right: 1px solid; }
+.boot-screen__corner--bl { bottom: 1rem; left: 1rem; border-bottom: 1px solid; border-left: 1px solid; }
+.boot-screen__corner--br { right: 1rem; bottom: 1rem; border-right: 1px solid; border-bottom: 1px solid; }
+
+.boot-screen.is-complete {
+  pointer-events: none;
+  animation: boot-screen-exit var(--boot-exit-duration, 780ms) cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.boot-screen.is-complete .boot-screen__content {
+  animation: boot-content-exit calc(var(--boot-exit-duration, 780ms) * 0.84) cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.boot-screen.is-fast-exit {
+  --boot-exit-duration: 420ms;
+}
+
+.boot-screen.is-reduced .boot-screen__scan,
+.boot-screen.is-reduced .boot-screen__aurora,
+.boot-screen.is-reduced .boot-orbits {
+  opacity: 0.16;
+}
+
+@keyframes boot-field-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes boot-aurora-drift {
+  0% { opacity: 0.42; transform: translate3d(-4%, -2%, 0) rotate(-3deg) scale(0.94); }
+  100% { opacity: 0.82; transform: translate3d(5%, 4%, 0) rotate(4deg) scale(1.08); }
+}
+
+@keyframes boot-grid-travel {
+  to { background-position: 0 clamp(3rem, 7vw, 6.5rem), clamp(3rem, 7vw, 6.5rem) 0; }
+}
+
+@keyframes boot-scan-travel {
+  0%, 8% { opacity: 0; transform: translateY(-15vh); }
+  25% { opacity: 0.68; }
+  75% { opacity: 0.3; }
+  92%, 100% { opacity: 0; transform: translateY(116vh); }
+}
+
+@keyframes boot-orbits-arrive {
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes boot-orbit-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes boot-orbit-rotate-reverse {
+  from { transform: rotate(31deg); }
+  to { transform: rotate(-329deg); }
+}
+
+@keyframes boot-interface-arrive {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boot-signal-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.75); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes boot-core-arrive {
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes boot-core-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes boot-core-spin-reverse {
+  from { transform: rotate(45deg); }
+  to { transform: rotate(-315deg); }
+}
+
+@keyframes boot-core-breathe {
+  0%, 100% { opacity: 0.24; transform: scale(0.9); }
+  50% { opacity: 0.65; transform: scale(1.08); }
+}
+
+@keyframes boot-copy-arrive {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boot-letter-arrive {
+  to { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+}
+
+@keyframes boot-corner-arrive {
+  to { opacity: 1; }
+}
+
+@keyframes boot-content-exit {
+  to { opacity: 0; filter: blur(9px); transform: scale(1.08); }
+}
+
+@keyframes boot-screen-exit {
+  0% { opacity: 1; clip-path: inset(0 0 0 0); }
+  72% { opacity: 1; clip-path: inset(48.8% 0 48.8% 0); }
+  100% { opacity: 0; clip-path: inset(50% 0 50% 0); }
+}
+
+@media (max-width: 42rem) {
+  .boot-screen {
+    padding: 1.25rem;
+  }
+
+  .boot-screen__topline > span:first-child,
+  .boot-screen__skip span {
+    display: none;
+  }
+
+  .boot-screen__topline {
+    justify-content: flex-end;
+  }
+
+  .boot-orbits {
+    width: min(92vw, 31rem);
+  }
+
+  .boot-screen__title {
+    font-size: clamp(3rem, 18vw, 5.4rem);
+    letter-spacing: 0.045em;
+  }
+
+  .boot-progress {
+    width: min(100%, 24rem);
+  }
+
+  .boot-screen__footer {
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .boot-screen__skip {
+    flex: 0 0 auto;
+    min-width: 2.75rem;
+    padding-inline: 0.35rem;
+  }
+}
+
+@media (max-height: 38rem) {
+  .boot-core {
+    width: 3.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .boot-screen__descriptor {
+    margin-top: 0.7rem;
+  }
+
+  .boot-orbits {
+    width: min(72vmin, 25rem);
+  }
+}
