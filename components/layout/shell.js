@@ -13,6 +13,10 @@ function renderNavigation(items, currentPath) {
 
 export function renderShell(content, home, currentPath) {
   return `
+    <div class="route-transition" aria-hidden="true">
+      <span class="route-transition__signal"></span>
+      <span class="route-transition__label">NXS / ROUTE SYNC</span>
+    </div>
     <div class="site-frame">
       <div class="ambient-signals" aria-hidden="true">
         <span></span><span></span><span></span><span></span>
