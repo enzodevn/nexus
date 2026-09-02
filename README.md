@@ -19,6 +19,10 @@ NEXUS V3 is the current stable baseline on `master`. Release `v3.0.0` consolidat
 - Roadmap: evidence-gated capability sequence
 - Not found: recovery state for unknown application and project routes
 
+## Project Framework
+
+Projects are registered once in `data/projects.json` and rendered through shared registry and case-study components. The versioned contract and onboarding workflow are documented in [`docs/PROJECT_FRAMEWORK.md`](docs/PROJECT_FRAMEWORK.md).
+
 ## Run in VS Code
 
 The application loads JSON through `fetch`, so it must be served over HTTP instead of opening `index.html` directly from the filesystem.
