@@ -6,7 +6,7 @@ Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
-NEXUS V3 is the current stable baseline on `master`. Release `v3.0.0` consolidates the modular platform, professional presentation, responsive motion system and release-ready project framework.
+NEXUS V3.1 defines the current platform baseline. Version `v3.1.0` formalizes the data-driven Project Framework, derived project routes, published and pending case-study states, structured evidence audits and provider-neutral production delivery.
 
 - Home: data-driven mission-control overview
 - About: professional profile, principles and technical journey

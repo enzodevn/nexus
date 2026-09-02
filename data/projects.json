@@ -4,7 +4,7 @@
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
     "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
-    "platformVersion": "v3.0.0"
+    "platformVersion": "v3.1.0"
   },
   "registry": {
     "eyebrow": "Connected systems",

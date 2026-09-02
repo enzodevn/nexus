@@ -413,6 +413,26 @@ function validateContact(contactData) {
   return channels.length;
 }
 
+async function validateReleaseVersion(homeData, projectData) {
+  const packageData = JSON.parse(
+    await fs.readFile(path.join(root, "package.json"), "utf8"),
+  );
+  const packageLock = JSON.parse(
+    await fs.readFile(path.join(root, "package-lock.json"), "utf8"),
+  );
+  const version = packageData.version;
+  const versionLabel = `v${version}`;
+
+  assert(/^\d+\.\d+\.\d+$/.test(version ?? ""), "package.json version must use stable semantic versioning.");
+  assert(packageLock.version === version, "package-lock.json version must match package.json.");
+  assert(packageLock.packages?.[""]?.version === version, "The lockfile root package version must match package.json.");
+  assert(homeData?.hero?.version === versionLabel, "The Home release indicator must match package.json.");
+  assert(projectData?.meta?.platformVersion === versionLabel, "The Projects platform indicator must match package.json.");
+  assert(homeData?.hero?.releaseState === "stable", "The release indicator must use the stable state for a final semantic version.");
+
+  return `${versionLabel} / ${homeData?.hero?.releaseState}`;
+}
+
 async function validateAutomationContract() {
   const packageData = JSON.parse(
     await fs.readFile(path.join(root, "package.json"), "utf8"),
@@ -801,6 +821,10 @@ async function run() {
     parsed.get("site.json"),
   );
   const contactChannelCount = validateContact(parsed.get("contact.json"));
+  const releaseVersion = await validateReleaseVersion(
+    parsed.get("home.json"),
+    parsed.get("projects.json"),
+  );
   const automationContract = await validateAutomationContract();
   const deliveryContract = await validateDeliveryContract();
 
@@ -818,6 +842,7 @@ async function run() {
   console.log(`  CSS structure and responsive rules: ${cssCount} stylesheets, ${breakpointCount} breakpoints`);
   console.log(`  Accessibility and routing contracts: ${routeCount} route patterns`);
   console.log(`  Metadata and social sharing: ${metadataRouteCount} route definitions, 1200x630 preview`);
+  console.log(`  Release version: ${releaseVersion}`);
   console.log(`  Automation contract: ${automationContract}`);
   console.log(`  Production delivery: ${deliveryContract}`);
   console.log("  Runtime dependencies: 0");
