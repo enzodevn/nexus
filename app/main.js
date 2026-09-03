@@ -1,4 +1,10 @@
 import { initializeRevealAnimations } from "./animations/reveal.js";
+import { initializeBootSequence } from "./animations/boot.js";
+import {
+  resetRouteTransition,
+  transitionRouteIn,
+  transitionRouteOut,
+} from "./animations/navigation.js";
 import { initializeSurfaceMotion } from "./animations/surfaces.js";
 import { loadAppData } from "./core/data.js";
 import { applyPageMetadata } from "./core/metadata.js";
@@ -20,6 +26,9 @@ import { bindShellInteractions, renderShell } from "../components/layout/shell.j
 
 const app = document.querySelector("#app");
 initializeMotionPreference();
+const bootSequence = initializeBootSequence(document, {
+  reducedMotion: prefersReducedMotion(),
+});
 
 function getInPageTarget(hash) {
   if (!hash?.startsWith("#") || hash.startsWith("#/")) return null;
@@ -57,6 +66,8 @@ function bindInPageNavigation() {
 
 function renderError(error) {
   console.error(error);
+  bootSequence.dismiss();
+  resetRouteTransition(app);
   app.innerHTML = `
     <main class="fatal-error">
       <span class="operation-label operation-label--amber">Initialization error</span>
@@ -87,6 +98,8 @@ try {
     app.setAttribute("aria-busy", "true");
 
     try {
+      if (!isInitial) await transitionRouteOut(app);
+
       const content = await route(params);
       if (navigation !== activeNavigation) return;
 
@@ -103,10 +116,18 @@ try {
         params,
       });
 
+      if (isInitial) bootSequence.markReady();
+
       const inPageTarget = getInPageTarget(window.location.hash);
       const mainContent = app.querySelector("#main-content");
+      if (!inPageTarget) window.scrollTo({ top: 0, behavior: "auto" });
 
-      requestAnimationFrame(() => {
+      const transitionFinished = transitionRouteIn(app, { isInitial });
+
+      requestAnimationFrame(async () => {
+        if (navigation !== activeNavigation) return;
+
+        await (isInitial ? bootSequence.finished : transitionFinished);
         if (navigation !== activeNavigation) return;
 
         if (inPageTarget) {
@@ -115,8 +136,9 @@ try {
         }
 
         if (!isInitial) mainContent?.focus({ preventScroll: true });
-        window.scrollTo({ top: 0, behavior: "auto" });
       });
+
+      if (!isInitial) await transitionFinished;
     } catch (error) {
       if (navigation === activeNavigation) renderError(error);
     } finally {

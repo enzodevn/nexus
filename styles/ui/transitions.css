@@ -1,0 +1,188 @@
+.route-transition {
+  position: fixed;
+  z-index: 45;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(3, 5, 10, 0.76);
+  backdrop-filter: blur(5px);
+}
+
+.route-transition::before,
+.route-transition::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.route-transition::before {
+  inset: 0;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(121, 216, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121, 216, 255, 0.05) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: radial-gradient(circle at center, black, transparent 68%);
+}
+
+.route-transition::after {
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 10rem;
+  opacity: 0.55;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(75, 159, 255, 0.04),
+    rgba(121, 216, 255, 0.11),
+    transparent
+  );
+  filter: blur(8px);
+  transform: translateY(-50%);
+}
+
+.route-transition__signal {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: min(42rem, 72vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-blue), var(--color-cyan), transparent);
+  box-shadow: 0 0 1rem rgba(121, 216, 255, 0.6), 0 0 2.8rem rgba(75, 159, 255, 0.3);
+  transform: translate(-50%, -50%) scaleX(0);
+}
+
+.route-transition__signal::before,
+.route-transition__signal::after {
+  position: absolute;
+  top: 50%;
+  width: 0.35rem;
+  height: 0.35rem;
+  content: "";
+  border-radius: 50%;
+  background: #dff7ff;
+  box-shadow: 0 0 0.75rem var(--color-cyan);
+  transform: translateY(-50%);
+}
+
+.route-transition__signal::before { left: 19%; }
+.route-transition__signal::after { right: 19%; }
+
+.route-transition__label {
+  position: relative;
+  z-index: 3;
+  margin-top: 3.4rem;
+  color: var(--color-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(0.45rem);
+}
+
+#app.is-route-leaving .route-transition {
+  opacity: 1;
+  transition: opacity 220ms ease;
+}
+
+#app.is-route-leaving .route-transition__signal {
+  transform: translate(-50%, -50%) scaleX(1);
+  transition: transform 280ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#app.is-route-leaving .route-transition__label {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms 80ms ease, transform 180ms 80ms ease;
+}
+
+#app.is-route-leaving #main-content {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(-0.6rem) scale(0.995);
+  transition:
+    opacity 220ms ease,
+    filter 260ms ease,
+    transform 260ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#app.is-route-entering .route-transition {
+  opacity: 1;
+}
+
+#app.is-route-entering .route-transition__signal {
+  transform: translate(-50%, -50%) scaleX(1);
+  transform-origin: right center;
+}
+
+#app.is-route-entering .route-transition__label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#app.is-route-entering #main-content {
+  opacity: 0;
+  filter: blur(7px);
+  transform: translateY(0.8rem) scale(0.994);
+}
+
+#app.is-route-entering.is-route-active .route-transition {
+  opacity: 0;
+  transition: opacity 420ms 80ms ease;
+}
+
+#app.is-route-entering.is-route-active .route-transition__signal {
+  transform: translate(-50%, -50%) scaleX(0);
+  transition: transform 440ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#app.is-route-entering.is-route-active .route-transition__label {
+  opacity: 0;
+  transform: translateY(-0.45rem);
+  transition: opacity 220ms ease, transform 260ms ease;
+}
+
+#app.is-route-entering.is-route-active #main-content {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 500ms 70ms ease,
+    filter 520ms 50ms ease,
+    transform 540ms 50ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#app.is-route-entering.is-route-active .floating-nav {
+  animation: route-nav-signal 540ms ease;
+}
+
+@keyframes route-nav-signal {
+  0%, 100% {
+    border-color: rgba(142, 178, 211, 0.17);
+    box-shadow: 0 1.1rem 3rem rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 255, 255, 0.04);
+  }
+
+  46% {
+    border-color: rgba(121, 216, 255, 0.42);
+    box-shadow:
+      0 1.1rem 3rem rgba(0, 0, 0, 0.28),
+      0 0 1.8rem rgba(75, 159, 255, 0.15),
+      inset 0 0 1.1rem rgba(121, 216, 255, 0.04);
+  }
+}
+
+@media (max-width: 42rem) {
+  .route-transition__signal {
+    width: 82vw;
+  }
+
+  .route-transition__label {
+    font-size: 0.56rem;
+  }
+}

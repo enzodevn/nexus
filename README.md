@@ -6,9 +6,10 @@ Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
-NEXUS V3.1 defines the current platform baseline. Version `v3.1.0` formalizes the data-driven Project Framework, derived project routes, published and pending case-study states, structured evidence audits and provider-neutral production delivery.
+NEXUS V3.2 defines the current platform baseline. Version `v3.2.0` extends the data-driven Project Framework with a cinematic startup sequence, responsive route transitions and accessible motion controls while preserving structured evidence audits and provider-neutral production delivery.
 
 - Home: data-driven mission-control overview
+- Experience: cinematic initialization, route synchronization and reduced-motion behavior
 - About: professional profile, principles and technical journey
 - Contact: verified LinkedIn, professional email and GitHub channels
 - Metadata: route-aware titles, descriptions, indexing rules and structured identity
