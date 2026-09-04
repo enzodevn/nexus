@@ -16,6 +16,7 @@
   min-height: 30rem;
   padding: clamp(1.15rem, 1.7vw, 1.6rem);
   flex-direction: column;
+  justify-content: center;
   align-self: center;
   border-radius: var(--radius-sm);
   background-color: rgba(10, 16, 28, 0.67);
@@ -36,10 +37,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
 }
 
 .context-list {
   display: grid;
+  width: 100%;
   margin-top: 2.25rem;
 }
 
@@ -74,7 +77,7 @@
 }
 
 .panel-note {
-  margin-top: auto;
+  margin-top: 2rem;
   padding-top: 2rem;
   font-size: 0.72rem;
   line-height: 1.55;
@@ -232,7 +235,7 @@
 }
 
 .status-summary {
-  margin-top: auto;
+  margin-top: 2rem;
   padding-top: 2rem;
 }
 
@@ -240,7 +243,7 @@
   display: block;
   width: 2rem;
   height: 1px;
-  margin-bottom: 0.8rem;
+  margin: 0 auto 0.8rem;
   background: var(--color-cyan);
   box-shadow: 0 0 0.7rem var(--color-cyan);
 }
@@ -272,8 +275,9 @@
 .featured-main {
   display: flex;
   padding: clamp(1.75rem, 4vw, 4rem);
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .featured-heading {
@@ -281,7 +285,7 @@
 }
 
 .featured-category {
-  margin-top: auto;
+  margin-top: 2rem;
   color: #7b8ba1;
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -664,19 +668,20 @@
 .lab-content {
   display: flex;
   padding: clamp(1.75rem, 4vw, 4rem);
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .lab-number {
-  margin-left: auto;
+  margin-inline: auto;
   color: var(--color-text-muted);
   font-family: var(--font-mono);
   font-size: var(--type-micro);
 }
 
 .lab-content h3 {
-  margin-top: auto;
+  margin-top: 2rem;
   font-size: var(--type-section);
 }
 
@@ -687,6 +692,7 @@
 
 .lab-tags {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: 1.5rem;

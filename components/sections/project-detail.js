@@ -5,6 +5,7 @@ import {
   sectionHeader,
   statusMark,
 } from "../ui/primitives.js";
+import { renderProjectShowcase } from "./project-showcase.js";
 
 function renderProjectSignals(project) {
   const signals = [
@@ -66,6 +67,7 @@ function renderRoadmap(project) {
 
 function renderSectionNavigation(project) {
   const sections = [
+    ...(project.caseStudy.showcase ? [["Operations view", "project-experience"]] : []),
     ["Overview", "project-overview"],
     ["Context", "project-context"],
     ["Architecture", "project-architecture"],
@@ -173,6 +175,8 @@ export function renderProjectDetailSections(project) {
     </section>
 
     ${renderSectionNavigation(project)}
+
+    ${renderProjectShowcase(project)}
 
     <section id="project-overview" class="section project-detail-overview" aria-labelledby="project-overview-title" data-reveal tabindex="-1">
       <article class="surface panel project-detail-mission motion-surface" data-motion-surface>

@@ -552,7 +552,7 @@ async function validateProjects(projectData, siteData) {
   if (await exists(schemaPath)) {
     try {
       const schema = JSON.parse(await fs.readFile(schemaPath, "utf8"));
-      assert(schema?.["x-nexus-contract-version"] === "1.0.0", "The project schema must expose contract version 1.0.0.");
+      assert(schema?.["x-nexus-contract-version"] === "1.1.0", "The project schema must expose contract version 1.1.0.");
       assert(
         JSON.stringify(schema?.required ?? []) === JSON.stringify(requiredProjectFields),
         "The project schema required fields must match the automated project contract.",
@@ -676,6 +676,74 @@ async function validateProjects(projectData, siteData) {
         assert(["active", "muted"].includes(finding.signal), `${label}.caseStudy.evidence.findings[${findingIndex}].signal must be active or muted.`);
       }
 
+      const showcase = caseStudy?.showcase;
+
+      if (showcase) {
+        requireString(showcase.eyebrow, `${label}.caseStudy.showcase.eyebrow`);
+        requireString(showcase.title, `${label}.caseStudy.showcase.title`);
+        requireString(showcase.description, `${label}.caseStudy.showcase.description`);
+        requireString(showcase.snapshot?.source, `${label}.caseStudy.showcase.snapshot.source`);
+        requireString(showcase.snapshot?.period, `${label}.caseStudy.showcase.snapshot.period`);
+        requireString(showcase.snapshot?.verifiedOn, `${label}.caseStudy.showcase.snapshot.verifiedOn`);
+        requireList(showcase.metrics, `${label}.caseStudy.showcase.metrics`, 3);
+        requireString(showcase.trend?.title, `${label}.caseStudy.showcase.trend.title`);
+        requireString(showcase.trend?.description, `${label}.caseStudy.showcase.trend.description`);
+        requireList(showcase.trend?.points, `${label}.caseStudy.showcase.trend.points`, 12);
+        requireString(showcase.mix?.title, `${label}.caseStudy.showcase.mix.title`);
+        requireString(showcase.mix?.description, `${label}.caseStudy.showcase.mix.description`);
+        requireString(showcase.mix?.period, `${label}.caseStudy.showcase.mix.period`);
+        requireList(showcase.mix?.items, `${label}.caseStudy.showcase.mix.items`, 2);
+
+        const snapshotDate = new Date(`${showcase.snapshot?.verifiedOn ?? ""}T00:00:00Z`);
+        assert(
+          /^\d{4}-\d{2}-\d{2}$/.test(showcase.snapshot?.verifiedOn ?? "")
+            && !Number.isNaN(snapshotDate.getTime())
+            && snapshotDate.toISOString().slice(0, 10) === showcase.snapshot.verifiedOn,
+          `${label}.caseStudy.showcase.snapshot.verifiedOn must be a valid ISO date.`,
+        );
+
+        const showcaseMetricLabels = new Set();
+
+        for (const [metricIndex, metric] of (showcase.metrics ?? []).entries()) {
+          const metricLabel = `${label}.caseStudy.showcase.metrics[${metricIndex}]`;
+          requireString(metric.label, `${metricLabel}.label`);
+          requireString(metric.value, `${metricLabel}.value`);
+          requireString(metric.detail, `${metricLabel}.detail`);
+          assert(!showcaseMetricLabels.has(metric.label), `${metricLabel}.label duplicates ${metric.label}.`);
+          showcaseMetricLabels.add(metric.label);
+        }
+
+        const trendPeriods = new Set();
+        let previousPeriod = "";
+
+        for (const [pointIndex, point] of (showcase.trend?.points ?? []).entries()) {
+          const pointLabel = `${label}.caseStudy.showcase.trend.points[${pointIndex}]`;
+          assert(/^\d{4}M(?:0[1-9]|1[0-2])$/.test(point.period ?? ""), `${pointLabel}.period must use YYYYMmm.`);
+          assert(Number.isFinite(point.valueMwh) && point.valueMwh >= 0, `${pointLabel}.valueMwh must be a non-negative number.`);
+          assert(!trendPeriods.has(point.period), `${pointLabel}.period duplicates ${point.period}.`);
+          assert(!previousPeriod || point.period > previousPeriod, `${pointLabel}.period must be later than the preceding point.`);
+          trendPeriods.add(point.period);
+          previousPeriod = point.period;
+        }
+
+        assert(
+          showcase.mix?.period === showcase.trend?.points?.at(-1)?.period,
+          `${label}.caseStudy.showcase.mix.period must match the latest trend period.`,
+        );
+
+        const mixLabels = new Set();
+        const showcaseTones = new Set(["cyan", "blue", "cyan-soft", "amber"]);
+
+        for (const [itemIndex, item] of (showcase.mix?.items ?? []).entries()) {
+          const itemLabel = `${label}.caseStudy.showcase.mix.items[${itemIndex}]`;
+          requireString(item.label, `${itemLabel}.label`);
+          assert(Number.isFinite(item.valueMwh) && item.valueMwh >= 0, `${itemLabel}.valueMwh must be a non-negative number.`);
+          assert(showcaseTones.has(item.tone), `${itemLabel}.tone must use the showcase palette.`);
+          assert(!mixLabels.has(item.label), `${itemLabel}.label duplicates ${item.label}.`);
+          mixLabels.add(item.label);
+        }
+      }
+
       const linkLabels = new Set();
       const linkDestinations = new Set();
 
@@ -757,6 +825,10 @@ async function validateProjects(projectData, siteData) {
         detailMarkup.includes(probe.name) && detailMarkup.includes(probe.objective),
         "A data-only project record must render through the shared case-study component.",
       );
+      assert(
+        !probe.caseStudy?.showcase || detailMarkup.includes("data-project-showcase"),
+        "A data-only showcase must render through the shared project presentation component.",
+      );
 
       const pendingProbe = structuredClone(probe);
       Object.assign(pendingProbe, {
@@ -806,7 +878,7 @@ async function validateProjects(projectData, siteData) {
   return {
     caseStudyCount: projects.filter((project) => project.hasCaseStudy).length,
     projectCount: projects.length,
-    contractVersion: "1.0.0",
+    contractVersion: "1.1.0",
   };
 }
 

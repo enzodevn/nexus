@@ -68,7 +68,9 @@
 .project-primary {
   display: flex;
   min-height: 52rem;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background:
     radial-gradient(circle at 78% 18%, rgba(68, 157, 224, 0.14), transparent 30rem),
     linear-gradient(150deg, rgba(121, 216, 255, 0.025), transparent 42%),
@@ -81,11 +83,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
 }
 
 .project-primary__copy {
-  margin-top: auto;
-  padding-top: 6rem;
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+  flex-direction: column;
 }
 
 .project-category {
@@ -132,12 +137,14 @@
 
 .project-stack {
   display: flex;
+  justify-content: center;
   gap: 0.4rem;
   margin-top: 2rem;
 }
 
 .project-primary__actions {
   display: flex;
+  justify-content: center;
   margin-top: 2rem;
 }
 
@@ -176,7 +183,9 @@
 .project-trajectory {
   display: flex;
   min-height: 52rem;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background: rgba(8, 14, 25, 0.78);
 }
 
@@ -188,8 +197,8 @@
 
 .project-milestones {
   display: grid;
-  margin-top: auto;
-  padding-top: 4rem;
+  width: 100%;
+  margin-top: 3rem;
 }
 
 .project-milestones li {
@@ -263,13 +272,14 @@
 
 .project-registry-row__identity {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   border-right: 1px solid var(--color-border);
 }
 
 .project-registry-row__identity .project-category {
-  margin-top: auto;
-  padding-top: 4rem;
+  margin-top: 1.5rem;
 }
 
 .project-registry-row h3 {
@@ -280,6 +290,7 @@
 .project-registry-row__details {
   display: grid;
   align-content: center;
+  justify-items: center;
   gap: 2.5rem;
 }
 
@@ -291,6 +302,7 @@
 
 .project-registry-row__details dl {
   display: grid;
+  width: 100%;
   gap: 0.8rem;
 }
 
@@ -318,12 +330,14 @@
 
 .project-registry-row__details .tag-list {
   display: flex;
+  justify-content: center;
   gap: 0.35rem;
 }
 
 .project-registry-row__action {
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 2.75rem;
 }
 
@@ -365,7 +379,7 @@
   }
 
   .project-primary__copy {
-    padding-top: 8rem;
+    padding-top: 0;
   }
 
   .project-trajectory {
@@ -440,7 +454,7 @@
   }
 
   .project-primary__copy {
-    padding-top: 5rem;
+    padding-top: 0;
   }
 
   .project-primary h2 {

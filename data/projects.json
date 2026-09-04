@@ -26,44 +26,44 @@
       "summary": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
       "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
       "focus": "Environmental data → dependable analytical products",
-      "stack": ["Python", "Pandas", "CSV", "Matplotlib", "Seaborn"],
+      "stack": ["Python", "Pandas", "PxWeb API", "Streamlit", "Altair", "Pytest"],
       "architecture": [
         {
           "index": "01",
           "name": "Acquire",
-          "description": "Start from a versioned extract of Statistics Norway electricity table 14091."
+          "description": "Acquire the selected generation series from Statistics Norway table 14091 through its official PxWeb API."
         },
         {
           "index": "02",
-          "name": "Transform",
-          "description": "Normalize structures and make data-quality decisions explicit."
+          "name": "Validate",
+          "description": "Verify the source schema, selection fingerprint and versioned raw snapshot before transformation."
         },
         {
           "index": "03",
-          "name": "Store",
-          "description": "Export a cleaned long-format CSV as a reproducible analytical dataset."
+          "name": "Transform",
+          "description": "Normalize the monthly observations into a canonical long-format analytical dataset."
         },
         {
           "index": "04",
           "name": "Explore",
-          "description": "Prepare historical and recent production analysis with Pandas and plotting libraries."
+          "description": "Expose compact charts, filters and quality context through an interactive Streamlit dashboard."
         }
       ],
       "milestones": [
         {
           "state": "Current",
-          "title": "Repeatable CSV transformation",
-          "description": "Maintain a deterministic raw-to-clean flow across the versioned monthly electricity dataset."
+          "title": "Verified Web V1 baseline",
+          "description": "Maintain the tested API-to-dashboard flow and its versioned Statistics Norway snapshot through Sprint 06."
         },
         {
           "state": "Next",
-          "title": "Reproducible analysis contract",
-          "description": "Unify the runnable entry point, declare every dependency and generate traceable analytical outputs."
+          "title": "NEXUS portfolio integration",
+          "description": "Present verified NGDP signals through a focused visual case study without duplicating the application dashboard."
         },
         {
           "state": "Future",
-          "title": "Storage and interactive delivery",
-          "description": "Add database persistence and an analytical interface only after the execution contract is dependable."
+          "title": "Private hosted delivery",
+          "description": "Evaluate database persistence, scheduled refreshes and controlled hosting after the current local baseline remains dependable."
         }
       ],
       "caseStudy": {
@@ -80,64 +80,137 @@
         "evidence": {
           "eyebrow": "Verified repository evidence",
           "title": "A working transformation with visible boundaries.",
-          "description": "The public repository was inspected and its data-cleaning path was executed before these claims were added to NEXUS.",
+          "description": "The private repository baseline, source provenance, transformation outputs, dashboard and automated checks were verified before these claims were added to NEXUS.",
           "audit": {
-            "revision": "e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b",
-            "verifiedOn": "2026-08-29",
-            "source": "https://github.com/enzodevn/ngdp-python/commit/e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b"
+            "revision": "5aa11b3fba1b98795e72791503e06869ff87154d",
+            "verifiedOn": "2026-09-04",
+            "source": "https://github.com/enzodevn/ngdp-python/commit/5aa11b3fba1b98795e72791503e06869ff87154d"
           },
           "metrics": [
             {
-              "value": "1,192",
-              "label": "Clean records",
-              "description": "Numeric monthly observations after unavailable source values are removed."
+              "value": "1,216",
+              "label": "Verified records",
+              "description": "Normalized monthly source observations in the Sprint 06 canonical dataset."
             },
             {
-              "value": "1993–2026",
+              "value": "1993M01–2026M07",
               "label": "Monthly coverage",
-              "description": "The processed dataset runs from 1993M01 through 2026M01."
+              "description": "The current verified snapshot spans more than three decades of monthly generation."
             },
             {
-              "value": "04",
-              "label": "Production categories",
-              "description": "Hydro, wind, solar and thermal electricity generation."
+              "value": "26/26",
+              "label": "Automated checks",
+              "description": "The complete test suite passes on the audited Sprint 06 baseline."
             }
           ],
           "findings": [
             {
               "state": "Verified",
               "signal": "active",
-              "title": "Deterministic raw-to-clean transformation",
-              "description": "Running src/data_cleaning.py against the versioned source produced a byte-identical cleaned CSV."
+              "title": "Verified source-to-product pipeline",
+              "description": "The official API selection, raw snapshot, transformation and canonical output are connected through one tested workflow."
             },
             {
               "state": "Inspectable",
               "signal": "active",
-              "title": "Explicit data lineage",
-              "description": "The raw SSB table extract, Pandas reshape logic and cleaned long-format output are all available in the repository."
+              "title": "Interactive analytical interface",
+              "description": "The Streamlit application exposes filters, quality context and three compact Altair views over the processed dataset."
             },
             {
-              "state": "Open gap",
+              "state": "Known boundary",
               "signal": "muted",
-              "title": "Execution contract needs consolidation",
-              "description": "The documented root command does not run the pipeline, and the visualization path uses an undeclared dependency and does not save its current output."
+              "title": "Refresh remains an explicit operation",
+              "description": "NEXUS presents the verified local snapshot; it does not query Statistics Norway on every portfolio page load."
             }
           ],
-          "snapshot": "Audited against public revision e1caa5a on 29 August 2026. Existing chart PNGs are not counted as pipeline evidence because their generation is not connected to the current monthly analysis path."
+          "snapshot": "Audited against private revision 5aa11b3 on 4 September 2026. The source snapshot was last verified on 3 September 2026 and contains 1,216 observations through 2026M07."
+        },
+        "showcase": {
+          "eyebrow": "NGDP operations view",
+          "title": "Norway's electricity data, made inspectable.",
+          "description": "A focused operational preview of the real NGDP baseline: verified source coverage, monthly generation movement and the latest energy mix.",
+          "snapshot": {
+            "source": "Statistics Norway · Table 14091",
+            "period": "1993M01–2026M07",
+            "verifiedOn": "2026-09-03"
+          },
+          "metrics": [
+            {
+              "label": "Latest generation",
+              "value": "10.39 TWh",
+              "detail": "July 2026 across the four selected series."
+            },
+            {
+              "label": "Renewable share",
+              "value": "97.9%",
+              "detail": "Hydro, wind and solar in the latest available month."
+            },
+            {
+              "label": "Verified records",
+              "value": "1,216",
+              "detail": "Normalized monthly source observations."
+            },
+            {
+              "label": "Quality gate",
+              "value": "26/26",
+              "detail": "Automated tests passing on the Sprint 06 baseline."
+            }
+          ],
+          "trend": {
+            "title": "Monthly generation signal",
+            "description": "Total electricity generation across hydro, wind, solar and thermal sources.",
+            "points": [
+              { "period": "2024M08", "valueMwh": 11104052 },
+              { "period": "2024M09", "valueMwh": 11578519 },
+              { "period": "2024M10", "valueMwh": 12878212 },
+              { "period": "2024M11", "valueMwh": 14743252 },
+              { "period": "2024M12", "valueMwh": 15846493 },
+              { "period": "2025M01", "valueMwh": 17367736 },
+              { "period": "2025M02", "valueMwh": 15904050 },
+              { "period": "2025M03", "valueMwh": 15046058 },
+              { "period": "2025M04", "valueMwh": 13008594 },
+              { "period": "2025M05", "valueMwh": 11599332 },
+              { "period": "2025M06", "valueMwh": 10790196 },
+              { "period": "2025M07", "valueMwh": 11463789 },
+              { "period": "2025M08", "valueMwh": 11226287 },
+              { "period": "2025M09", "valueMwh": 11549065 },
+              { "period": "2025M10", "valueMwh": 13205225 },
+              { "period": "2025M11", "valueMwh": 14850566 },
+              { "period": "2025M12", "valueMwh": 15782194 },
+              { "period": "2026M01", "valueMwh": 17782574 },
+              { "period": "2026M02", "valueMwh": 13519385 },
+              { "period": "2026M03", "valueMwh": 12468376 },
+              { "period": "2026M04", "valueMwh": 10730050 },
+              { "period": "2026M05", "valueMwh": 11461739 },
+              { "period": "2026M06", "valueMwh": 11374922 },
+              { "period": "2026M07", "valueMwh": 10388060 }
+            ]
+          },
+          "mix": {
+            "title": "Latest energy mix",
+            "description": "Share of total generation in the latest verified month.",
+            "period": "2026M07",
+            "items": [
+              { "label": "Hydro", "valueMwh": 9230058, "tone": "cyan" },
+              { "label": "Wind", "valueMwh": 862490, "tone": "blue" },
+              { "label": "Solar", "valueMwh": 80590, "tone": "cyan-soft" },
+              { "label": "Thermal", "valueMwh": 214922, "tone": "amber" }
+            ]
+          }
         },
         "capabilities": [
-          "Wide-to-long monthly data normalization with Pandas",
-          "Filtering of unavailable values and explicit numeric conversion",
-          "Repeatable export of an analytics-ready CSV dataset",
-          "Historical and recent production analysis prepared with Matplotlib and Seaborn"
+          "Authenticated-free acquisition from the official Statistics Norway PxWeb API",
+          "Schema, fingerprint and snapshot validation before transformation",
+          "Repeatable export of a canonical analytics-ready dataset",
+          "Interactive filtering and compact visual analysis with Streamlit and Altair"
         ],
         "challenges": [
-          "Unify cleaning and analysis behind one documented entry point.",
-          "Make every visual output reproducible from the versioned monthly dataset."
+          "Keep the data contract stable while the official monthly source continues to grow.",
+          "Separate verified portfolio evidence from the live dashboard execution boundary."
         ],
         "learnings": [
-          "Versioning the source, transform and cleaned output makes data lineage directly inspectable.",
-          "A chart becomes technical evidence only when its generation path is reproducible."
+          "A source fingerprint protects analytical lineage when an official upstream table changes.",
+          "A focused operational view communicates the system better than reproducing the complete dashboard inside the portfolio."
         ],
         "links": [
           {
@@ -146,7 +219,7 @@
           },
           {
             "label": "Inspect audited revision",
-            "href": "https://github.com/enzodevn/ngdp-python/commit/e1caa5ae8ea8a3ea3f6c959fd0a8cd78dab0b77b"
+            "href": "https://github.com/enzodevn/ngdp-python/commit/5aa11b3fba1b98795e72791503e06869ff87154d"
           }
         ]
       }
