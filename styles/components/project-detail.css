@@ -117,7 +117,7 @@
   max-width: 52rem;
   margin-top: 1.5rem;
   color: var(--color-text-secondary);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-size: clamp(0.94rem, 1.25vw, 1.08rem);
 }
 
 .project-detail-intro__actions {
@@ -258,7 +258,7 @@
 }
 
 .project-detail-flow h3 {
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-size: clamp(1.16rem, 1.65vw, 1.55rem);
 }
 
 .project-detail-flow p {
@@ -292,7 +292,7 @@
   margin-top: clamp(2rem, 5vw, 4rem);
   color: var(--color-text-primary);
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
   line-height: 0.9;
 }
 

@@ -170,7 +170,7 @@
 .hero-slogan {
   margin-top: 1.8rem;
   color: #d7e4f1;
-  font-size: clamp(1.25rem, 2.3vw, 2rem);
+  font-size: clamp(1.08rem, 1.75vw, 1.55rem);
   letter-spacing: -0.025em;
 }
 
@@ -789,7 +789,7 @@
   max-width: 55rem;
   margin: 3rem auto 0;
   color: #bbc9d8;
-  font-size: clamp(1.2rem, 2.4vw, 2rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.55rem);
   text-align: center;
   text-wrap: balance;
 }

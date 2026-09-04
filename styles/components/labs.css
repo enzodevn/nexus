@@ -108,7 +108,7 @@
   max-width: 48rem;
   margin-top: 1.5rem;
   color: #becbd9;
-  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  font-size: clamp(0.94rem, 1.2vw, 1.06rem);
 }
 
 .labs-methods {

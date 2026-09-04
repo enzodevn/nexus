@@ -102,7 +102,7 @@
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border);
   color: #becbd9;
-  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-size: clamp(0.98rem, 1.4vw, 1.2rem);
   text-wrap: balance;
 }
 
@@ -189,7 +189,7 @@
 }
 
 .about-principles__list h3 {
-  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-size: clamp(1.12rem, 1.55vw, 1.45rem);
 }
 
 .about-principles__list p {
@@ -242,7 +242,7 @@
 .about-stage h3 {
   margin-top: auto;
   padding-top: 5rem;
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-size: clamp(1.18rem, 1.65vw, 1.6rem);
 }
 
 .about-stage p {
@@ -279,7 +279,7 @@
   padding-left: clamp(1.5rem, 3vw, 3rem);
   border-left: 1px solid rgba(121, 216, 255, 0.35);
   color: #d5e3ef;
-  font-size: clamp(1.3rem, 2.4vw, 2.15rem);
+  font-size: clamp(1.14rem, 1.8vw, 1.68rem);
   line-height: 1.35;
   letter-spacing: -0.025em;
   text-wrap: balance;
