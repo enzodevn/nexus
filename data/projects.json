@@ -52,13 +52,13 @@
       "milestones": [
         {
           "state": "Current",
-          "title": "Verified Web V1 baseline",
-          "description": "Maintain the tested API-to-dashboard flow and its versioned Statistics Norway snapshot through Sprint 06."
+          "title": "Verified Web V1 and NEXUS case",
+          "description": "Maintain the tested API-to-dashboard flow and its compact NEXUS presentation against the same versioned Statistics Norway snapshot."
         },
         {
           "state": "Next",
-          "title": "NEXUS portfolio integration",
-          "description": "Present verified NGDP signals through a focused visual case study without duplicating the application dashboard."
+          "title": "Reviewed portfolio data sync",
+          "description": "Generate the NEXUS showcase snapshot from each approved NGDP data revision while keeping source updates inspectable and review-gated."
         },
         {
           "state": "Future",
@@ -117,10 +117,16 @@
               "description": "The Streamlit application exposes filters, quality context and three compact Altair views over the processed dataset."
             },
             {
+              "state": "Verified",
+              "signal": "active",
+              "title": "Review-gated source refresh",
+              "description": "A daily workflow checks the official source and proposes validated snapshot changes through a pull request only after the complete test suite passes."
+            },
+            {
               "state": "Known boundary",
               "signal": "muted",
               "title": "Refresh remains an explicit operation",
-              "description": "NEXUS presents the verified local snapshot; it does not query Statistics Norway on every portfolio page load."
+              "description": "NEXUS presents the latest approved local snapshot; promotion from NGDP remains separate from page loading and never depends on a live provider response."
             }
           ],
           "snapshot": "Audited against private revision 5aa11b3 on 4 September 2026. The source snapshot was last verified on 3 September 2026 and contains 1,216 observations through 2026M07."
@@ -201,6 +207,7 @@
         "capabilities": [
           "Authenticated-free acquisition from the official Statistics Norway PxWeb API",
           "Schema, fingerprint and snapshot validation before transformation",
+          "Daily source verification with validated updates proposed through review pull requests",
           "Repeatable export of a canonical analytics-ready dataset",
           "Interactive filtering and compact visual analysis with Streamlit and Altair"
         ],
