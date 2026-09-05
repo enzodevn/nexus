@@ -55,11 +55,15 @@ function renderTrendSeries(trend, range, initialRange) {
 
   return `<g data-chart-series="${range}" ${range === initialRange ? "" : "hidden"}>
     <path class="project-showcase-chart__area" d="${areaPath}"></path>
+    <path class="project-showcase-chart__line-glow" d="${linePath}"></path>
     <path class="project-showcase-chart__line" pathLength="1" d="${linePath}"></path>
     ${coordinates
       .map((point, index) => {
         if (index % pointInterval !== 0 && index !== coordinates.length - 1) return "";
-        return `<circle class="project-showcase-chart__point" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="4">
+        const period = formatPeriod(point.period);
+        const value = formatEnergy(point.valueMwh);
+        return `<circle class="project-showcase-chart__point-pulse" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="8" aria-hidden="true"></circle>
+        <circle class="project-showcase-chart__point" cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="4" tabindex="0" role="img" data-chart-point data-period="${period}" data-value="${value}" aria-label="${period}: ${value}">
           <title>${formatPeriod(point.period)}: ${formatEnergy(point.valueMwh)}</title>
         </circle>`;
       })
@@ -74,6 +78,10 @@ function renderTrendSeries(trend, range, initialRange) {
 function renderTrendChart(trend) {
   const ranges = [24, 12].filter((range) => trend.points.length >= range);
   const initialRange = ranges[0] ?? trend.points.length;
+  const latestPoint = trend.points.at(-1);
+  const peakPoint = trend.points.reduce((peak, point) =>
+    point.valueMwh > peak.valueMwh ? point : peak,
+  );
 
   return `<article class="surface panel motion-surface project-showcase-chart" data-motion-surface data-reveal>
     ${motionFrame("strong")}
@@ -92,22 +100,53 @@ function renderTrendChart(trend) {
       </div>
     </header>
     <div class="project-showcase-chart__stage">
+      <div class="project-showcase-chart__hud" aria-label="Verified chart telemetry">
+        <span class="project-showcase-chart__link"><i></i> Verified data link</span>
+        <span>Latest · ${formatEnergy(latestPoint.valueMwh)}</span>
+        <span>Peak · ${formatPeriod(peakPoint.period)}</span>
+      </div>
       <svg viewBox="0 0 ${CHART_WIDTH} ${CHART_HEIGHT}" role="img" aria-labelledby="project-showcase-trend-title project-showcase-trend-description">
         <desc id="project-showcase-trend-description">${trend.description}. Values are monthly totals from ${formatPeriod(trend.points[0].period)} through ${formatPeriod(trend.points.at(-1).period)}.</desc>
+        <defs>
+          <linearGradient id="ngdp-trend-area" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#42e8ff" stop-opacity="0.38"></stop>
+            <stop offset="58%" stop-color="#397dff" stop-opacity="0.13"></stop>
+            <stop offset="100%" stop-color="#668cff" stop-opacity="0"></stop>
+          </linearGradient>
+          <linearGradient id="ngdp-trend-line" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#5bc8ff"></stop>
+            <stop offset="52%" stop-color="#42e8ff"></stop>
+            <stop offset="100%" stop-color="#6f91ff"></stop>
+          </linearGradient>
+        </defs>
         <g class="project-showcase-chart__grid" aria-hidden="true">
           <line x1="${CHART_LEFT}" y1="${CHART_TOP}" x2="${CHART_WIDTH - CHART_RIGHT}" y2="${CHART_TOP}"></line>
           <line x1="${CHART_LEFT}" y1="91" x2="${CHART_WIDTH - CHART_RIGHT}" y2="91"></line>
           <line x1="${CHART_LEFT}" y1="154" x2="${CHART_WIDTH - CHART_RIGHT}" y2="154"></line>
           <line x1="${CHART_LEFT}" y1="${CHART_BOTTOM}" x2="${CHART_WIDTH - CHART_RIGHT}" y2="${CHART_BOTTOM}"></line>
+          <line class="is-vertical" x1="${CHART_LEFT}" y1="${CHART_TOP}" x2="${CHART_LEFT}" y2="${CHART_BOTTOM}"></line>
+          <line class="is-vertical" x1="322" y1="${CHART_TOP}" x2="322" y2="${CHART_BOTTOM}"></line>
+          <line class="is-vertical" x1="462" y1="${CHART_TOP}" x2="462" y2="${CHART_BOTTOM}"></line>
+          <line class="is-vertical" x1="${CHART_WIDTH - CHART_RIGHT}" y1="${CHART_TOP}" x2="${CHART_WIDTH - CHART_RIGHT}" y2="${CHART_BOTTOM}"></line>
+        </g>
+        <g class="project-showcase-chart__streams" aria-hidden="true">
+          <line x1="112" y1="0" x2="112" y2="${CHART_BOTTOM}"></line>
+          <line x1="518" y1="0" x2="518" y2="${CHART_BOTTOM}"></line>
+          <line x1="684" y1="0" x2="684" y2="${CHART_BOTTOM}"></line>
         </g>
         ${ranges.map((range) => renderTrendSeries(trend, range, initialRange)).join("")}
       </svg>
+      <div class="project-showcase-chart__tooltip" data-chart-tooltip hidden aria-hidden="true">
+        <span data-chart-tooltip-period></span>
+        <strong data-chart-tooltip-value></strong>
+      </div>
     </div>
   </article>`;
 }
 
 function renderMixChart(mix) {
   const total = mix.items.reduce((sum, item) => sum + item.valueMwh, 0);
+  const totalValue = formatEnergy(total);
 
   return `<article class="surface panel motion-surface project-showcase-mix" data-motion-surface data-reveal>
     ${motionFrame("soft")}
@@ -119,18 +158,21 @@ function renderMixChart(mix) {
       </div>
       <span class="module-code">${formatPeriod(mix.period)}</span>
     </header>
-    <div class="project-showcase-mix__total">
-      <span>Total generation</span>
-      <strong>${formatEnergy(total)}</strong>
+    <div class="project-showcase-mix__total" data-mix-readout data-total-value="${totalValue}">
+      <span data-mix-readout-label>Total generation</span>
+      <strong data-mix-readout-value>${totalValue}</strong>
+      <small data-mix-readout-detail>All verified sources</small>
     </div>
     <ul class="project-showcase-mix__list" aria-labelledby="project-showcase-mix-title">
       ${mix.items
         .map((item) => {
           const share = total ? (item.valueMwh / total) * 100 : 0;
-          return `<li class="project-showcase-mix__item project-showcase-mix__item--${item.tone}" style="--mix-share: ${share.toFixed(2)}%">
-            <div><span>${item.label}</span><strong>${share.toFixed(1)}%</strong></div>
+          const shareLabel = `${share.toFixed(1)}%`;
+          const energyLabel = formatEnergy(item.valueMwh);
+          return `<li class="project-showcase-mix__item project-showcase-mix__item--${item.tone}" style="--mix-share: ${share.toFixed(2)}%" tabindex="0" data-mix-item data-label="${item.label}" data-value="${energyLabel}" data-share="${shareLabel} of total" aria-label="${item.label}: ${energyLabel}, ${shareLabel} of total">
+            <div><span>${item.label}</span><strong>${shareLabel}</strong></div>
             <span class="project-showcase-mix__track" aria-hidden="true"><i></i></span>
-            <small>${formatEnergy(item.valueMwh)}</small>
+            <small>${energyLabel}</small>
           </li>`;
         })
         .join("")}
