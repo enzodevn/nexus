@@ -70,7 +70,9 @@
 .roadmap-vector {
   display: flex;
   min-height: 48rem;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background:
     radial-gradient(circle at 78% 18%, rgba(68, 157, 224, 0.14), transparent 30rem),
     linear-gradient(150deg, rgba(121, 216, 255, 0.025), transparent 42%),
@@ -83,11 +85,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
 }
 
 .roadmap-vector__copy {
-  margin-top: auto;
-  padding-top: 6rem;
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+  flex-direction: column;
 }
 
 .roadmap-phase {
@@ -160,7 +165,9 @@
 .roadmap-gates {
   display: flex;
   min-height: 48rem;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background: rgba(8, 14, 25, 0.78);
 }
 
@@ -172,8 +179,8 @@
 
 .roadmap-gates ol {
   display: grid;
-  margin-top: auto;
-  padding-top: 4rem;
+  width: 100%;
+  margin-top: 3rem;
 }
 
 .roadmap-gates li {
@@ -207,8 +214,12 @@
 }
 
 .roadmap-level {
+  display: flex;
   min-height: 24rem;
   padding: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -242,15 +253,16 @@
 .roadmap-level__body {
   display: grid;
   grid-template-columns: 4rem minmax(18rem, 0.65fr) minmax(0, 1.35fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  margin-top: 4rem;
+  width: 100%;
+  margin-top: 3rem;
 }
 
 .roadmap-level__index {
   color: rgba(199, 217, 234, 0.52);
   font-family: var(--font-mono);
-  font-size: clamp(1.8rem, 3vw, 3.15rem);
+  font-size: clamp(1.9rem, 3.2vw, 3.3rem);
   font-weight: 600;
   line-height: 1;
 }
@@ -296,13 +308,14 @@
 
 .roadmap-level__details .tag-list {
   display: flex;
+  justify-content: center;
   gap: 0.35rem;
 }
 
 .roadmap-principle {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(3rem, 8vw, 9rem);
   min-height: 35rem;
   padding: clamp(2rem, 5vw, 5rem);
@@ -381,7 +394,7 @@
   }
 
   .roadmap-vector__copy {
-    padding-top: 8rem;
+    padding-top: 0;
   }
 
   .roadmap-gates {
@@ -454,7 +467,7 @@
   }
 
   .roadmap-vector__copy {
-    padding-top: 5rem;
+    padding-top: 0;
   }
 
   .roadmap-vector h2,

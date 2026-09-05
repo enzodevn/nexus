@@ -6,6 +6,7 @@ import {
   sectionHeader,
   statusMark,
 } from "../ui/primitives.js";
+import { getProjectRoute } from "../../app/core/projects.js";
 
 function renderHero(home, status, focus) {
   return `
@@ -88,7 +89,7 @@ function renderFeatured(featured) {
           <p class="featured-category">${featured.category}</p>
           <h2 id="featured-title">${featured.name}</h2>
           <p class="featured-description">${featured.summary}</p>
-          ${buttonLink("Open case study", featured.route, "text", "→")}
+          ${buttonLink("Open visual case study", getProjectRoute(featured), "text", "→")}
         </div>
         <div class="featured-specs">
           <dl>

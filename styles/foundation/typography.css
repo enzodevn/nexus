@@ -32,6 +32,35 @@ p {
   color: var(--color-text-secondary);
 }
 
+:is(#main-content, .site-footer) {
+  text-align: center;
+}
+
+:is(#main-content, .site-footer) :where(h1, h2, h3, p, dt, dd) {
+  margin-inline: auto;
+  text-align: center;
+}
+
+:is(#main-content, .site-footer) .section-header {
+  margin-inline: auto;
+  text-align: center;
+}
+
+:is(#main-content, .site-footer) .section-header > .operation-label {
+  display: flex;
+  margin-inline: auto;
+}
+
+:is(#main-content, .site-footer) :where(
+  .tag-list,
+  .hero-actions,
+  .project-primary__actions,
+  .project-detail-intro__actions,
+  .project-detail-links__actions
+) {
+  justify-content: center;
+}
+
 ::selection {
   color: var(--color-base);
   background: var(--color-cyan);

@@ -4,7 +4,7 @@ The Project Framework turns the NEXUS project registry into a reusable publishin
 
 ## Contract
 
-Each record follows contract version `1.0.0`, documented in `schemas/project.schema.json` and enforced by `scripts/validate.mjs`.
+Each record follows contract version `1.1.0`, documented in `schemas/project.schema.json` and enforced by `scripts/validate.mjs`.
 
 The registry accepts these lifecycle values:
 
@@ -28,7 +28,8 @@ Categories combine a specific domain with one shared system type: `Platform`, `P
 6. Set `hasCaseStudy` to `false` and omit `caseStudy` while evidence is incomplete.
 7. When the case study is ready, set `hasCaseStudy` to `true` and provide its problem, solution, evidence, capabilities, challenges, learnings and HTTPS links.
 8. Record the exact audited commit, verification date and matching GitHub source in `caseStudy.evidence.audit`.
-9. Run `npm run validate` and `npm run build` before creating a checkpoint.
+9. Optionally add `caseStudy.showcase` when a project benefits from a compact visual presentation. Its metrics, trend and mix remain data-only and are rendered by the shared project component.
+10. Run `npm run validate` and `npm run build` before creating a checkpoint.
 
 The Projects page automatically maps every registry record. The shared detail route resolves the slug and renders the same case-study sections for every complete project.
 
@@ -42,6 +43,8 @@ Projects without complete evidence remain visible in the registry with a clear p
 - Every published case study must identify one full commit revision, an ISO verification date and its matching audit link.
 - Architecture indexes must match their array order (`01`, `02`, `03`, ...).
 - All external evidence links must use HTTPS.
+- Every showcase value must come from a verified project snapshot; illustrative or invented analytical values are not allowed.
+- Showcase trend periods must be unique and chronological, and the latest mix must match the final trend period.
 - A case study is rendered only when its contract is complete.
 
 These rules keep new projects data-only while preserving navigation, accessibility and presentation consistency across NEXUS.

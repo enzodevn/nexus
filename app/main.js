@@ -6,6 +6,7 @@ import {
   transitionRouteOut,
 } from "./animations/navigation.js";
 import { initializeSurfaceMotion } from "./animations/surfaces.js";
+import { initializeProjectShowcases } from "./animations/project-showcase.js";
 import { loadAppData } from "./core/data.js";
 import { applyPageMetadata } from "./core/metadata.js";
 import {
@@ -108,6 +109,7 @@ try {
       bindMotionPreferenceControl(app);
       initializeRevealAnimations(app);
       initializeSurfaceMotion(app);
+      initializeProjectShowcases(app);
       applyPageMetadata({
         site: data.site,
         projects: data.projects.projects,

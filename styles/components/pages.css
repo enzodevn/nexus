@@ -36,7 +36,7 @@
 
 .not-found {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
 }
@@ -74,15 +74,16 @@
 .about-purpose {
   display: flex;
   min-height: 38rem;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background:
     radial-gradient(circle at 76% 24%, rgba(67, 151, 219, 0.12), transparent 30rem),
     var(--color-surface);
 }
 
 .about-purpose__copy {
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .about-purpose h2 {
@@ -109,12 +110,14 @@
 .about-profile {
   display: flex;
   min-height: 38rem;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background: rgba(9, 15, 27, 0.72);
 }
 
 .about-profile__identity {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .about-profile__status,
@@ -150,8 +153,9 @@
 
 .about-focus-list {
   display: flex;
+  justify-content: center;
   gap: 0.4rem;
-  margin-top: auto;
+  margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-border);
 }
@@ -215,8 +219,9 @@
   display: flex;
   min-width: 0;
   padding: clamp(1.5rem, 2.5vw, 2.5rem);
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   border-right: 1px solid var(--color-border);
   background: rgba(255, 255, 255, 0.008);
 }
@@ -240,8 +245,7 @@
 }
 
 .about-stage h3 {
-  margin-top: auto;
-  padding-top: 5rem;
+  margin-top: 2rem;
   font-size: clamp(1.18rem, 1.65vw, 1.6rem);
 }
 
@@ -253,7 +257,7 @@
 .about-vision {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.85fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(3rem, 8vw, 9rem);
   min-height: 35rem;
   padding: clamp(2rem, 5vw, 5rem);
@@ -275,14 +279,15 @@
 }
 
 .about-vision blockquote {
-  margin: 0;
-  padding-left: clamp(1.5rem, 3vw, 3rem);
-  border-left: 1px solid rgba(121, 216, 255, 0.35);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(121, 216, 255, 0.35);
   color: #d5e3ef;
   font-size: clamp(1.14rem, 1.8vw, 1.68rem);
   line-height: 1.35;
   letter-spacing: -0.025em;
   text-wrap: balance;
+  text-align: center;
 }
 
 @media (max-width: 1000px) {
@@ -346,7 +351,7 @@
   }
 
   .about-stage h3 {
-    padding-top: 3.5rem;
+    padding-top: 0;
   }
 }
 

@@ -1,9 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:nexus:project-schema:1.0.0",
+  "$id": "urn:nexus:project-schema:1.1.0",
   "title": "NEXUS project record",
   "description": "Contract for one project rendered by the NEXUS project registry and case-study framework.",
-  "x-nexus-contract-version": "1.0.0",
+  "x-nexus-contract-version": "1.1.0",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -206,6 +206,92 @@
         "href": { "type": "string", "pattern": "^https://" }
       }
     },
+    "showcaseSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "period", "verifiedOn"],
+      "properties": {
+        "source": { "$ref": "#/$defs/nonEmptyString" },
+        "period": { "$ref": "#/$defs/nonEmptyString" },
+        "verifiedOn": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+      }
+    },
+    "showcaseMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "value", "detail"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "value": { "$ref": "#/$defs/nonEmptyString" },
+        "detail": { "$ref": "#/$defs/nonEmptyString" }
+      }
+    },
+    "showcaseTrendPoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["period", "valueMwh"],
+      "properties": {
+        "period": { "type": "string", "pattern": "^[0-9]{4}M(0[1-9]|1[0-2])$" },
+        "valueMwh": { "type": "number", "minimum": 0 }
+      }
+    },
+    "showcaseTrend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "points"],
+      "properties": {
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "points": {
+          "type": "array",
+          "minItems": 12,
+          "items": { "$ref": "#/$defs/showcaseTrendPoint" }
+        }
+      }
+    },
+    "showcaseMixItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "valueMwh", "tone"],
+      "properties": {
+        "label": { "$ref": "#/$defs/nonEmptyString" },
+        "valueMwh": { "type": "number", "minimum": 0 },
+        "tone": { "type": "string", "enum": ["cyan", "blue", "cyan-soft", "amber"] }
+      }
+    },
+    "showcaseMix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "description", "period", "items"],
+      "properties": {
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "period": { "type": "string", "pattern": "^[0-9]{4}M(0[1-9]|1[0-2])$" },
+        "items": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/showcaseMixItem" }
+        }
+      }
+    },
+    "showcase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eyebrow", "title", "description", "snapshot", "metrics", "trend", "mix"],
+      "properties": {
+        "eyebrow": { "$ref": "#/$defs/nonEmptyString" },
+        "title": { "$ref": "#/$defs/nonEmptyString" },
+        "description": { "$ref": "#/$defs/nonEmptyString" },
+        "snapshot": { "$ref": "#/$defs/showcaseSnapshot" },
+        "metrics": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/showcaseMetric" }
+        },
+        "trend": { "$ref": "#/$defs/showcaseTrend" },
+        "mix": { "$ref": "#/$defs/showcaseMix" }
+      }
+    },
     "caseStudy": {
       "type": "object",
       "additionalProperties": false,
@@ -226,6 +312,7 @@
         "problem": { "$ref": "#/$defs/narrativeBlock" },
         "solution": { "$ref": "#/$defs/narrativeBlock" },
         "evidence": { "$ref": "#/$defs/evidence" },
+        "showcase": { "$ref": "#/$defs/showcase" },
         "capabilities": {
           "type": "array",
           "minItems": 1,

@@ -65,6 +65,10 @@ function renderMilestones(milestones) {
 }
 
 function renderFeaturedProject(project) {
+  const actionLabel = project.caseStudy?.showcase
+    ? `Open ${project.shortName} visual case`
+    : `Open ${project.shortName} case study`;
+
   return `<section class="section projects-featured" aria-labelledby="projects-featured-title" data-reveal>
     <article class="surface panel project-primary motion-surface" data-motion-surface>
       ${motionFrame("strong")}
@@ -82,7 +86,7 @@ function renderFeaturedProject(project) {
           ${project.stack.map((item) => `<span>${item}</span>`).join("")}
         </div>
         <div class="project-primary__actions">
-          ${buttonLink(`Open ${project.shortName} case study`, getProjectRoute(project), "primary", "↗")}
+          ${buttonLink(actionLabel, getProjectRoute(project), "primary", "↗")}
         </div>
       </div>
 
@@ -101,7 +105,10 @@ function renderFeaturedProject(project) {
 
 function renderRegistryAction(project) {
   if (hasPublishedCaseStudy(project)) {
-    return buttonLink(`Open ${project.shortName} case study`, getProjectRoute(project), "text", "→");
+    const actionLabel = project.caseStudy?.showcase
+      ? `Open ${project.shortName} visual case`
+      : `Open ${project.shortName} case study`;
+    return buttonLink(actionLabel, getProjectRoute(project), "text", "→");
   }
 
   return `<span class="project-case-state">Case study pending verified evidence</span>`;

@@ -22,15 +22,16 @@
 
 .contact-position {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background:
     radial-gradient(circle at 76% 24%, rgba(67, 151, 219, 0.12), transparent 30rem),
     var(--color-surface);
 }
 
 .contact-position__copy {
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .contact-position h2 {
@@ -56,12 +57,14 @@
 
 .contact-profile {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   background: rgba(9, 15, 27, 0.72);
 }
 
 .contact-profile__identity {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .contact-profile__status,
@@ -97,8 +100,9 @@
 
 .contact-focus-list {
   display: flex;
+  justify-content: center;
   gap: 0.4rem;
-  margin-top: auto;
+  margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--color-border);
 }
@@ -118,7 +122,9 @@
   display: flex;
   min-height: 28rem;
   padding: clamp(1.5rem, 2.5vw, 2.5rem);
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   transition:
     border-color var(--transition-fast),
     transform var(--transition-fast);
@@ -134,11 +140,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
 }
 
 .contact-channel__identity {
-  margin-block: auto;
-  padding-block: 3rem;
+  margin-block: 2rem;
 }
 
 .contact-channel h3 {
@@ -159,7 +165,7 @@
 }
 
 .contact-channel .button {
-  align-self: flex-start;
+  align-self: center;
 }
 
 .contact-context__header {
@@ -176,8 +182,12 @@
 }
 
 .contact-context__list li {
+  display: flex;
   min-height: 22rem;
   padding: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   border-right: 1px solid var(--color-border);
 }
 
@@ -186,7 +196,7 @@
 }
 
 .contact-context__list h3 {
-  margin-top: 5rem;
+  margin-top: 1.5rem;
   font-size: var(--type-card);
 }
 
@@ -197,7 +207,7 @@
 .contact-closing {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
-  align-items: end;
+  align-items: center;
   gap: clamp(3rem, 8vw, 9rem);
   min-height: 31rem;
   padding: clamp(2rem, 5vw, 5rem);
@@ -221,7 +231,7 @@
 .contact-closing__actions {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
@@ -277,7 +287,7 @@
   }
 
   .contact-context__list h3 {
-    margin-top: 3.5rem;
+    margin-top: 1.5rem;
   }
 }
 

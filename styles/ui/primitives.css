@@ -378,7 +378,7 @@ body::after {
 
 .fatal-error h1 {
   max-width: 55rem;
-  font-size: clamp(2.5rem, 6vw, 6rem);
+  font-size: clamp(2.6rem, 6vw, 6rem);
 }
 
 .floating-nav {
