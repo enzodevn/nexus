@@ -4,7 +4,7 @@
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
     "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
-    "platformVersion": "v3.2.0"
+    "platformVersion": "v3.4.1"
   },
   "registry": {
     "eyebrow": "Connected systems",
@@ -438,11 +438,11 @@
         "evidence": {
           "eyebrow": "Verified repository evidence",
           "title": "A browser-native platform with an inspectable architecture.",
-          "description": "The referenced stable V3 checkpoint was inspected and its complete JavaScript, JSON and CSS surface was validated before these claims were added to the NEXUS case study.",
+          "description": "The V3.4.1 release candidate was inspected and its complete JavaScript, JSON and CSS surface was validated after the NGDP operational showcase was integrated into the stable branch.",
           "audit": {
-            "revision": "9fbaca23bfa512d09e611d4d0ab0107478a37156",
-            "verifiedOn": "2026-09-01",
-            "source": "https://github.com/enzodevn/nexus/commit/9fbaca23bfa512d09e611d4d0ab0107478a37156"
+            "revision": "b5cd6d7f958457183d68485c48de346716d6d7f0",
+            "verifiedOn": "2026-09-06",
+            "source": "https://github.com/enzodevn/nexus/commit/b5cd6d7f958457183d68485c48de346716d6d7f0"
           },
           "metrics": [
             {
@@ -451,9 +451,9 @@
               "description": "Seven intentional application route patterns plus a wildcard recovery state."
             },
             {
-              "value": "49",
+              "value": "56",
               "label": "Checked surfaces",
-              "description": "Twenty-five JavaScript modules, fourteen CSS files and ten JSON datasets."
+              "description": "Thirty browser JavaScript modules, sixteen CSS files and ten JSON datasets."
             },
             {
               "value": "00",
@@ -481,7 +481,7 @@
               "description": "CI, production builds and the social-preview asset are ready. Public hosting, canonical metadata and a sitemap remain intentionally deferred until the routing strategy and independent production origin are finalized."
             }
           ],
-          "snapshot": "Validated against checkpoint 9fbaca2 on 1 September 2026. The evidence covers the application architecture, automated quality gates and portable production delivery; independent public hosting and route discovery remain outside this boundary."
+          "snapshot": "Validated against merged checkpoint b5cd6d7 on 6 September 2026. The evidence covers the application architecture, automated quality gates, refined visual system and NGDP operational showcase; independent public hosting and route discovery remain outside this boundary."
         },
         "capabilities": [
           "Dependency-free single-page application built with browser-native ES modules",
@@ -506,7 +506,7 @@
           },
           {
             "label": "Inspect audited revision",
-            "href": "https://github.com/enzodevn/nexus/commit/9fbaca23bfa512d09e611d4d0ab0107478a37156"
+            "href": "https://github.com/enzodevn/nexus/commit/b5cd6d7f958457183d68485c48de346716d6d7f0"
           }
         ]
       }

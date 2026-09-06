@@ -6,7 +6,7 @@ Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
-NEXUS V3.2 defines the current platform baseline. Version `v3.2.0` extends the data-driven Project Framework with a cinematic startup sequence, responsive route transitions and accessible motion controls while preserving structured evidence audits and provider-neutral production delivery.
+NEXUS V3.4.1 defines the current platform baseline. Version `v3.4.1` combines the data-driven Project Framework and cinematic interaction system with a refined global typography scale, balanced home composition and an evidence-linked NGDP operational showcase.
 
 - Home: data-driven mission-control overview
 - Experience: cinematic initialization, route synchronization and reduced-motion behavior
@@ -15,6 +15,7 @@ NEXUS V3.2 defines the current platform baseline. Version `v3.2.0` extends the d
 - Metadata: route-aware titles, descriptions, indexing rules and structured identity
 - Sharing: dedicated 1200×630 NEXUS social preview for Open Graph and X cards
 - Projects: system registry with dedicated NGDP, HEVY and NEXUS case studies
+- NGDP showcase: compact interactive generation trend, energy mix and verified quality signals
 - Evidence: revision-linked repository audits with verified metrics and explicit technical gaps
 - Labs: investigation registry and research method
 - Roadmap: evidence-gated capability sequence
