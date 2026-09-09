@@ -26,7 +26,7 @@
       "summary": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
       "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
       "focus": "Environmental data → dependable analytical products",
-      "stack": ["Python", "Pandas", "PxWeb API", "Streamlit", "Altair", "Pytest"],
+      "stack": ["Python", "Pandas", "PxWeb API", "PostgreSQL", "SQL", "Streamlit", "Altair", "Pytest", "GitHub Actions"],
       "architecture": [
         {
           "index": "01",
@@ -40,20 +40,20 @@
         },
         {
           "index": "03",
-          "name": "Transform",
-          "description": "Normalize the monthly observations into a canonical long-format analytical dataset."
+          "name": "Persist",
+          "description": "Normalize observations into a canonical CSV and optionally synchronize traceable PostgreSQL snapshots through versioned SQL migrations."
         },
         {
           "index": "04",
-          "name": "Explore",
-          "description": "Expose compact charts, filters and quality context through an interactive Streamlit dashboard."
+          "name": "Analyze",
+          "description": "Serve the CLI and Streamlit through one data-access layer. PostgreSQL reads must match the canonical CSV before analysis."
         }
       ],
       "milestones": [
         {
           "state": "Current",
-          "title": "Verified Web V1 and NEXUS case",
-          "description": "Maintain the tested API-to-dashboard flow and its compact NEXUS presentation against the same versioned Statistics Norway snapshot."
+          "title": "NGDP V2 · validated PostgreSQL analytics",
+          "description": "Keep CSV as the default while offering PostgreSQL reads with source, period and value parity checks for the CLI and dashboard."
         },
         {
           "state": "Next",
@@ -63,12 +63,12 @@
         {
           "state": "Future",
           "title": "Private hosted delivery",
-          "description": "Evaluate database persistence, scheduled refreshes and controlled hosting after the current local baseline remains dependable."
+          "description": "Evaluate managed database operation and controlled hosting before adding live service integration to NEXUS."
         }
       ],
       "caseStudy": {
         "eyebrow": "Environmental data engineering",
-        "description": "NGDP applies data-engineering fundamentals to Nordic environmental and energy information, prioritizing traceability and dependable transformations before advanced analytics.",
+        "description": "NGDP connects official Norwegian energy data to validated CSV and PostgreSQL analytics, with traceable snapshots, automated checks and an interactive dashboard.",
         "problem": {
           "title": "Useful environmental analysis begins with dependable data.",
           "description": "Environmental and energy datasets can arrive in different structures and levels of quality. Without an explicit ingestion and transformation process, analytical results become difficult to reproduce or trust."
@@ -79,18 +79,18 @@
         },
         "evidence": {
           "eyebrow": "Verified repository evidence",
-          "title": "A working transformation with visible boundaries.",
-          "description": "The private repository baseline, source provenance, transformation outputs, dashboard and automated checks were verified before these claims were added to NEXUS.",
+          "title": "Database-backed analytics with verifiable boundaries.",
+          "description": "The merged Sprint 08 baseline includes PostgreSQL persistence and controlled analytical reads. Local CSV execution and PostgreSQL integration checks are reported separately.",
           "audit": {
-            "revision": "5aa11b3fba1b98795e72791503e06869ff87154d",
-            "verifiedOn": "2026-09-04",
-            "source": "https://github.com/enzodevn/ngdp-python/commit/5aa11b3fba1b98795e72791503e06869ff87154d"
+            "revision": "9864a6494486216cc0f783256e7dcd26fadfa634",
+            "verifiedOn": "2026-09-08",
+            "source": "https://github.com/enzodevn/ngdp-python/commit/9864a6494486216cc0f783256e7dcd26fadfa634"
           },
           "metrics": [
             {
               "value": "1,216",
               "label": "Verified records",
-              "description": "Normalized monthly source observations in the Sprint 06 canonical dataset."
+              "description": "Normalized monthly source observations in the canonical dataset retained by Sprint 08."
             },
             {
               "value": "1993M01–2026M07",
@@ -98,23 +98,23 @@
               "description": "The current verified snapshot spans more than three decades of monthly generation."
             },
             {
-              "value": "26/26",
-              "label": "Automated checks",
-              "description": "The complete test suite passes on the audited Sprint 06 baseline."
+              "value": "48 + 2",
+              "label": "Verified tests",
+              "description": "48 local tests pass; two PostgreSQL integration tests pass in the dedicated CI database environment."
             }
           ],
           "findings": [
             {
               "state": "Verified",
               "signal": "active",
-              "title": "Verified source-to-product pipeline",
-              "description": "The official API selection, raw snapshot, transformation and canonical output are connected through one tested workflow."
+              "title": "Traceable PostgreSQL snapshots",
+              "description": "Versioned SQL migrations model dataset sources, snapshots and observations. Transactional synchronization preserves the connection to the official source."
             },
             {
               "state": "Inspectable",
               "signal": "active",
-              "title": "Interactive analytical interface",
-              "description": "The Streamlit application exposes filters, quality context and three compact Altair views over the processed dataset."
+              "title": "Shared analytical access",
+              "description": "The CLI and Streamlit dashboard select CSV or PostgreSQL through one gateway. Divergent database values stop execution instead of triggering a silent fallback."
             },
             {
               "state": "Verified",
@@ -125,11 +125,11 @@
             {
               "state": "Known boundary",
               "signal": "muted",
-              "title": "Refresh remains an explicit operation",
-              "description": "NEXUS presents the latest approved local snapshot; promotion from NGDP remains separate from page loading and never depends on a live provider response."
+              "title": "Optional database, versioned portfolio",
+              "description": "CSV remains the default and the parity reference for PostgreSQL. NEXUS presents a versioned snapshot; it does not query the database or a live NGDP API."
             }
           ],
-          "snapshot": "Audited against private revision 5aa11b3 on 4 September 2026. The source snapshot was last verified on 3 September 2026 and contains 1,216 observations through 2026M07."
+          "snapshot": "Audited against merged revision 9864a64 on 8 September 2026. Sprint 08 passed all four PR checks, including PostgreSQL integration. The source snapshot remains dated 3 September 2026, with 1,216 observations through 2026M07; no new source ingestion is claimed."
         },
         "showcase": {
           "eyebrow": "NGDP operations view",
@@ -158,8 +158,8 @@
             },
             {
               "label": "Quality gate",
-              "value": "26/26",
-              "detail": "Automated tests passing on the Sprint 06 baseline."
+              "value": "4/4",
+              "detail": "Sprint 08 PR checks passed, including PostgreSQL integration."
             }
           ],
           "trend": {
@@ -205,19 +205,21 @@
           }
         },
         "capabilities": [
-          "Authenticated-free acquisition from the official Statistics Norway PxWeb API",
+          "Acquisition from the official Statistics Norway PxWeb API without authentication",
           "Schema, fingerprint and snapshot validation before transformation",
           "Daily source verification with validated updates proposed through review pull requests",
-          "Repeatable export of a canonical analytics-ready dataset",
+          "Repeatable CSV export and transactional PostgreSQL snapshot synchronization",
+          "Explicit CSV or PostgreSQL selection for the CLI and Streamlit dashboard",
+          "Exact source-period-value parity checks before PostgreSQL data reaches analysis",
           "Interactive filtering and compact visual analysis with Streamlit and Altair"
         ],
         "challenges": [
-          "Keep the data contract stable while the official monthly source continues to grow.",
-          "Separate verified portfolio evidence from the live dashboard execution boundary."
+          "Preserve the same analytical results while introducing a second storage backend.",
+          "Keep database adoption explicit without presenting a versioned portfolio snapshot as a live service."
         ],
         "learnings": [
-          "A source fingerprint protects analytical lineage when an official upstream table changes.",
-          "A focused operational view communicates the system better than reproducing the complete dashboard inside the portfolio."
+          "A shared data-access contract lets storage evolve without duplicating analytical logic.",
+          "Parity checks and explicit failure protect trust during database adoption; hosted operation remains a separate delivery step."
         ],
         "links": [
           {
@@ -226,7 +228,11 @@
           },
           {
             "label": "Inspect audited revision",
-            "href": "https://github.com/enzodevn/ngdp-python/commit/5aa11b3fba1b98795e72791503e06869ff87154d"
+            "href": "https://github.com/enzodevn/ngdp-python/commit/9864a6494486216cc0f783256e7dcd26fadfa634"
+          },
+          {
+            "label": "Review Sprint 08 checks",
+            "href": "https://github.com/enzodevn/ngdp-python/pull/8/checks"
           }
         ]
       }
