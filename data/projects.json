@@ -4,7 +4,7 @@
     "eyebrow": "System registry",
     "title": "Engineering systems with a reason to exist.",
     "description": "Projects turn research and technical practice into working systems. Each one is documented as part of a larger engineering trajectory, not as an isolated showcase.",
-    "platformVersion": "v3.4.1"
+    "platformVersion": "v3.4.2"
   },
   "registry": {
     "eyebrow": "Connected systems",
@@ -26,7 +26,7 @@
       "summary": "A data engineering platform designed to acquire, structure and expose Nordic environmental and energy data through a dependable, extensible pipeline.",
       "objective": "Turn complex source data into transparent, analytics-ready datasets while building a foundation for cloud delivery and future intelligent systems.",
       "focus": "Environmental data → dependable analytical products",
-      "stack": ["Python", "Pandas", "PxWeb API", "PostgreSQL", "SQL", "Streamlit", "Altair", "Pytest", "GitHub Actions"],
+      "stack": ["Python", "Pandas", "PxWeb API", "PostgreSQL", "SQL", "FastAPI", "Pydantic", "Streamlit", "Altair", "Pytest", "GitHub Actions"],
       "architecture": [
         {
           "index": "01",
@@ -45,30 +45,30 @@
         },
         {
           "index": "04",
-          "name": "Analyze",
-          "description": "Serve the CLI and Streamlit through one data-access layer. PostgreSQL reads must match the canonical CSV before analysis."
+          "name": "Expose",
+          "description": "Serve the CLI and Streamlit through one data-access layer, then expose authenticated read-only analytics through a versioned FastAPI contract. PostgreSQL reads must match the canonical CSV before analysis."
         }
       ],
       "milestones": [
         {
           "state": "Current",
-          "title": "NGDP V2 · validated PostgreSQL analytics",
-          "description": "Keep CSV as the default while offering PostgreSQL reads with source, period and value parity checks for the CLI and dashboard."
+          "title": "NGDP V3.0.0 · authenticated analytical API",
+          "description": "Expose validated energy indicators through FastAPI and immutable Pydantic contracts while protecting analytical access with environment-backed bearer authentication."
         },
         {
           "state": "Next",
-          "title": "Reviewed portfolio data sync",
-          "description": "Generate the NEXUS showcase snapshot from each approved NGDP data revision while keeping source updates inspectable and review-gated."
+          "title": "Managed API delivery",
+          "description": "Deploy the authenticated API behind a trusted server-side integration layer before NEXUS consumes live operational data."
         },
         {
           "state": "Future",
-          "title": "Private hosted delivery",
-          "description": "Evaluate managed database operation and controlled hosting before adding live service integration to NEXUS."
+          "title": "NGDP V4 · infrastructure layer",
+          "description": "Package and operate the service with Docker, cloud infrastructure, observability and controlled CI/CD delivery."
         }
       ],
       "caseStudy": {
         "eyebrow": "Environmental data engineering",
-        "description": "NGDP connects official Norwegian energy data to validated CSV and PostgreSQL analytics, with traceable snapshots, automated checks and an interactive dashboard.",
+        "description": "NGDP connects official Norwegian energy data to validated CSV and PostgreSQL analytics, an interactive dashboard and an authenticated FastAPI contract released as V3.0.0.",
         "problem": {
           "title": "Useful environmental analysis begins with dependable data.",
           "description": "Environmental and energy datasets can arrive in different structures and levels of quality. Without an explicit ingestion and transformation process, analytical results become difficult to reproduce or trust."
@@ -79,18 +79,18 @@
         },
         "evidence": {
           "eyebrow": "Verified repository evidence",
-          "title": "Database-backed analytics with verifiable boundaries.",
-          "description": "The merged Sprint 08 baseline includes PostgreSQL persistence and controlled analytical reads. Local CSV execution and PostgreSQL integration checks are reported separately.",
+          "title": "Authenticated analytics with verifiable data boundaries.",
+          "description": "The stable V3.0.0 release combines traceable PostgreSQL persistence, controlled analytical reads, immutable response contracts and bearer-protected FastAPI access.",
           "audit": {
-            "revision": "9864a6494486216cc0f783256e7dcd26fadfa634",
-            "verifiedOn": "2026-09-08",
-            "source": "https://github.com/enzodevn/ngdp-python/commit/9864a6494486216cc0f783256e7dcd26fadfa634"
+            "revision": "642f39b96d53aeb80e0fa7420e6aecc4bdaf19d2",
+            "verifiedOn": "2026-09-09",
+            "source": "https://github.com/enzodevn/ngdp-python/commit/642f39b96d53aeb80e0fa7420e6aecc4bdaf19d2"
           },
           "metrics": [
             {
               "value": "1,216",
               "label": "Verified records",
-              "description": "Normalized monthly source observations in the canonical dataset retained by Sprint 08."
+              "description": "Normalized monthly source observations retained in the current verified canonical dataset."
             },
             {
               "value": "1993M01–2026M07",
@@ -98,9 +98,9 @@
               "description": "The current verified snapshot spans more than three decades of monthly generation."
             },
             {
-              "value": "48 + 2",
+              "value": "56 + 2",
               "label": "Verified tests",
-              "description": "48 local tests pass; two PostgreSQL integration tests pass in the dedicated CI database environment."
+              "description": "56 tests pass locally; two PostgreSQL integration tests execute in the dedicated CI database environment."
             }
           ],
           "findings": [
@@ -119,17 +119,23 @@
             {
               "state": "Verified",
               "signal": "active",
+              "title": "Authenticated analytical API",
+              "description": "FastAPI exposes a public health contract and bearer-protected energy summaries. Product and API versions are reported independently and covered by automated tests."
+            },
+            {
+              "state": "Verified",
+              "signal": "active",
               "title": "Review-gated source refresh",
               "description": "A daily workflow checks the official source and proposes validated snapshot changes through a pull request only after the complete test suite passes."
             },
             {
               "state": "Known boundary",
               "signal": "muted",
-              "title": "Optional database, versioned portfolio",
-              "description": "CSV remains the default and the parity reference for PostgreSQL. NEXUS presents a versioned snapshot; it does not query the database or a live NGDP API."
+              "title": "Versioned portfolio, private API",
+              "description": "NEXUS presents reviewed V3 evidence and static dataset indicators. Live API consumption remains deferred until a trusted server-side integration layer can protect credentials."
             }
           ],
-          "snapshot": "Audited against merged revision 9864a64 on 8 September 2026. Sprint 08 passed all four PR checks, including PostgreSQL integration. The source snapshot remains dated 3 September 2026, with 1,216 observations through 2026M07; no new source ingestion is claimed."
+          "snapshot": "Audited against stable NGDP V3.0.0 revision 642f39b on 9 September 2026. Release PR #12 passed all four quality checks. The source snapshot remains dated 3 September 2026, with 1,216 observations through 2026M07; no new source ingestion or live NEXUS connection is claimed."
         },
         "showcase": {
           "eyebrow": "NGDP operations view",
@@ -159,7 +165,7 @@
             {
               "label": "Quality gate",
               "value": "4/4",
-              "detail": "Sprint 08 PR checks passed, including PostgreSQL integration."
+              "detail": "NGDP V3 release PR checks passed, including PostgreSQL integration."
             }
           ],
           "trend": {
@@ -211,15 +217,18 @@
           "Repeatable CSV export and transactional PostgreSQL snapshot synchronization",
           "Explicit CSV or PostgreSQL selection for the CLI and Streamlit dashboard",
           "Exact source-period-value parity checks before PostgreSQL data reaches analysis",
+          "Versioned FastAPI service with immutable Pydantic health and energy-summary contracts",
+          "Environment-backed bearer authentication for protected analytical access",
           "Interactive filtering and compact visual analysis with Streamlit and Altair"
         ],
         "challenges": [
-          "Preserve the same analytical results while introducing a second storage backend.",
-          "Keep database adoption explicit without presenting a versioned portfolio snapshot as a live service."
+          "Preserve identical analytical results across CSV, PostgreSQL, CLI, dashboard and API consumers.",
+          "Prepare live NEXUS integration without exposing the NGDP bearer token in browser code or public assets."
         ],
         "learnings": [
-          "A shared data-access contract lets storage evolve without duplicating analytical logic.",
-          "Parity checks and explicit failure protect trust during database adoption; hosted operation remains a separate delivery step."
+          "A shared data-access contract lets storage and delivery interfaces evolve without duplicating analytical logic.",
+          "Product, API, database and dataset versions describe different compatibility boundaries and should evolve independently.",
+          "Authenticated service integration requires a trusted server-side boundary; a browser must never receive the service credential."
         ],
         "links": [
           {
@@ -228,11 +237,15 @@
           },
           {
             "label": "Inspect audited revision",
-            "href": "https://github.com/enzodevn/ngdp-python/commit/9864a6494486216cc0f783256e7dcd26fadfa634"
+            "href": "https://github.com/enzodevn/ngdp-python/commit/642f39b96d53aeb80e0fa7420e6aecc4bdaf19d2"
           },
           {
-            "label": "Review Sprint 08 checks",
-            "href": "https://github.com/enzodevn/ngdp-python/pull/8/checks"
+            "label": "Review NGDP V3 checks",
+            "href": "https://github.com/enzodevn/ngdp-python/pull/12/checks"
+          },
+          {
+            "label": "Open stable v3.0.0",
+            "href": "https://github.com/enzodevn/ngdp-python/tree/v3.0.0"
           }
         ]
       }

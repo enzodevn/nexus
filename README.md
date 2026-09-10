@@ -6,7 +6,7 @@ Public deployment is intentionally deferred while the portfolio remains private.
 
 ## Current state
 
-NEXUS V3.4.1 defines the current platform baseline. Version `v3.4.1` combines the data-driven Project Framework and cinematic interaction system with a refined global typography scale, balanced home composition and an evidence-linked NGDP operational showcase.
+NEXUS V3.4.2 defines the current platform baseline. Version `v3.4.2` combines the data-driven Project Framework and cinematic interaction system with a refined global typography scale, balanced home composition and an evidence-linked NGDP V3.0.0 operational showcase.
 
 - Home: data-driven mission-control overview
 - Experience: cinematic initialization, route synchronization and reduced-motion behavior
